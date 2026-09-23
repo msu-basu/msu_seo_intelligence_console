@@ -1,0 +1,930 @@
+# ----------------------------------------
+# Traffic acquisition: Session source / medium
+# Account: Medhavi Skills University Sikkim
+# Property: Medhavi Skills University website
+# ----------------------------------------
+# 
+# All Users
+# Start date: 20260101
+# End date: 20260923
+Session source / medium,Sessions,Engaged sessions,Engagement rate,Average engagement time per session,Events per session,Event count,Key events,Session key event rate,Total revenue
+google / organic,145704,136735,0.9384436940646791,70.27514000988305,8.732045791467632,1272294,3719,0.005113106023170263,0
+(direct) / (none),109582,104177,0.950676205946232,63.23912686390101,9.633844974539613,1055696,1079,0.002153638371265354,0
+meta / paid,78155,77349,0.9896871601305098,10.580564263322884,5.740055018872753,448614,28,0.00006397543343356151,0
+google / cpc,59127,57832,0.9780979924569148,35.50087100647758,8.342702995247517,493279,116,0.0004735569198504913,0
+payment.collexo.com / referral,16476,15033,0.9124180626365622,112.66666666666667,16.989439184268026,279918,14,0.0003641660597232338,0
+CT-Campaign / (not set),14507,14218,0.9800785827531536,7.609223133659612,7.162059695319501,103900,0,0,0
+op4jdz24x3.in1.nopaperforms.io / referral,5940,5307,0.8934343434343435,96.06767676767677,27.36346801346801,162539,9,0.0003367003367003367,0
+(not set),5653,1910,0.3378736953829825,63.54785069874403,8.266761011852115,46732,44,0.003007252786131258,0
+bing / organic,4295,3833,0.8924330616996508,102.63119906868452,8.602328288707799,36947,189,0.004889406286379511,0
+api.cashfree.com / referral,3397,3130,0.9214012363850457,246.86488077715632,21.849867530173682,74224,0,0,0
+paid / meta,2942,2900,0.9857239972807614,3.117946974847043,4.236913664174032,12465,0,0,0
+7j9vegg513.in6.nopaperforms.io / referral,2534,2294,0.9052880820836622,152.71468034727704,24.914364640883978,63133,0,0,0
+(data not available),1801,1102,0.61188228761799,40.4153248195447,11.043864519711272,19890,8,0.001665741254858412,0
+chatgpt.com / ai-assistant,1766,1655,0.9371460928652322,69.02718006795017,9.12797281993205,16120,58,0.010758776896942242,0
+in1.nopaperforms.io / referral,1527,1322,0.8657498362802881,85.74001309757695,23.086444007858546,35253,0,0,0
+m.facebook.com / referral,1446,1223,0.8457814661134163,12.7268326417704,5.072614107883817,7335,0,0,0
+in.search.yahoo.com / referral,1250,1135,0.908,114.7088,9.0944,11368,9,0.0032,0
+google / paid,1241,1103,0.8887993553585818,94.43674456083804,17.087832393231267,21206,14,0.0032232070910556,0
+ugc.gov.in / referral,1174,1083,0.9224872231686542,109.78620102214651,9.226575809199318,10832,28,0.0017035775127768314,0
+l.instagram.com / referral,1060,1055,0.9952830188679245,41.991509433962264,5.84433962264151,6195,1,0.0009433962264150943,0
+digilocker.meripehchaan.gov.in / referral,982,956,0.9735234215885947,104.37169042769857,20.173116089613035,19810,0,0,0
+counselhub / channelpartner,948,819,0.8639240506329114,168.68459915611814,15.54535864978903,14737,0,0,0
+localhost:3000 / referral,934,812,0.8693790149892934,156.68522483940043,16.941113490364025,15823,8,0.0032119914346895075,0
+pages.razorpay.com / referral,930,870,0.9354838709677419,17.144086021505377,6.358064516129033,5913,0,0,0
+facebook.com / referral,894,890,0.9955257270693513,5.458612975391499,5.300894854586129,4739,0,0,0
+paid / google,890,818,0.9191011235955057,13.606741573033707,7.389887640449438,6577,40,0.0011235955056179776,0
+email / cta,812,759,0.9347290640394089,22.016009852216747,8.599753694581281,6983,0,0,0
+whatsapp / (not set),781,766,0.9807938540332907,24.358514724711906,9.295774647887324,7260,0,0,0
+whatsappbot / paid,754,740,0.9814323607427056,86.52254641909815,8.745358090185677,6594,30,0.006631299734748011,0
+Offline / Mobilization,702,667,0.9501424501424501,363.5940170940171,25.075498575498575,17603,5,0.002849002849002849,0
+Meta / paid,629,621,0.9872813990461049,23.537360890302068,4.635930047694753,2916,0,0,0
+Andheri / Mumbai,619,607,0.9806138933764136,177.07592891760905,18.88529886914378,11690,0,0,0
+medhavi.keka.com / referral,618,532,0.86084142394822,66.05177993527508,6.6957928802588995,4138,0,0,0
+MSUB4M / pm,547,543,0.9926873857404022,276.19378427787933,19.744058500914075,10800,0,0,0
+l.wl.co / referral,531,517,0.9736346516007532,40.66101694915254,6.730696798493408,3574,0,0,0
+Jaipur / Global,530,510,0.9622641509433962,184.37358490566038,18.841509433962266,9986,0,0,0
+chatgpt.com / (not set),460,441,0.9586956521739131,61.154347826086955,8.347826086956522,3840,21,0.004347826086956522,0
+api.razorpay.com / referral,433,372,0.859122401847575,231.72517321016167,18.394919168591223,7965,0,0,0
+NIF / Brochure,422,416,0.985781990521327,174.8791469194313,18.097156398104264,7637,0,0,0
+medhavifoundation.org / referral,418,370,0.8851674641148325,91.76794258373205,8.956937799043063,3744,0,0,0
+linkedin.com / referral,374,348,0.93048128342246,44.398395721925134,6.8449197860962565,2560,2,0.00267379679144385,0
+ig / social,335,328,0.9791044776119403,48.149253731343286,7.008955223880597,2348,0,0,0
+MSUDSCESP / pwm,329,311,0.9452887537993921,146.69604863221883,14.778115501519757,4862,2,0.0060790273556231,0
+MSU NIF 2026 / prospectus,297,293,0.9865319865319865,257.14814814814815,21.88888888888889,6501,0,0,0
+chatgpt.com / referral,297,247,0.8316498316498316,64.22895622895624,8.070707070707071,2397,0,0,0
+in6.nopaperforms.io / referral,267,231,0.8651685393258427,118.30337078651685,18.55056179775281,4953,0,0,0
+ig / paid,253,242,0.9565217391304348,24.23715415019763,6.8853754940711465,1742,0,0,0
+yahoo / organic,226,201,0.8893805309734514,102.49557522123894,8.15929203539823,1844,0,0,0
+tagassistant.google.com / referral,224,173,0.7723214285714286,230.30803571428572,16.125,3612,1,0.004464285714285714,0
+icpaindia.org / referral,213,204,0.9577464788732394,56.46478873239437,7.84037558685446,1670,0,0,0
+gs-grow.hamaraacademy.com / referral,211,211,1,17.085308056872037,7.886255924170616,1664,0,0,0
+Whatsapp / Test message,184,181,0.9836956521739131,19.222826086956523,6.739130434782608,1240,0,0,0
+bit.ly / referral,183,182,0.994535519125683,25.0327868852459,8.153005464480874,1492,0,0,0
+medhaviaspire.in / referral,179,136,0.7597765363128491,63.06703910614525,9.508379888268156,1702,0,0,0
+google / piad,171,142,0.8304093567251462,233.08187134502924,25.24561403508772,4317,66,0.029239766081871343,0
+l.facebook.com / referral,161,152,0.9440993788819876,63.41614906832298,8.75776397515528,1410,1,0.006211180124223602,0
+mail.google.com / referral,160,140,0.875,154.25,12.1,1936,0,0,0
+ntp.msn.com / referral,149,124,0.8322147651006712,348.3557046979866,12.939597315436242,1928,0,0,0
+payments.cashfree.com / referral,147,137,0.9319727891156463,235.19727891156464,24.612244897959183,3618,0,0,0
+en.wikipedia.org / referral,146,139,0.952054794520548,132.67123287671234,9.287671232876713,1356,2,0.00684931506849315,0
+MSU Admissions 2026 / Local Social Media,145,137,0.9448275862068966,43.99310344827586,6.393103448275862,927,0,0,0
+duckduckgo / organic,139,131,0.9424460431654677,96.20863309352518,11.956834532374101,1662,0,0,0
+Test / Test,132,120,0.9090909090909091,150.58333333333334,14.901515151515152,1967,0,0,0
+accounts.digitallocker.gov.in / referral,121,115,0.9504132231404959,132.9090909090909,19.388429752066116,2346,0,0,0
+claude.ai / referral,117,91,0.7777777777777778,55.666666666666664,10.52991452991453,1232,10,0.008547008547008548,0
+consent.digilocker.gov.in / referral,117,111,0.9487179487179487,118.16239316239316,22.76068376068376,2663,0,0,0
+brochure / session_2026_27,112,101,0.9017857142857143,30.133928571428573,7.964285714285714,892,0,0,0
+MSU Campus / offline brochure,111,111,1,39.765765765765764,6.225225225225225,691,0,0,0
+medhaviskillsuniversity.com / referral,102,87,0.8529411764705882,142.88235294117646,13.637254901960784,1391,3,0.00980392156862745,0
+syndicatedsearch.goog / referral,102,69,0.6764705882352942,2.1862745098039214,5.764705882352941,588,0,0,0
+NIFD Brochure / QR Code,99,98,0.98989898989899,107.0909090909091,13.636363636363637,1350,0,0,0
+blackkitefoundation.com / referral,89,82,0.9213483146067416,98.24719101123596,5.674157303370786,505,0,0,0
+Google / Search,88,81,0.9204545454545454,298.7386363636364,31.84090909090909,2802,2,0.011363636363636364,0
+rawdata / greetings,85,84,0.9882352941176471,6.788235294117647,4.08235294117647,347,0,0,0
+youtube.com / referral,83,78,0.9397590361445783,53.6144578313253,7.554216867469879,627,0,0,0
+ig / meta,76,75,0.9868421052631579,2.710526315789474,4.421052631578948,336,0,0,0
+pagespeed.web.dev / referral,70,61,0.8714285714285714,77.87142857142857,17.7,1239,0,0,0
+wise-home-page.s3.us-west-2.amazonaws.com / referral,69,54,0.782608695652174,95.2463768115942,7.463768115942029,515,0,0,0
+Vashi / Mumbai,68,66,0.9705882352941176,55.55882352941177,16.808823529411764,1143,0,0,0
+wise.msu.edu.in / referral,68,67,0.9852941176470589,1.2352941176470589,8.779411764705882,597,0,0,0
+Chennai / Global,66,65,0.9848484848484849,180.96969696969697,17.045454545454547,1125,0,0,0
+instagram.com / referral,63,63,1,127.93650793650794,9.936507936507937,626,0,0,0
+Patiala / Global,62,55,0.8870967741935484,86.7258064516129,8.241935483870968,511,0,0,0
+course_page / website,61,51,0.8360655737704918,137.327868852459,8.868852459016393,541,0,0,0
+gemini.google.com / ai-assistant,59,50,0.847457627118644,45.3728813559322,6.813559322033898,402,0,0,0
+influencer / youtube,57,56,0.9824561403508771,174.21052631578948,12.649122807017545,721,5,0.017543859649122806,0
+widgets.nopaperforms.com / referral,50,44,0.88,232.42,17.18,859,6,0.04,0
+b4mnhq.com / referral,49,47,0.9591836734693877,53.265306122448976,7.979591836734694,391,0,0,0
+gemini.google.com / referral,49,43,0.8775510204081632,78.44897959183673,8.653061224489797,424,0,0,0
+url-opener.com / referral,49,38,0.7755102040816326,141.9591836734694,30.285714285714285,1484,5,0.02040816326530612,0
+theigj.com / referral,48,46,0.9583333333333334,45.520833333333336,8.270833333333334,397,0,0,0
+MSU 2026 / offline,47,43,0.9148936170212766,60.361702127659576,9,423,0,0,0
+Raipur / Global,43,38,0.8837209302325582,87.69767441860465,14.023255813953488,603,0,0,0
+crm.zoho.in / referral,43,34,0.7906976744186046,17.953488372093023,4.069767441860465,175,0,0,0
+search.brave.com / referral,41,40,0.975609756097561,61.63414634146341,6.804878048780488,279,0,0,0
+shiksha / RECO,41,41,1,48.63414634146341,5.658536585365853,232,0,0,0
+127.0.0.1:5501 / referral,39,30,0.7692307692307693,91.51282051282051,15.794871794871796,616,0,0,0
+shiksha / CM-Da1,39,36,0.9230769230769231,7.076923076923077,4,156,0,0,0
+counselindia.com / referral,37,37,1,85.64864864864865,10.162162162162161,376,12,0.10810810810810811,0
+medhavione.com / referral,37,30,0.8108108108108109,46.86486486486486,7.4324324324324325,275,0,0,0
+brochure / ads,35,35,1,2.6,4.371428571428571,153,0,0,0
+127.0.0.1:5500 / referral,34,27,0.7941176470588235,81.88235294117646,14.382352941176471,489,0,0,0
+google / search-ad,32,27,0.84375,29.0625,9.65625,309,0,0,0
+ecosia.org / organic,31,25,0.8064516129032258,210.19354838709677,12,372,0,0,0
+perplexity / (not set),31,31,1,74.96774193548387,9.806451612903226,304,0,0,0
+Channel Partner / Faisal foundation,30,30,1,499.9,20.1,603,0,0,0
+dsc.edu.in / referral,29,27,0.9310344827586207,106.34482758620689,9.379310344827585,272,0,0,0
+MA in Psychology Landing page / Whatsapp,26,25,0.9615384615384616,48.96153846153846,14.807692307692308,385,0,0,0
+chatgpt.com / organic,26,23,0.8846153846153846,26.307692307692307,7.423076923076923,193,0,0,0
+10.10.32.3:8088 / referral,25,25,1,38.44,7.96,199,0,0,0
+MSU Campus / Online Social Channels,25,24,0.96,2.32,4.32,108,0,0,0
+collegedunia / liveform_c,25,20,0.8,344.56,27.8,695,6,0.08,0
+perplexity.ai / ai-assistant,25,24,0.96,75.48,6.48,162,0,0,0
+Lucknow / Global,24,20,0.8333333333333334,318.0833333333333,19.375,465,0,0,0
+Tumul / Offline,24,24,1,318.9583333333333,12.5,300,0,0,0
+railsafety.co.in / referral,23,23,1,34.43478260869565,6.086956521739131,140,0,0,0
+Meta / Page,22,21,0.9545454545454546,30.772727272727273,5.545454545454546,122,0,0,0
+AAREducation / cp,21,20,0.9523809523809523,111.47619047619048,7.285714285714286,153,0,0,0
+FrameBoxx / wp,21,18,0.8571428571428571,274.7142857142857,15.666666666666666,329,0,0,0
+googleads.g.doubleclick.net / referral,21,15,0.7142857142857143,2.761904761904762,5.619047619047619,118,0,0,0
+lm.facebook.com / referral,21,21,1,31.80952380952381,5.238095238095238,110,0,0,0
+search.google.com / referral,21,19,0.9047619047619048,94.28571428571429,18.095238095238095,380,0,0,0
+links.rediff.com / referral,20,20,1,90.8,9.7,194,0,0,0
+4 pager / offline,18,18,1,11.277777777777779,7.222222222222222,130,0,0,0
+paid / LinkedIn,18,11,0.6111111111111112,40.666666666666664,6.444444444444445,116,0,0,0
+192.168.29.223:8088 / referral,17,16,0.9411764705882353,8.470588235294118,5.235294117647059,89,0,0,0
+lnkd.in / referral,17,16,0.9411764705882353,54.705882352941174,7.529411764705882,128,0,0,0
+perplexity.ai / referral,17,13,0.7647058823529411,11.764705882352942,5,85,0,0,0
+tikzmedia.com / referral,16,15,0.9375,70.0625,8.375,134,0,0,0
+google.com / referral,15,15,1,1.9333333333333333,5.2,78,0,0,0
+statics.teams.cdn.office.net / referral,15,12,0.8,144.33333333333334,13.066666666666666,196,0,0,0
+Outreach / FoundationOffice,14,12,0.8571428571428571,40.285714285714285,4.785714285714286,67,0,0,0
+192.168.29.28:8088 / referral,13,13,1,19.076923076923077,5.153846153846154,67,0,0,0
+AAREducation / channelpartner,13,11,0.8461538461538461,15.692307692307692,4.461538461538462,58,0,0,0
+ahrefs.com / referral,13,10,0.7692307692307693,13.076923076923077,5.538461538461538,72,0,0,0
+localhost:3001 / referral,13,11,0.8461538461538461,124.07692307692308,16.53846153846154,215,0,0,0
+whatsapp / organic,13,9,0.6923076923076923,17.46153846153846,10.846153846153847,141,0,0,0
+chatgpt.com / pm,12,12,1,79.75,16.416666666666668,197,0,0,0
+fb / meta,12,11,0.9166666666666666,3,4.416666666666667,53,0,0,0
+inihe.aiu.ac.in / referral,12,11,0.9166666666666666,34.333333333333336,6.666666666666667,80,0,0,0
+livejournal.com / referral,12,11,0.9166666666666666,101,10.583333333333334,127,0,0,0
+www-msu-edu-in.translate.goog / referral,12,11,0.9166666666666666,92.58333333333333,6.25,75,5,0.08333333333333333,0
+ifmg-grow.hamaraacademy.com / referral,11,10,0.9090909090909091,13.454545454545455,7.181818181818182,79,0,0,0
+petalsearch.com / referral,11,11,1,142.54545454545453,22.363636363636363,246,0,0,0
+wa_blast / rawdata_wa_blast,11,11,1,0.18181818181818182,4.818181818181818,53,0,0,0
+Untouched / expression,10,10,1,7.1,5.7,57,0,0,0
+privacywall.org / referral,10,9,0.9,112.9,10.7,107,0,0,0
+shiksha / Shiksha-ED,10,9,0.9,56.6,7.4,74,0,0,0
+Online / Partner,9,9,1,256.44444444444446,16.77777777777778,151,0,0,0
+RAW DATA / Nursing,9,9,1,1,4.111111111111111,37,0,0,0
+canva.com / referral,9,7,0.7777777777777778,233.55555555555554,21.333333333333332,192,0,0,0
+dmcfs.in / referral,9,9,1,65.77777777777777,10.777777777777779,97,0,0,0
+later-linkinbio / referral,9,9,1,49.888888888888886,8.777777777777779,79,0,0,0
+medhavione4.edgeone.dev / referral,9,9,1,68.11111111111111,12.11111111111111,109,0,0,0
+rawdata / outreach,9,9,1,6.333333333333333,4.555555555555555,41,0,0,0
+social / (not set),9,7,0.7777777777777778,7.888888888888889,6,54,0,0,0
+192.168.29.30:8088 / referral,8,7,0.875,65.375,6.125,49,0,0,0
+accounts.google.com / referral,8,5,0.625,179.875,7.5,60,0,0,0
+brochure / msucampus,8,8,1,0,3.5,28,0,0,0
+calendly.com / referral,8,6,0.75,4.75,7.125,57,0,0,0
+claude.ai / ai-assistant,8,7,0.875,36.25,6.125,49,0,0,0
+google / (not set),8,8,1,1304.875,94.375,755,0,0,0
+googlechrome.github.io / referral,8,6,0.75,25.125,4.375,35,0,0,0
+indianstaffingfederation.org / referral,8,5,0.625,0.125,3.75,30,0,0,0
+labs.google.com / referral,8,5,0.625,0,3.375,27,0,0,0
+msu.digiicampus.com / referral,8,7,0.875,107.625,25.125,201,0,0,0
+nop4jqg9x3.in1.nopaperforms.io / referral,8,8,1,173.625,58.375,467,0,0,0
+revamp.medhavione.com / referral,8,8,1,17.625,4.25,34,0,0,0
+t.co / referral,8,7,0.875,74.625,6.375,51,0,0,0
+worthytutors.com / referral,8,6,0.75,15.625,5,40,0,0,0
+Consultant / Vivekananda,7,7,1,15,3.4285714285714284,24,0,0,0
+RAW DATA / NB,7,6,0.8571428571428571,3,4.714285714285714,33,0,0,0
+campaigns.zoho.in / referral,7,5,0.7142857142857143,5.571428571428571,7.857142857142857,55,0,0,0
+chatgpt.com / (none),7,5,0.7142857142857143,103.85714285714286,8.285714285714286,58,0,0,0
+collegedunia / test,7,6,0.8571428571428571,75.28571428571429,13.142857142857142,92,0,0,0
+flipboard / referral,7,7,1,622.4285714285714,45.714285714285715,320,0,0,0
+m.facebook.com / meta,7,7,1,0,4,28,0,0,0
+meta / referral,7,7,1,30,6.714285714285714,47,0,0,0
+meta-whatsappbot / paid,7,5,0.7142857142857143,0.2857142857142857,4,28,0,0,0
+msu.edu.in / referral,7,7,1,0,14.142857142857142,99,0,0,0
+org62.lightning.force.com / referral,7,5,0.7142857142857143,1,3.857142857142857,27,0,0,0
+webexstudio.com / referral,7,6,0.8571428571428571,44.285714285714285,6.857142857142857,48,0,0,0
+whatsapp / ,7,0,0,3,5.285714285714286,37,0,0,0
+172.16.0.2:8088 / referral,6,6,1,0,3.3333333333333335,20,0,0,0
+192.168.29.224:8088 / referral,6,5,0.8333333333333334,45.333333333333336,4.833333333333333,29,0,0,0
+Consultant / JPeducation,6,6,1,169.33333333333334,27.166666666666668,163,0,0,0
+Rawdata / class12,6,6,1,1.3333333333333333,3.5,21,0,0,0
+bookmark4you.com / referral,6,5,0.8333333333333334,242.83333333333334,27,162,0,0,0
+email / (not set),6,4,0.6666666666666666,0,5.5,33,0,0,0
+emea.search.yahoo.com / referral,6,6,1,98.66666666666667,11,66,0,0,0
+facebook / fb page,6,5,0.8333333333333334,321.6666666666667,26.833333333333332,161,6,0.16666666666666666,0
+pland / googleadword,6,6,1,0,5,30,0,0,0
+teams.public.onecdn.static.microsoft / referral,6,3,0.5,23.333333333333332,4.333333333333333,26,0,0,0
+Kondhwa / Pune,5,3,0.6,200.6,24.8,124,0,0,0
+RAWDATA / NB SCIENCE,5,5,1,2,4.6,23,0,0,0
+adsmanager.facebook.com / referral,5,3,0.6,53.6,10.8,54,0,0,0
+cashfree.com / referral,5,5,1,44.4,7.8,39,0,0,0
+copilot.com / ai-assistant,5,4,0.8,0,3.8,19,0,0,0
+eventsmanager.facebook.com / referral,5,2,0.4,9,7,35,0,0,0
+pland / socialmedia,5,5,1,443.4,66.8,334,0,0,0
+raw_sms_blast / sms_blast,5,5,1,18.2,7.2,36,0,0,0
+seminar / nursingcollege,5,5,1,1,3.8,19,0,0,0
+shiksha.com / referral,5,3,0.6,1,3.2,16,0,0,0
+tradeflock.com / referral,5,5,1,19.6,6.2,31,0,0,0
+uk.search.yahoo.com / referral,5,4,0.8,53.2,8.4,42,0,0,0
+yandex / organic,5,5,1,15,6.8,34,0,0,0
+7j9v8j3513.in8.nopaperforms.io / referral,4,3,0.75,4,3.75,15,0,0,0
+Bhilwara / Global,4,3,0.75,126.25,6.5,26,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38AhEq3cbQinCRdisuy0Ljgyar6Kj32lo2xxfcgB0uuvGvAD1IXk5qAlIL4no3hUPYSdRS/PHFoVzrbE3mo0txsX5LEbg0D32SnEaB84eMcKlLJ/VkXVY9eHQWeoFVllba9v2xYoZ9HFR4tQ+hyDRZv / (not set),4,4,1,0,4.75,19,0,0,0
+College Dekho / Admissions,4,4,1,45,7.25,29,0,0,0
+MA Child Psychology PDF / Whatsapp,4,4,1,7.5,16.5,66,0,0,0
+Pinterest / organic,4,4,1,186.5,23.5,94,0,0,0
+RAW DATA / WB,4,4,1,23.75,6.75,27,0,0,0
+Roccle / Facebook,4,4,1,5.5,6,24,0,0,0
+admin.cioreviewindia.com / referral,4,4,1,100.75,10,40,0,0,0
+ambitionbox.com / referral,4,3,0.75,16.5,5.25,21,0,0,0
+app.wali.chat / referral,4,3,0.75,113.5,7.5,30,0,0,0
+blogs.worthytutors.com / referral,4,3,0.75,93,4.25,17,0,0,0
+collegeadmission.in / referral,4,4,1,5.75,5.75,23,0,0,0
+copilot.com / (not set),4,4,1,156.75,9.5,38,0,0,0
+facebook / post,4,2,0.5,0,3.75,15,0,0,0
+fb / paid,4,4,1,0,4,16,0,0,0
+google / referral,4,4,1,119,9.75,39,0,0,0
+linkedin / paid,4,4,1,4,9.25,37,0,0,0
+mail-attachment.googleusercontent.com / referral,4,3,0.75,25,12,48,0,0,0
+meta_awareness / paid,4,4,1,0,9.25,37,0,0,0
+mojeek.com / referral,4,4,1,7.75,6.75,27,0,0,0
+outlook.live.com / referral,4,4,1,48.25,6.75,27,0,0,0
+profsam.com / website,4,4,1,0.25,5.5,22,0,0,0
+terrier-grow.hamaraacademy.com / referral,4,4,1,0,5.75,23,0,0,0
+tribyte.ai / referral,4,3,0.75,56,4.25,17,0,0,0
+ugchindi.ugc.ac.in / referral,4,3,0.75,221,7,28,0,0,0
+Bhilai / Global,3,3,1,91.66666666666667,25.333333333333332,76,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZunyO7lYXbcp4152W858SbPSo9pp8PafFkJ4R3JjwfnE4cu58MwQ6rjh36wi2QXlbMajQ9brp7Xpni/7+/wFZI3HsWHRc10gRvdfzmtQ0EvhK79Wv634fJJYeexAr1ft46 / (not set),3,3,1,0,7,21,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/15VOr4F3iMYJ7WtebKyNIjkAkVZl7LDKaAbUC3vjkrCj5VP5wjGM2CZ3bXwB6z/yxv+uJu4K5h46Zpca3H9n5GocinvR5/IHmXLViSw8UXk/V3IYObIsa/Jx8L4NF/ayYDihzfOcgyq3DEAErfOmm / (not set),3,3,1,139.66666666666666,16,48,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38EcRgQXuHpiNDG6Uk+M44LOUUtbKn92Skn/njIsMq7+MKHtQob6bLboVdxjWMT7oFiolzNoWhjMymGIKzvdtcWLpb7iZBXAIZl2wSoYv2bWiAb1TEGAX24jtMYOpOhkfhV7u0xYY/VBDWfE9HdLVJT / (not set),3,3,1,0,5.333333333333333,16,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDPhP6Q9g0DPjRIXvFeNVisaD1xlv19HKmAS2uOP2DlI/U2rxWQh8MHdLLeCbu61e7C78HkFBBj/e3xWlIJYXvTxC4qKC5Wk73uUxeWCk+BUxpEnJ/jzOr/F8Gx6/fPbm0 / (not set),3,3,1,11.666666666666666,7.333333333333333,22,0,0,0
+Consultant / ASIF,3,3,1,28,9.666666666666666,29,0,0,0
+Crux Funnel Nurturing / Whatsapp,3,3,1,4,8.666666666666666,26,0,0,0
+IGJ / QR,3,3,1,110,24.666666666666668,74,0,0,0
+Indore / Global,3,3,1,50.666666666666664,6.666666666666667,20,0,0,0
+Ludhiana / Global,3,1,0.3333333333333333,52,14.666666666666666,44,0,0,0
+MBA / A4 One pger,3,3,1,62.666666666666664,6.333333333333333,19,0,0,0
+MSU Admissions 2026 / News Paper Ads,3,3,1,57.666666666666664,4.666666666666667,14,0,0,0
+MSU Prospectus Admissions 2026 / News Paper Ads,3,3,1,20,7.333333333333333,22,0,0,0
+PATLINIFD / wm,3,2,0.6666666666666666,90,3,9,0,0,0
+RAWDATA / NB COMMERCE,3,3,1,7.666666666666667,5.333333333333333,16,0,0,0
+Udaipur / Global,3,3,1,106.66666666666667,33,99,0,0,0
+bestseminartopics.com / referral,3,2,0.6666666666666666,4.666666666666667,6,18,0,0,0
+cms.collegedunia.com / referral,3,2,0.6666666666666666,7,5,15,0,0,0
+cn.bing.com / referral,3,3,1,14,5.666666666666667,17,0,0,0
+collegebatch.com / referral,3,2,0.6666666666666666,300,10,30,0,0,0
+collegedunia / text11,3,3,1,0,4,12,0,0,0
+collegedunia / text12,3,3,1,0,4,12,0,0,0
+copilot.com / referral,3,3,1,83,11,33,0,0,0
+docs.google.com / referral,3,3,1,33,7.666666666666667,23,0,0,0
+dvl57dj5rx.in1.nopaperforms.io / referral,3,2,0.6666666666666666,346.3333333333333,37.666666666666664,113,0,0,0
+e.mail.ru / referral,3,3,1,0,6.333333333333333,19,0,0,0
+facebook.com / meta,3,3,1,4.666666666666667,4.666666666666667,14,0,0,0
+freebookspot.org / referral,3,2,0.6666666666666666,77.66666666666667,8,24,0,0,0
+google / search,3,3,1,294.3333333333333,12,36,0,0,0
+inifdprospectus / inifdwm,3,3,1,159.33333333333334,30.333333333333332,91,0,0,0
+internal.shiksha.com / referral,3,3,1,229.33333333333334,27.333333333333332,82,0,0,0
+itstaffing-grow.hamaraacademy.com / referral,3,3,1,20.666666666666668,12,36,0,0,0
+jobustecher.letest25.co / referral,3,3,1,0,5.333333333333333,16,0,0,0
+palmaryservices.com / referral,3,3,1,95.66666666666667,7.666666666666667,23,0,0,0
+poy2a6.flexifunnels.com / referral,3,3,1,7.666666666666667,5,15,0,0,0
+qr-codes.io / referral,3,3,1,253.66666666666666,46.666666666666664,140,0,0,0
+reddit.lightning.force.com / referral,3,2,0.6666666666666666,0,3.3333333333333335,10,0,0,0
+relx-elsevier.lightning.force.com / referral,3,2,0.6666666666666666,15.333333333333334,4,12,0,0,0
+scrubtheweb.com / referral,3,3,1,40.333333333333336,14.333333333333334,43,0,0,0
+search.nortonsafesearch.com / referral,3,3,1,116,15,45,0,0,0
+seo / off page,3,2,0.6666666666666666,1,4.666666666666667,14,0,0,0
+social / awareness,3,3,1,4.666666666666667,4.666666666666667,14,0,0,0
+support.zbotic.in / referral,3,2,0.6666666666666666,13,5,15,0,0,0
+targetstudy.com / referral,3,2,0.6666666666666666,115.33333333333333,14.333333333333334,43,2,0.3333333333333333,0
+tribytetech.com / referral,3,3,1,3.6666666666666665,5.666666666666667,17,0,0,0
+truecareedu.com / referral,3,3,1,20,11.333333333333334,34,0,0,0
+y1j4dd04o2.in1.nopaperforms.io / referral,3,3,1,195.66666666666666,54.333333333333336,163,0,0,0
+yabigo.com / referral,3,3,1,11.666666666666666,9.666666666666666,29,0,0,0
+(not set) / meta,2,2,1,138.5,31.5,63,0,0,0
+074xl3l4do.in1.nopaperforms.io / referral,2,1,0.5,6.5,5.5,11,0,0,0
+10.10.64.1:1000 / referral,2,2,1,0,4.5,9,0,0,0
+192.168.29.23:8088 / referral,2,2,1,0,3.5,7,0,0,0
+7j9v8m7513.in6.nopaperforms.io / referral,2,2,1,154.5,84,168,0,0,0
+CT-Campaign / (none),2,2,1,2.5,3,6,0,0,0
+CT-Campaign / organic,2,2,1,0,6,12,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAPB5jr1IdWTFmGQjlxMqLkxZtsKMwHG9+5YCSTd7IKBiClNEv3e/cMBTuRowUWl4G1mRAKB994HR6+Ll5jj4oi7U+gUl4q/bz0Fkjom3z1IE= / (not set),2,2,1,3,6,12,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxCIMLP2aB10G3XsPbm24IkANaf2dm/pRzgo9A/JCyDZNmLIcOvJJEhHY0Vjln+MpB9n1WgmSrlWiwTysFTSKk0vjnlW9lbypZD9g6nOhv38VJ8Fzjcd6DdlgVfscm85hv / (not set),2,2,1,12.5,8.5,17,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu5xiPNQ+Lfr6KNofRZL0qUSe09bexp5iupRRM0nFNxyRfUfwpFnRqC4pi/6dcRijO9wor8a1VvqueCNxAUk5tbAIQBrfcZ6f+wVtveIKoop6aQ88oDgU+isTU9PrNIybk / (not set),2,2,1,23,11.5,23,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu6tXV9AF565X01k2rBD65zD2jXaDvRS9H+1NuAxaUCBQRbEJNvaiGbNZHfrE3Uz1kSwZhrh/uDXDI0TnfY37APUUVJ82MrtsiJvVxXVssIimur713+hHio1vop3NqvTbz / (not set),2,2,1,0,5.5,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu7adKXtqWMfixUGiCYYxrg9GGUwgVBrutvkzxSUUAZuEIdLOALAslSR2O0jTrMDfjQXd+tjKtF7nMwxmaqjO4SXve5d/LXVMWpgm50BQf6n1TJ47I2NgP8znn8DJVHaYe / (not set),2,2,1,11,11,22,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu8LqpthVDjv9bZwnJYXUdkQ7gzHEczwlR606hUSgKSw1wRNppJJOb2TMpdPuHAEqOSpX4GvC2HTORa+bnPgMiWMmTcpRQh53PJ+BjQWVQYug= / (not set),2,2,1,0,9,18,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuDPdP4Ch4yj9TvUFIxwnrBfmTnQAnQkTjZCRs9JIRhqIlfW0wUlO1///6BSB/5jnaGCQLqoHV3BGF8EC7ckvwQe2km65fBXme4X1tf3WE0GziL/0tgzHhHRJ9JBsQsuoJ / (not set),2,2,1,2,8.5,17,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZumwhVjaxatDNpCwwLMr0/TR1mDhbQiJVV0SWpXdn1Yi6hHPb3Q7oEIPVXWcGHSFnwwCcPZxZF2neU0V4UzTaSn+3/eUrW3syvunfGvss3+S4= / (not set),2,2,1,0,7,14,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxEDYTiuCO3DnsVROHnjGJn8dx+NTgK4zgCs5wA4zXfnbyHVqMl5KXCQ90LDNaPbVjhZi1wbWrRCnYF+cOJHFPxpdGVPWIcAwd/nJQkBeVCvyISqnH4riOdvAcBQlD4Gej / (not set),2,2,1,0,8,16,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxKlbVMxBctPs+l9AtlA6+yxbD+nDbbEwgfF1k2OI7R+YifBFu3+OK166RwTJI+crA2waJqjoiJI9bh0DbuFhAP8t7blYbiFX4HwFvhmcfX63jACkMGMdeeu3udFlvGqyD / (not set),2,2,1,0,7.5,15,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxv3NpSlGT9eFWIUkDHRAfpKlUQZ8JYdmZc+EaL7CgdwSA7Q4MX4Dvd9/AjFCr3pN2ngFJg5TQx/IAsrNQfh0ajZJHVld3WPQcbv9TPMfSyyBCCr7keoARl8FziMtQWj24 / (not set),2,2,1,0,5,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+irNh6F++g2mGVRrlhO2QvipiJ6Ad6IIHFesM1ql296TL1i+y70ADO3gFs9424NEgbyHpaveSWnCO+hbXVM47xbjY3OiGTvkdqnrlC/TzT4pX9duViidk8LlHWgXjUpPZLPlI2I+7oTaUZcLDDyqSz / (not set),2,2,1,6.5,9.5,19,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/6ScfRCeoHMs6uovKdgcPsB823CIpoqOoc+bB6xs3V24T5Z8tbMZNzNaVEPZ1INCdMcLpbp35vBk6GZuBCWxfM+NMGm72MaxhITuAwJfKN+VKBPtd59lE3gsyXF8EC30eE1rR8dnC2fZqstdHT/NCq / (not set),2,2,1,0,6,12,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/O/Bv7DihCJXSwsEr2SJR53EiQhRaLu44kJug4WiT2S/WnIFe72O4UNdCQtI3vNgW8Clpv0z8HwcAywIl2TmGk1HIsUCbQ2DyzsozqOBqXKq4LN7J/FOMVbqu9DC9q2fvZfFC3cCyyrzIBG+iKcaMP / (not set),2,1,0.5,0,4,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/XTluqJuFZijn55RhMIbaxbuypIMzYsvzfPw1ypYHA2EkUl0t0bOpKVvLTrem2r7EhqXnr/7qNTZS4pzRgSL15Rzam3eRn/x/DGhw3YU6WqOSevO77OqYtUvmO5OuU/E3Ad8gq5u4SeTc7WeG3w35Y / (not set),2,2,1,0,6.5,13,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/XTluqJuFZijn55RhMIbaxs5LqUsJH+/aAENfdeUk0nM3xNDhgQdHE0ot7r/8NA9QGPBN5I/4PZo97mzOFJ43zwBVCcC363kIJvjp7FD14uArEJOGjZXeqAPQHEVDdWpr40O5o0ox7gMfuEhKZtYCm / (not set),2,2,1,4,8.5,17,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/fOf1m0L7/PFIS1DMosxA4GaXKD8Hedv1AYhIt3Qua+I9bLjTKJrjeoSjOo9A+ZVuph7k6bylIjREcvWHhm0j+nQcGJaytuTeXb+6vPKPm6PAWsZPpnGax87djVZ8m4Q6z05FEgHii3W3VV9xieKVE / (not set),2,2,1,0,4.5,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU381KUiK5KkAwQWyuXJ5dznh9MxKEsRXDC10F9uUgQKROPX8ow5xO8fYmqn9f84r2YK26WlnwfS9VqcoLMzhMPUH+8Ap5eWhjDmAVSeCITl4HXLsoZEdoMuoc/XvDv0bID/HSqQWAmyg5uVDfjns1f70 / (not set),2,2,1,18.5,8.5,17,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDjVibxd0iKICrwurfPm2XdOThI2ybWS+Xfd7hVaGcZC2Qsptd2h4C4m6C1tT2a6UmikvPKEkE525GXytMrYlcfVH9eBrtVt4dBQUmaiLscMnM2EYvDpssEhtDYzRaqALZ / (not set),2,2,1,1.5,7.5,15,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38AhEq3cbQinCRdisuy0Ljg3oKok5VEpNzmVKX6Md93JhSabjK0QuwjtkUCQjeg5y+tpXJe7fF4k+CnigdCdVdJXgLyCSeO+oMp7VcX9kJax82eZMBorVzm3tAOIPU621cvRPt+BlsMBfMBS33BudeN / (not set),2,2,1,215,9,18,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38AhEq3cbQinCRdisuy0LjgC/jMHNkU3lZ+77TtsKk5L/DephVShf3/YgQgMHpyjTiVnvToln1xm291WtiFejiT89AJlN2/6EI2RubZqTHHvJ1JVQM1wFa4OPsSx98ks/F99vYObpV9hOSKjqggFqEv / (not set),2,1,0.5,0,5.5,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38EcRgQXuHpiNDG6Uk+M44LNNSNVBW0ZSQnA6uffWu/sIIuRTUF1K39bZ+sPS0u+f0NAVAwJhinvdTZDdnTegAyeahKkkgV+0Zhd5H49Yy4G9IZrh0++2ohuOh9uJuwlKVAiMQ+Ogv34ccoMcc2leCy / (not set),2,2,1,0,7,14,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38cqb4AV1hniTwhEkCpmKuaDyHotbItrivdmsn0Y4X8/vRlDr+FAQWCqOTfcylZIN7xbZf65duC4awvth5/21uE0gQcgvL7x2NUdJnObLPKbVRyz28AE1a7IGpeD9jpIG0J9t+M6DxBqlF11Vh2N6aS / (not set),2,2,1,0,4.5,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39A6lcGoW7ZCNvAlgC5OKpBM/zccn8ak4OjeYmxQZQBMHxSPbAADt5VHxCz1mqtYGKCCXB6chOoh2xm/SlhSmvUYmEsq+2IlNm7/kfJaV0aK2AtwnwddyMD12P9bAbxddf/fQhu6PI+6jOBpoFDGBAw / (not set),2,2,1,0,8,16,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39Fs0Moe8Cor9AgEBE9GISMppB+GL74viSkLgx5/UUV9ZQu76DiUIs+JOmuS9Z9lX00XyTlmMpcMTa2zm+6vK4f8GP3UcdRAxmmcs15GTxd17fjyvM54R2vTVZWnUoxsUdoIjF/s1VR1lG8Le4Xn+jE / (not set),2,2,1,0,7,14,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDEtG4Q1LqXWlKTSf2f4sw+DopcUdF1givU1p9dlhiJY4OZA57OS7Rrnx63KKcGjLk8t6NwaV5MVELypIC/zMPbAu9Rl9PNFY1SI8MI/i98kTyOrElvwPRH/MqKUYdHDAy / (not set),2,2,1,0,5.5,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu25s/s5xNjCCTNACs2C6WFA698H/QgaiaSmWQmwWE42hkj5zvea3JhwzJqytJaYYaSXN44IqhhfMSvo6InGpJ7DUNxZD/MHkJxiB/2v8fvk8= / (not set),2,2,1,23,8.5,17,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZutVALUxLSJOmsEOifzdyf2uAA0g6oH6wp7/w47cSvE7mjsK6Hw4+Gr8mfIaxkr6t6UHEr6U7X2mUEsxU5X3kC40AwYClPzCeMUa8yWBjqVYU= / (not set),2,2,1,0,5.5,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuzXtYinPyADiPCCiOxYytjKcjMtCkWw4syp97B5ugcPyWWM1z4mc8PNlz/qwF/ZjyVYobJhUgzAHWnJjdUVoJYZ8sdMqZH/jeKxjbU9FsxpM= / (not set),2,2,1,0,6,12,0,0,0
+Kanpur / Global,2,2,1,67.5,20,40,0,0,0
+MSU 2026 / offline_outreach,2,2,1,26.5,5.5,11,0,0,0
+MSU Admissions 2026 / magazine,2,2,1,0,3.5,7,0,0,0
+MSU Campus / Press Release,2,2,1,2,5,10,0,0,0
+Main Brochure / offline,2,2,1,4.5,5,10,0,0,0
+Meta / Lead,2,2,1,553,11.5,23,0,0,0
+Offline / Consultant Nps Insertion,2,2,1,0,3.5,7,0,0,0
+RAW DATA / GTA,2,2,1,84,26.5,53,0,0,0
+RAWDATA / GTA,2,2,1,2,4,8,0,0,0
+RAWDATA / SEBA,2,2,1,38,16.5,33,0,0,0
+Raw Data / SCIENCE,2,2,1,0.5,5,10,0,0,0
+Shiksha / Campaign2024M,2,2,1,0,4,8,0,0,0
+Sourav Das / MSU Employee,2,2,1,0,3.5,7,0,0,0
+Standee / Offline,2,2,1,0,3.5,7,0,0,0
+aiios.co.in / referral,2,2,1,9,5,10,0,0,0
+anabin.kmk.org / referral,2,2,1,143.5,8,16,0,0,0
+anoox.com / referral,2,2,1,9.5,10,20,0,0,0
+app.mangools.com / referral,2,1,0.5,0,3.5,7,0,0,0
+bd.wasiso.com / referral,2,2,1,1,4.5,9,0,0,0
+biztools.corp.google.com / referral,2,2,1,6,8,16,0,0,0
+ca.search.yahoo.com / referral,2,2,1,341,20.5,41,0,0,0
+canlidovizfiyatlari.com / referral,2,2,1,11,6.5,13,0,0,0
+chat.qwen.ai / referral,2,1,0.5,7.5,3.5,7,0,0,0
+collected_data / whatsapp_blast,2,2,1,25.5,7.5,15,0,0,0
+collegedunia / emailer,2,2,1,27.5,10,20,0,0,0
+digital / socialmedia,2,2,1,0,4,8,0,0,0
+edutools.githubapp.com / referral,2,2,1,9.5,5,10,0,0,0
+efos / marketing,2,2,1,5,4,8,0,0,0
+en.hopecontabil.com / referral,2,2,1,0,4.5,9,0,0,0
+falconsocial.lightning.force.com / referral,2,1,0.5,1,5,10,0,0,0
+forum.vizslancs.hu / referral,2,2,1,2.5,6.5,13,0,0,0
+gemini / ai-assistant,2,1,0.5,0,3,6,0,0,0
+goodera.registration.goldcast.io / referral,2,1,0.5,0,4,8,0,0,0
+grow-web-qdemy.billionscareer.com / referral,2,2,1,20,8,16,0,0,0
+grow-web.billionscareer.com / referral,2,2,1,1.5,7,14,0,0,0
+gtecmavelikara.in / referral,2,1,0.5,0,3.5,7,0,0,0
+indcareer.com / referral,2,2,1,13,10.5,21,0,0,0
+inetmonster.com / referral,2,2,1,0,4,8,0,0,0
+instapaper.com / referral,2,2,1,203.5,22.5,45,0,0,0
+linkcentre.com / referral,2,1,0.5,0,2.5,5,0,0,0
+live-104868.wati.io / referral,2,1,0.5,7,5,10,0,0,0
+lj98mwe43r.in1.nopaperforms.io / referral,2,1,0.5,5.5,6.5,13,0,0,0
+magicbus.icewarpcloud.in / referral,2,2,1,274.5,9.5,19,0,0,0
+manus.im / referral,2,2,1,0,4,8,0,0,0
+msu digital ads / social media ads,2,2,1,0.5,4,8,0,0,0
+msu-website-all-objects.s3.ap-south-1.amazonaws.com / referral,2,0,0,0,2,4,0,0,0
+nationalskillsnetwork.in / referral,2,2,1,6,5,10,0,0,0
+nifglobal.college / referral,2,2,1,4.5,6,12,0,0,0
+notebooklm.google.com / referral,2,2,1,29,6,12,0,0,0
+openbulkurl.com / referral,2,2,1,77.5,15,30,0,0,0
+outreach_presentation / session_2026_27,2,2,1,0,3.5,7,0,0,0
+p1462e357m.in1.nopaperforms.io / referral,2,2,1,149,35.5,71,0,0,0
+paid / organic,2,2,1,52,10,20,0,0,0
+panjoy.com / referral,2,2,1,5.5,9.5,19,0,0,0
+pipl.com / referral,2,2,1,5.5,5.5,11,0,0,0
+polycola.com / referral,2,2,1,0,4.5,9,0,0,0
+prolinks.rediffmailpro.com / referral,2,2,1,39.5,5,10,0,0,0
+quora.com / referral,2,2,1,399,28.5,57,0,0,0
+s30.nopaperforms.net / referral,2,1,0.5,292.5,35.5,71,0,0,0
+searchteam.com / referral,2,2,1,0,5,10,0,0,0
+secureserver.titan.email / referral,2,2,1,274,7,14,0,0,0
+shiksha / 2025Text,2,2,1,328,14,28,0,0,0
+shrmconference.org / referral,2,1,0.5,179.5,5,10,0,0,0
+snapchat.com / referral,2,1,0.5,105.5,15,30,0,0,0
+socialmedia / linkedin-organic,2,2,1,0.5,6,12,0,0,0
+spinwheelmsu2.edgeone.dev / referral,2,1,0.5,0,3,6,0,0,0
+thehighereducationreview.com / referral,2,1,0.5,0,3.5,7,0,0,0
+thenet1.com / referral,2,2,1,2,4.5,9,0,0,0
+toile.com / referral,2,2,1,3,5,10,0,0,0
+topsy.com / referral,2,2,1,0.5,5,10,0,0,0
+utua.com.br / referral,2,1,0.5,20.5,5.5,11,0,0,0
+visvo.com / referral,2,2,1,5,5,10,0,0,0
+web.stagram.com / referral,2,2,1,9,8.5,17,0,0,0
+web.whatsapp.com / referral,2,2,1,9.5,15.5,31,0,0,0
+whatspp / nurture,2,2,1,50,26,52,0,0,0
+workcenter-production.listedtech.com / referral,2,2,1,368,8.5,17,0,0,0
+xpolariz.com / referral,2,2,1,243,8,16,0,0,0
+yahoo.com / referral,2,2,1,2.5,5.5,11,0,0,0
+yamli.com / referral,2,2,1,2,4.5,9,0,0,0
+yangpress.com / referral,2,2,1,0,12,24,0,0,0
+youtube / paid,2,2,1,0,6,12,0,0,0
+zeekly.com / referral,2,2,1,0,4,8,0,0,0
+046629bdd534fb714364b120487455df.safeframe.googlesyndication.com / referral,1,1,1,9,6,6,0,0,0
+04da516b7a88ac01ba55030097cde8a9.safeframe.googlesyndication.com / referral,1,1,1,2,7,7,0,0,0
+0aa6141587e3f7bb2441138e94020572.safeframe.googlesyndication.com / referral,1,1,1,4,6,6,0,0,0
+10.143.21.3:8090 / referral,1,1,1,0,5,5,0,0,0
+1074xov4do.in1.nopaperforms.io / referral,1,1,1,446,105,105,0,0,0
+1074xrv4do.in1.nopaperforms.io / referral,1,1,1,209,31,31,0,0,0
+123people.com / referral,1,1,1,0,4,4,0,0,0
+1c355cf89b9cf188cfe1ffdfffcdd7b2.safeframe.googlesyndication.com / referral,1,1,1,0,10,10,0,0,0
+258.com / referral,1,1,1,0,4,4,0,0,0
+2881.com / referral,1,1,1,0,4,4,0,0,0
+334543fedcbc33bd89385b99e626de34.safeframe.googlesyndication.com / referral,1,0,0,0,3,3,0,0,0
+391bc679db0d642e46ed8a63d3090f87.safeframe.googlesyndication.com / referral,1,1,1,0,5,5,0,0,0
+3e1ee51144fa55baec39b2c724bcf9f9.safeframe.googlesyndication.com / referral,1,0,0,1,5,5,0,0,0
+3e47585ed7f1efca378429a339f2a380.safeframe.googlesyndication.com / referral,1,0,0,1,5,5,0,0,0
+3f9fb26b5315cce8043bf51fbc8daaf0.safeframe.googlesyndication.com / referral,1,0,0,0,3,3,0,0,0
+4c5e6624d26c740e09c5a353c343946a.safeframe.googlesyndication.com / referral,1,0,0,0,4,4,0,0,0
+50d7df096e156b93183649a34e20076d.safeframe.googlesyndication.com / referral,1,1,1,2,6,6,0,0,0
+64fbbe447801a8d6d11927826f72eb5c.safeframe.googlesyndication.com / referral,1,1,1,1,6,6,0,0,0
+65e9b742e85dde2179652d4d3ef4eceb.safeframe.googlesyndication.com / referral,1,1,1,14,12,12,0,0,0
+69a1544190e06948d2c6bc0323f4e551.safeframe.googlesyndication.com / referral,1,1,1,1,11,11,0,0,0
+6bd4c68e58c300ef29745e53c47e2cb3.safeframe.googlesyndication.com / referral,1,1,1,5,6,6,0,0,0
+6ea1c9df40fe897534fe96fb04651c00.safeframe.googlesyndication.com / referral,1,1,1,0,7,7,0,0,0
+705f29983138067e4422801eb23a1fa8.safeframe.googlesyndication.com / referral,1,0,0,1,5,5,0,0,0
+72bc2db9d1df8afe58a7334ccf159ba1.safeframe.googlesyndication.com / referral,1,1,1,0,7,7,0,0,0
+7935b04ce7e65248bfa92bc081c9540f.safeframe.googlesyndication.com / referral,1,1,1,0,5,5,0,0,0
+7dc0515d9b4c471dc3d3654e58e00659.safeframe.googlesyndication.com / referral,1,1,1,1,5,5,0,0,0
+7f518c4069e61b3cd14660ac2b9342a3.safeframe.googlesyndication.com / referral,1,1,1,0,5,5,0,0,0
+8274c45df2ddc13657ce5f2798c3d2eb.safeframe.googlesyndication.com / referral,1,1,1,6,7,7,0,0,0
+928f204f05cdacbd5f5a503d78f26e34.safeframe.googlesyndication.com / referral,1,0,0,1,5,5,0,0,0
+94273aeb6b7c9615ca33ba05397d2de1.safeframe.googlesyndication.com / referral,1,1,1,2,6,6,0,0,0
+951411808640976cc9e473f389b4067a.safeframe.googlesyndication.com / referral,1,1,1,1,5,5,0,0,0
+BHPINIFD / wm,1,1,1,0,4,4,0,0,0
+Bhopal / Global,1,1,1,0,4,4,0,0,0
+CT-Campaign?grow_input=8w3ZNnjGg1F7oETfYh2+pl5AsW90LJmIv88gyavEywKQE1hOnzd80hpsgU8EMIPnz8u95Q1oFb7KmnhT/Etns9xet2La92sEGgbQdTQk7hzqfYHGcF4Jg2gQh10V/Jkrowzu8HfT+hp5r1lmdZ6GfXJnYjQfqVLRyrxMUigx6Y0= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=8w3ZNnjGg1F7oETfYh2+pl5AsW90LJmIv88gyavEywKe8SEhUHTx4gDSuN39VoEg/Y34wk+K3QwcJ8q6A29VV7VHbXDWVOaIuCcKJjSxYrRwNmS2SiGnqAIVSXk/BLB6QNREghb7h0nBWvYktQXlpZRwmgPZUYU3qcoxs+PC8oyylYjYe/r7yaz+oBLLYtkD / (not set),1,1,1,15,11,11,0,0,0
+CT-Campaign?grow_input=8w3ZNnjGg1F7oETfYh2+pl5AsW90LJmIv88gyavEywLsJVlEC+oSmbVABW0UXeTyhQwlOIhBRn8kbl0WS/pZbBd0zvNrZH8BfTpvjtqJ3zLzwweiZtNYImr7wYOljxczh/bOKTJOIJJfF5CRXT71Lk/0cOfc42mJff8LdXbV9Wtdm3SpLnLwKTaMlpKW4hqj / (not set),1,1,1,13,9,9,0,0,0
+CT-Campaign?grow_input=8w3ZNnjGg1F7oETfYh2+pliovluvkWRRDqHoPBvu3kIndCH6lEHSvSPHrOWgCrSBbIp+uDyxPv5n0p/g9eRD/pjt5oJfylVqNGhwRmd5z65ImDNeIZEjkO9Khns7qaWjozGT0m/yM/zGsk1+71rThREJUNpv795/OEQwNeDoTazCIVydYPnFzlgBtqYyV4tl / (not set),1,1,1,70,12,12,0,0,0
+CT-Campaign?grow_input=odC9R37qU/NhCNjKpWWHTo1IBiXJNgFYKOv1iL+UyrkBJBAN3P9p6afQRZx0VWPnFAsj6EYZ8QuphwGFcVnaXReaYDsSTdO24QEU3cwGDBEQ2f6BhBXJO+KbjGcZms2oGrJ9Oyl3E37IsNDd46mRmI3AOndbToMZhu276iQkNZM= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=odC9R37qU/NhCNjKpWWHTo1IBiXJNgFYKOv1iL+UyrkBJBAN3P9p6afQRZx0VWPny1pR1rS7MaTF9O/QQPi0y3jB+jzgYUiIZ49p8BV0Mtnj0I5uCuPq49/JKvBFM8VbCeuGuWve9PYCyAjR6o1qfh4aB5/EASy+SNyAF96YQO8= / (not set),1,1,1,0,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqA+grO05jqdZ1ddEIZ7jWW/ze37VFTc6WVFEcEihx1AclabnPVBHgvolLjPK5dJNrplqrmb21rdwLSuvuNsZkAh5ZN0f7kq1UJhukwjdovFlzhqALh3nsAriER6EZ/Ild5 / (not set),1,1,1,9,10,10,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqA6Vt3bswUJUKZLt36EEvoe4dZ9xwTHypWRouGoD8XT4JQT3swBCUjZt9Hj0j8SFJpBI6vqTwl5vDNO7WF8QwMmvfpv1S6YS7nYKQ3By1NU1Q= / (not set),1,1,1,163,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAPhOgS7kswSC3WEnNtP0/SjQxE3eqQWo69pT62FQBwdCqjyXPcVEHEwPnHt3d2rQEccAC8oI5zxBmp+zrgC+YeqhEO8WcmoWQBMPoOO4Lc6M= / (not set),1,1,1,41,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqASDAaTd8667juPm4DAGBxoVB+UtFWvM2vt5vkuCA1zB1u2SGxsHVUqldlSgvuSkaovhVRSUSjFqa1XGcAhNVSlemenNoCwXezY3+/hn5VXPc= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqATrTA2AGYq7wN2TnZOYOoGi10SaJJQO0neNLkhxBAvXE36vRR89ccVGBKvk/Thv+s4sQpEHX+DYLh4mRy7F88ukninysUDgauJkQX1c7Sd5c= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAUI0HNcD4xZ4MuUKVUhbmORfUqn2uIBjn8g5Q7M4N4n3uTN1tg0UIO+DEgHo6WG0Hv76qlJeB+2VmUULClMIJyr5J5OVOSGXcHv7Lf7Sm3Zw78PuD352VTpKi97JAQoPO / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAWc67Xf4iMj5k6nzcA3U6kUwjF2QyluILaNM8m+Dws9eGrD5Ucex1rhjUfk+tD4mJfjTLClK4xeB9YT8HPxtl3K+nRMgOEUvTMaR3J640wp8= / (not set),1,1,1,23,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAYDWlNkQxvV7sQF9nI/ARck1y4A9HMHTvtP7wAQjoMx/RVGBZ1QdQgSB4GEIbLmWurzvyAT4NKiGslrmZ06E2gy3HzBYPXUt2jHURDUnu5Fo= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAd+OuU4CABB3u8+hpFdPNumriBkIsDg2R3O5TTZGMBmK1/mHUIKXjHpvNzKgt2fAlMqs/5pzhK1a0jJTA6UQ75Ls2s3gda2DvQ+Er4UnAlww= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAfvPQPhnKTQ6ffOGjt5UEXqWoHCr76ptS3c0op2OmSRzBXw9tQ7mezMttghbbOpCt7juC+AieCNvzM5VXN8u+OlbrNn8cxNImTnYPbfA+wrQ= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAmEOAikCFAIJmagXDAhw4xVZ7e0Y2G2YR4oX3jlIVMPkc3FlMUbBzdvg9/3bygzQ/AKPCoa2sNUXrsnWBaIhPUtWEic2dtreG1NvFkMbQfqU= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAo2qXT6nzvlECN73UKVzmk8r2bTXADPteDzDRDO3Nli5a2o+p6tRzJIbd6EfuMJQJQ6yrZQWMdUwXBOF3DJ3Fz0o39kgNK9C5b3iElhjg678= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAokqJoTqLgc9dbvkkdAi11L5vQiMx+7Lcr7KIsYpdGtoRYQE31IQULYU/aVVo7jona/GPr9216p/Xx6kTaIdNvwcZPgytGkjsEqpzlEPETCQ= / (not set),1,1,1,5,8,8,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXx0KJFtQxi8reneTqIEASPuoeLgPd9ga6oiaatXjPFTHhHP6xJCQuz0n2AXdTfb1D87hVuHC1J6KXHnHqI4jDbne7bFlq16jPJBO3n8v9+qov3kiNHv/Js1bh5EAQt8JUo / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXx5YgihV/hgNbcpuQekOABOiGuj1V9XMMAkCjsOb0XqHYSloGmnTbp6kI6j0GYVhM7uv4hK9O7oImA6LUV7ANwwo+c6MH0QkN6pDF3VdLaACYBl+XAitJETyvI9R78G3jO / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXx5rA8AOdIZHDJr4XfrGHG5Vd1+wn0InWEx+NggtDyYfVVNHfQOGOiw++/SxfhBRgJSOoC67+qIfBTcLlGqqwTWdxZ49qrWSczpHjndGe5MzajngqwO3mwJB1r+ce1tC80 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxDHjLfULFZkKp6mweJWpaxXwCjsbf9CVgw3cQxKz7FB2DthIsL9R37lilakPNKEjo7vVosszPDW58Hzz0yCQa1wh9zNPG5p/MAVCPXee6+4uwzQGP+EZ9kuwGrPY7xhFD / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxDIdAMYjgAgItJsRZjbbAmfQeea482V9edletwxUD9PLi0dvzPsA1fRW0kpgjOqDI1yrEPPJXuxWa7R701CDjyjb5UOYQdUlvkJ4HoWNA721TH9iGJQRLxtbUpmSC15+JNaV4bTs0wZHLD230HCp4GQ== / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxOYsyt2iV6x3yHBtXxVzAys/yBeIRFaJO0JUTbz2ds93FEjG9zqqrycFuzsklePBQzLKqnXzvKrJhw4Rmqbe8kr/PrMWpNrDuKtt6hZw9TIeyYhJkH61wOW47c+gGQnWy / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxPq7wITE6SGXuyG9mMsyt5la4vb+vX7/f2ZkoXyXEs/vQRHVfLqx18zzjM0UrotZC9xAYlsxGogcl0wcSJr/JEpyvr482Vbf87rX1r1+z9FzyPDMxCfzBwz31ALRFjMfc / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxSqsUPTveMqKMG+qhWhEcpscMXvTsD8pF/guLlm+1ND5XjMTrKxGXXjlNlb4rU8b5GIGha5R0E7WFVzEkuu1kZ5Cp/MHC7/qVhEA/9DP/mDQ8blgEwmse+eKuMRGSWS5Y / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxTJ6/qDhuUcVBwyovdot+mxSPzGv4sgX32DAgTkf8POu33DwhXeJq/miiQfMO/jyzRLJOm5568lf2u599SA+aJxsIGsX4LulcnMRyoLG4M4N9f7axjGQyj52eAIMIAjWE / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxYAIxp0lGiW1hD1+v6y7ulNplo1e+mpZG4z/v1S6gwnw2k4FehU2uX2jwrJpEL9vAED/OnAFyLpgMpEM3JIg7XlFvrJn+5FgrTjsJfDw10QibGgT8kwLuIKtKnjg0zxFv / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxYBVQp16wHhssX80nWhOfJoi1paGJrNDyeMyQxzxz8jDsAnphDK2ejvCPbAaGIUV6MAhGAJD3VgkOOMHF0n3O0y2hCor/aS5MYemmLoWCz3FxUQlE3wlhhCnBipAfD8m6 / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxbRGb356EebEPRNVfujX5JAooeK8IFi2iqUBGX7Mvz7+h+WJJyXbGJD52DsqEJSF3K1jG2IiqOF5VKuVRm3Z9ibT+DQ9U39kjjs/MnZkpFKlj7Jz5AuPDNY2Svno/FuB6 / (not set),1,1,1,102,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxbdkS3Y5Angxlrllsp1G7GooTONS6eI0xzJoC2lG+2P86HQcbVJimqZyTQLJaREms1aqlDbFLmyt1A+pc0MROy56OKdwX1ITNB7Eth4T4CbKISy1pkO0L8UXP8vhPDVHq / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxcHgvmGJijAR1Vs/JT+uJ9zXmqFbxv7FyTY+YRdAUWsJQ8vX8JBkvXAbgBVUIe2jrOtfLkBJw1FOFIWLdLfKr09ZNhNE+2MvxsvXLT4QAPndIbldR0K588qgWLdpWC7xm / (not set),1,1,1,14,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxd+WmJLy8sFoH+I+sUs14SAV3eqyWZL5D/CrEjS3WyY3v1r03chxsJ/Hns+cWazYtEoFPy/Wf6QBvErOi80v8t0KyCXe5v6TK0rgZsAZlsko3vgvScT2xeMoiiBEBBW8D / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxdD9+/4bJmeLnpLR9dTiCfVl4HDfYd+NpIv0PCRCHXmir2fsn592HeG0bJ6euLhOrtS21jwMs6/fWhwywLRF2rT3fnQOd6gwPD7VZV1AlpJdSaCMGkwKUhfAlWvfiglkS / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxdfl0CvOo4U6tzYYwEy57QVtbYNJ19Ez1Ngdcb66VZfzDIYSS4OLJcIzng2SsIFSDuwOf9vYx4errlJLHDLUuT2Z8FuIGtuCfGjHANasPbO7SUQqpEjvUwUid0O/zwQKX / (not set),1,1,1,2,12,12,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxg1DJeeIisihJK/ALyK+MrPYRPJUn4L3xlxEndh5FciMmhIY6sFq7lwg7opS2G58yVaWjikf4e9pURtFyanfRjqsUPuRQ1aZ3zMGKEHyVLqvD9PKkzSJqeeXFk7IPXGOJ / (not set),1,1,1,0,14,14,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxpJ5jZp9eQt05Qtas55JgJVPrTvAz2uUIBez/c4ZcUU3afa3LWk3RGP5TIpQDbLPAFr2/tDkWGK5IvCC1sY7RkahryyYVQEgAtc+VufAjKBHp8ch/6bk5rQ1SsjXSBh4G / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxpkX/F2an5QCEp0r7P0ksMnElxUG/xMuFWOE776/VG9XwstrBkphHKmWHmr6PquKt4emxFWSOIXpLT9bCEeWBLVTGTxX2PosizDRemNmbL0tLoQxPwZycaDESazG/gHfo / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxuatgOdnUeYSr4iFOp42nGtS4ohioQtVGkBg6RdKSqbNIE3TRArK6v66JH26hwInuJFVt5RFj+Ks348EnNnGts0SiBn4s3JLNsgPBlk4OW+j/qnhLByoJJbfPQGs0Fog0 / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxv6mRYBAySoxGQATOYYVJ76PLBGIe2W5Js/PyIMBLG6j7hwFxvkq6AH3dyy9cMg2/S5lR/1Nmy4AQf7pFyo/XpjZQjmOOd2f3POmJnkS6DdYAXhOLEX7Ycwr1sOpfoTUW / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+9coLU/HOJnfsKJWWqnPrT8qGfMS3WfxQm3AiwD3nGUGfmMYLMlobPVvGCv4BiLCaK8x//zwNt/X3or7lIsbbzlDPwHDqdbgUE5Cxao4mjtDOY+6Au7m4mM7iU8wQVW3qds5LbAYj+HOuvWJvZB9Ef / (not set),1,0,0,0,4,4,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+9coLU/HOJnfsKJWWqnPrTtjfDnco3bmgDy+oG66JmupSb4YRTxdwDgv1khIrHg+1uTIQDsZavLePC+aEIehOhwkqsG6lcx4YcUWjZD48HH3+mc8iZM0TFTC616OXil3url77Ib7QfSwERN7M0LR16 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+PV8tRXcRZOZ49l5EyGqXLJmv2szBBGVD3VaJaWYVB4XXfvFrso6K5MfICWVSZUM1dgI4XWsV91/p2S32kBh4/72pOQKDgx/BxIDXWL2wTGnu+GUbS6/KwNh7+SSostjv0fIW91xSXu4xlN+BYLLGV / (not set),1,1,1,2,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+RrskLf5ddEGEGvo7EBBmuf9cXT4yV4voiLqujuH0QeujjCkKL6E34rTZ2n+OLWp5LJXmj6tI3VvA9Lqu/29qf5EdIzI15U3Ry74nftn2PGilNTM3LCgMGXfydl9livkdn56/b5BG5VWYOAL+wIF1U / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+irNh6F++g2mGVRrlhO2QvgWEUjUw1A47r/3zu95gUZqHJWaHbTpOj/KeALk0i6KlcSnylLy5YBV7CKqaTrHl1c8KGDrGP5S7d5jowJuFcKtV2i2k1R63kSziwB503TGzwabvUed+dMzsVn12u3yCe / (not set),1,1,1,0,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/XTluqJuFZijn55RhMIbaxqs77FnRVcbnR+6x9zWoJ9OsGug00BnrqB/ZZe+6XABGXTzAcdyAhwZlEY/RiT657BsTgU0yh08gs4hmUy5ZVv0OH9XGDIzoqyJU2HIwo2RW4+iYsJGPdTzXiAlesD7iZ / (not set),1,1,1,0,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU380qtW5vfLOnA1CLuw1Ii5vjFwwt2q9aGKuIJP4FcIzUYGSbtgi8ADJ2KHlpXAnVBD/E10Ks1qWTZhPBEnC/xxIpZh9PB6SlqjHTApJ7Va9uDLhqD6pmAv7+rnJiYo5CVyUNC1kY89y79ABDU43VfSg / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38ZqrQ76mfhosuUPMtaDdZmUuIsSHOWBFJ+nJBLz866rk23/y9a92yryPvWiDNyYYgxQ/6sqr5kvwRAIjQL2kfL8QeHSnMFWy5pqTiqtW3bigedBMcGcEti9svjJ+xGnwjoorPHHAnBhfohp5jl91lD / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38ZqrQ76mfhosuUPMtaDdZmWzkBWqd/stFu3e+N2AzotXnEgbgNWauSXdINH4SWW2yvCb/Pf1q5YA/je5SsiEEiFKaisQiJeBlAEqmqGysnw/pRXm/9B6xnKV5jZQ0lCm1REk+E0o7MrN2ieM313D0c / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38ZqrQ76mfhosuUPMtaDdZmu7SS2wgqMtQtzJFt/RuVSu2uhNV0fwTNFp3IGBI/9x8iUsf41hCJ2VZU1YRRfNue9x7xDZEWZdm99ElJK2flw0IUcU8pAKh1Hr1t6IJQO+5dfwG1USvmXxZqouiwg3EV / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39BBOgfh0knSWSuyVg7vgD6IIWp7ztkMyOWzpls1f9QL6Tl723H3NVT+dz0GkQjo9H100tzhSzj6fA1OSnmkKdh3IZqhPOkpVKeTDXt4fgMbsX7lp+xAW6jDjN5tblvpL2yZspAhffPcz7I9yeN9ci7 / (not set),1,1,1,32,12,12,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39BBOgfh0knSWSuyVg7vgD6UJynHVuhYpfqRPYGHYTLObQBuiDQP++vYj+0X0F9WPrPgcK7lJuvoQjYizAXIgvBjacK/FMN8CMhEZoi6S3/Lga2by+dD8ygh3i03SIqBNIAjxH1RCUyJvI9OPO3BvqS / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39UH7OOgi/2JY0Ic8M30aIcY8q85a9+9voN0dTavA3r+RMLv01V4Dy1mL2/gwS5pHCQ4WHWy//RUyWexYNlaFcHTXhjvs8NJCuTQULoWKTbx9o9VROdw/AxfslwH/70Wy0Nd+PbwQ1lmPgNTY4Yw+Ru / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu+WGNid76SIzFMSEjtwKgOVi1csQklPqmIHLexX3EntpWaZi/utaNSTuOdQQKzHcB4eB1S8Gl2qvXBtIXWPLdAvMtq7217K5MKTQ+oMA6i3A= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu+XYm6DDPIixOpSWc8Gd1vbi6IQbN29KWehRHfZaxe1wwq2tqkXwKo/hJpHYMC5EDqLQVupjGrygZQXqh7mp4EbeJgRcYAvLqmS63b/V4rkI= / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu0nucsGcpXGXwlF+fYQ9lCgd5bCIzkiX2voYk3MR4zjAZO/FLqwE5rwW3KU8x7SKNCSuLy0OdZBct5BamsvbaC4KctJm0iOa98cRfTXO33MU= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu12h68n7D8K/kC/IfKB3XVaA1Hh+kbl7B3ESoiZxNCJ7nlw9CYnjbuDB7chQnswA5IEZ1hTcdc3xfDdaSMbC5r88s/6nFGqGxJyU/j/7fZyo= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu2OoyrtIajVTFTPu6PKQ26rtzBhaSMJrWvXbKGMZudxzkyLRdhGzqDMv7TmPZM8W5/OQF2wVyOB/EFTB6RapQmfU9NSu6JxtqrVmow7tRrsU1cFl06zORhyq2Mo/lAQQ6 / (not set),1,1,1,17,12,12,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu4V1d6B+eq4KmTx7fzUBmFxtY2vAxbtgyEXv5GYEJZ4iq4lkIR3RvMm4qRKxzVVWSWwxJ9/FpEjPAldlG5dOyCwyyEXL0iv2j5il0oJCArJSixMCIE/1WkoN45JsuU0tt / (not set),1,1,1,6,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu571KCQ8HULcV1tehnvAaMM6Moq5TPeDnC43HKQu4p6j/xCebbSgld92BKkhfgG5Q6iu//pO4gziNqL227pTC3WMVSRCZaYShZH2xsGhtkNmbC5JTXgNs3n7JC6hQ1LGx / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu9SMtLRaQaqrpGjSCBFr/S09+73EfOnbWUMUmKchdzRNrQl2aWqjTHdaQYAzpdH5EN0BfD3HAdnMBkAzXCqy4zz3Q6CXHun9yk6sFoTYpZHg= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuAKlvrhdqAv41rUG5twNn1z1GL5N3KElKY1tTu2H4CuThVxlEDkRb8+wyoQNPK5ZSGQMg0aeHrw9FEHsMnrITvZ4lsR/QOzi7X6acWoh+h1w= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuBoFDhVlt0rorQjWwK/x5fFIqvFA4Te4fw6gA8aKwRusS4QwCeXwtf8PL07/nnvoHzbOdw3+2QRW2LaUEpU/LnmCJkCKsu4N/RcMvMBjsu64= / (not set),1,1,1,13,12,12,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuEo9ZyK+p+GPmO3Ak7w5NBBPtLY11lYFpywcb4/Uw8ANYkEQXn/sutUh6VtP91DLZp36GE9OARtkUTnH6EfS5rSeRQpcEXtAtICEdHwBKWF4KG2cxZwRRAYeADraWCXFE / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuFsYe5kvZgAFNvlsU7hlFJmxsYuh8P5BuH6qcAJuEbmFIMPBlDIuWaSxeBqOAukWQCJg1peaFCIvaC2KCL6cs6ErZTjmwLh42Wkt/9rPEdzA= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuOM+USXVvRJuRTJpycaqRVApZeOK6Xq81TqVzimW5tSVD+qJtucrriVqyA6+QgW8jKLgOBhBnD9wjUa4SNn/tXnFeUoeUJ+fo4V3knJfG1R0VX+LPT1XAYdaormFa177P / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuS+bxMKqcS6iyN0DcyI5YyYxBF4gKnxe1b1vHMaDN76pm8JNI/xeBKObkITzF6xsU4yxZqd8msIP+5PmPrCeoNk2GpZYi7O678AInvJkfrXDZCcEyDNF4LpWX5BVLB04p / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuSNFknkoWexWiimNTq7TI4OFsS6PLVEiDlc4K70SNEWXXI1ORQZ7ni66FcammfvZMdHQNArJ4k7L809Btkk0f/dgH0jwK2z3o4C8MopwGimI= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuT+8qZdxek+CruGa9GGYFPB+XYXs8DCr8yan1CdonbEGoqvecRgMPnrQ4RGaPF/P29bJ0ZshDGQcHVS1gpl9eJweEpYXMNoX5WNrOozChU1Q= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuUCKh6k6AUQyYbQ4CJXUi3oBhvU3F9XWxTfobE/SGCEwn/nZrc+O9sUO2pDQsoMAKs+Etm65oq2U1OFlqvJ6QtCIhljFUZnvZJmGCxVVvMVE7VxQRwFVKU1NhlNvVLVrw / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuXiYBXF2+nYORUVwwfLD6AzhmJjJpdY6PUlpD9PFhRqqsud4ae6vx2XAcFxDkNCrMMg9tMcsqUj2PjlEJqcvyq6cg9CyhimOc30vIOQx8Veo= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZubfT8WnXZZxHi+4QN9tbPGofUO/yuyk9Bpee2od6KkG2+5o4avg1tMDC5NMlvg2V8BWVOH5ln+rTZifKh4eC640dVQjr9gRk/jaJnWKja086o/4j52TArm2Tod69Nr5We / (not set),1,1,1,41,11,11,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuf+q7t97WKmLgtbNHWpDTMMf62ISngUJgUuHi26aE52OvoIh5wZxwoWiSMdSB9bVPBm1wteArfPOux+iWriGw+uCj7xuqXDNfzMVEasryE7M= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZufphp/LSjTIgeCWZYmjfZ0L06mzFTHGO5EOk21a5URjzelVp6B5QKdrd0DSxxSJ8amavPOjrmNyJQ+gRl21nOdpWBU3TA6RTGebpXfiF9y1Y= / (not set),1,1,1,80,10,10,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuhBRUwVouhuCYVRximhiGYP5+RPeAsMByLOIkXU9jdEZsd9b6LplRY8HagIFHazG01Z/0KkwiTnmAKuMM8WJJ8a4nJq+YBKBA4YSvDoX3+Wq8jJCOIFpzVLN21L9smACE / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuhJg5sbd5xMKcZPFiUOrz2rFKc5HT0VMKO/hKTOLnbvv5VZARZV+1hrpqacWobaT6UHKEIkQDFkJTeMHV2UWRpih8anzESvU0D4z8ZWLmY0A= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuobfZg8oNaKTlcm24BPQ33WIHlhIyFZO+zmNJyVsRsp3HBs2W5oUkb2e3C0LC5Zgen7kE/oQjZz+XuIXFRyzfoVmDCcZMT1cYLLzgJG86D4w= / (not set),1,0,0,0,4,4,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuotREGiFW/D3oOtIYI6eIWMK7Wk/frBchE/2rkd0k/7/5jJ73btfQwys8e73GBW9lUqU9UiMPGQd88KOwRxh/CTXE8H49kLtt2oT/MGBGORdS9flu7utJXZi4IaTHO1o6 / (not set),1,1,1,6,12,12,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZursJMzG1A0Cdh62gHtgnp3FofTUKdhyagkx6Guq7aSAf/sXL9fZRLh7P0F1MDIg/X/uQYHQ42MOpZ2Fb4E+4FdbeHO+Ac5xN8EPkOzqt3CD4= / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuvmWjQ9iUzLESv/IOAJ/8h38OgyUWTrpBJahbh8R7RmYXpDv8RhtWRzYW3kI+mTmyg4K3Mm6fE4t/VKTZoReUfRhaH1dLewALZW2IoP3o2h0= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuxEnPMY9207tTQ5Mo2nvYx35Ql0C5BoXNhLBNMI7OSMhCvBqC+mIzW3yhnVu4Pz36yJdBXxCZl4uwpfoudWZ/AR6dFco4YPqA0lMgWeMXO5U= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaign?grow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuxcO/bxKkfKe+aZrh5b8zsG6xmEK6UeyHiqhZriUrKCkaLoQmuYMkQRvROS5QEdl1ydJrCt2KFBdpVA0Mc0BYBOgQLPt+ibuaciR2DCF/Zv8= / (not set),1,1,1,25,11,11,0,0,0
+CT-Campaign?grow_input=xU3TuvedcIwbQJhqo+uTy15qY5qtu4tx66MH426xFXLTvjWsnghGXZG/rcj+/uQWclp2EvT7XwkpqmGv9/rMw7E6MLqTg9jZjN/9fskqylk/zgvMlpIHIbadAEruGJDWBCmyXfO5GH5eRct1BAlUMPfnMXbP9CHP4aHhd2R7M+Q= / (not set),1,1,1,222,12,12,0,0,0
+CT-Campaigngrow_input=8w3ZNnjGg1F7oETfYh2+pl5AsW90LJmIv88gyavEywIId+JlR1XXhS9EbJ53PFq/erlAl0SJEHaANbo/k6JKjl8KgHU1u6r2f/Ic3ei2urtUa20iy9qns+Dmkvh0hY24QfddfnbYOMTuu1SSbrQo+SQ5iUSVS6eLoc1orUqRpPWIAU0NFYpipdIr8I/gjliE / (not set),1,1,1,4,8,8,0,0,0
+CT-Campaigngrow_input=8w3ZNnjGg1F7oETfYh2+pl5AsW90LJmIv88gyavEywIoWsA7uUQnKjAQyb1G+ysAOq0sCFOnqjB3ywTj9EEffbNtJAcIDHuYC9Guv9GjKSGOnw0d0X1jNO7JLW2cKxIldUt44ZryuW28vtyRYUawuWsqdcYb6daJ5Mji4erBCrDrGDDA/6gPFJCKiBIxPhsW / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=8w3ZNnjGg1F7oETfYh2+pl5AsW90LJmIv88gyavEywLsJVlEC+oSmbVABW0UXeTy4e3oiCGLkC71kIbJb2RLb+vOva5AYUpKIiQmW/CgDrwdzo5ZE9auK/lB0TJPqbeICITZc+tGcFHCtYbZhT65EjY2wPfL+YM5z+/ZicEVqitTH5Luloc2ONRCov0CYDdD / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=8w3ZNnjGg1F7oETfYh2+pliovluvkWRRDqHoPBvu3kIndCH6lEHSvSPHrOWgCrSBn+B5F/cYEbEbzZOw2nEESmGbCfoLYyQwwBnm3Vvo1k9fRegg3JD9jH0r2eQsKCmJu8bL9VckKOhjTe8UOQpyxxrbCnd7KiCJfIjoZ4QieBOPU5vvwiUMPtzEo0FrMMZN / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=odC9R37qU/NhCNjKpWWHTo1IBiXJNgFYKOv1iL+UyrkBJBAN3P9p6afQRZx0VWPnBPSfogLL7RhZ1fmCzZjv835OWX6b1RU8D/8jf1D9yaQpVkb3MnwGCaNRosrAvQki3PE0vwfwm78kPz8SttC8BA6HBKshwicrV26QHkyleCg= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=odC9R37qU/NhCNjKpWWHTo1IBiXJNgFYKOv1iL+UyrkBJBAN3P9p6afQRZx0VWPnV2KVaB+wZgmXkYW04nbZPAUj+sdfvbQtGpPtXIn8mqYRtxloTGudiprGDp9o2ocIOUaG1jn4DviMsl0t+GMWk62n4Q25+niR/7uqpNqk2QE= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVUdNGbD+glqhOA4ZaM9UpKyKJHBxrz0dUDC1o5hosBYdkBoDLPV9gozXr5KClWV5A749BqeUqCGrgq6i7iVwbl2gddqXaOHfLM8+c3qa1UBuFGq3jxVpr02tuZeYQ3/DGQ= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAF/R5uxSId2WkYTdB19lappNC7Dqw7dUlr542WwQ5QPPC4FE0Woa7koFRue+19h0YO/lPNBMTfkxnhC/AvHVXwOT/noOQZJdgX2oEq+L4rkk= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAGqEazHo0udlmju/3UBDKSyHKa94TPAV9TFZ3K95MFdwKslEv1+abPMZKu26rew0W787Gq8Sd15Njvi56PIzNEiw4Pv480gQIaNrLhh2h2+g= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqI7dlC+5O2sYZz8YThy2yVWSrs4iGE9lV4MU7iCcEyqAW1GqEmgrTuH2eWQkuWoJujzCdssXTq4MOlbKCJpsOEORnrXI4KWzjX/njr/IwSzRaH2dZnKqzbhekxZ6X+tzybL6wMAI71m8bX9nzWaqxAE= / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXx1GcxiutnazBomXfARTYXblG4lDIDp26jZZQqqE6CgZVvQnEM0UpbTdsdJSsiG1B0Bigo+4C9/QeuHR/4XVmV5qsKh2QojhTvQYWD4EuPbDKv74Hh3vAa0EZy0ju2EDAK / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXx2CJ1EjKEks5+F8T4TkNJnaHFTUj8qnasxke0NU81z00jUJ+OvZSASr7ealM7M3ErQQq9U4f+gPtXjXtaIwmfYaLzSqwvEdFi7vYuFJQOLJqf7f9yu1IXxQ5SSuYHMnmt / (not set),1,1,1,35,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXx3lLBhXtE/vG1pGOZtdNwezKg08aEKZaT3Ib7hMOZct4uYgLRHYItcqitaz3yAYYVeoo+vq7xvZkhQ7ozbULZxCPSiKF60MO2SlR02X4hsfjNbhxDt5kZo44JClZqaWub / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxCyHa/r/I9GveF+OtOFfVl4t/NJ25HJpykyU1PPE8Iwn9vCKxBcYfr+3ykeFMVOHnG4mh8byWwD4e9y2Ud1w+aZZaQyyBfmbXgSkpo1nuZl1SQ8DfWtUMh+k/uwd7IMiQa2zCDPTa6gLEN8Uuodlr8A== / (not set),1,1,1,16,12,12,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxDolNqykMvgHXnAqDrGb2e0AEJBii3FN6sVKyJIxIiy8lVT2SBnDlBsT29z9cUvoMKe2iGw073YzRdvRdOj5N6M1TwH78DigCIjX5JTeGErNop6ZaanL56NelSJRjzE5g / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxGPsG9ns4MOw4A6J1Bmsg2Ggot9Roo9pKFJ3F4BENUyJgy/fDYRLPsprDtw9gvqnCKEAxcrzS/oTVSMUAnYzdCuIJJpg3byCrqWc3lBIAlU2GBuvNgfGk1poUR03DpAQK / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxGtv9wM9SAPtCHfnz/yWYf579OW7VHlfMsf2y57aEnk4o2GhnH55fKn/miztdvo17Gzz3Toe5RpnxkbWTsYCOQntfPCzsAIlqBnyfiFP6ste76HVRdgn6UOkqZvf8Hc11 / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxI5NeOTeYiLlc8poTrbyeVpPOjkPP/3A2lAOGJ8WZCq6fUUQsas6tczYh/s28iV27G7wdOtOH2WbTgTyFwM3t1ae/O61A366OWhkR6ARD2Qx5O2tkvq31YQf/fKme0Coe / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxQaju6ayr1L+ItQVBC7b4hTKSr6aVT9k8PcP6cvoEXrWer+Tr/3wQBxJKMclaHhWLQQkmO9cRx6mgWTGgo524gFzwNvqE8F4VdetKtcCJI4Yp6ft9CdYYXfwXruLqa4oo3cDBybZN+EcMBqCy96SRhw== / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxSwDUB/zCIeGu2DpF4xIe8G9hI/hXQ6+F+gDXvtkD+eVGMO8iQK86OBPDAVA406xV3o+mNnAJprkGcJBSnjYHp48w4voFrw2EPpcFsanA9/ykkJhNcYYe/pKA7Z39oisR / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxadtp+vKg2DaFOwQyNbGdHrGP06pJNRsUFLZoR8gdXvbIZSyzKNGedPE9uYieCgKXQgFYi4mrOelq7KsNdCRcEivrc80nbrtw1xb5W2+k5+Cdhs6vj+w20gh0bjhs/K2w / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxbk+cptKZVoqcI70XhV69SL5Wxy9H4ZeWpRgDF2XkgqhgpX2pzsRzHSjHdm4M6g+KMp+Ooo/S2YV9xQolYzRpYbqlfu+DzuuSBLhX5uMXYXXItr5kpkiVnKZvoT+F5kJj / (not set),1,1,1,62,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxd0HsEVm34M+PLxSSR6cfSMij52zOjNRTjRWxCwqWfFg8jdef8l6QUWyeaBgwt2YdIxbgzIdjFoyR4PYtSIZSSlVdxQA8N573Ws9qqoe+6H/s7WpnIcPNGQ1m+XQ2RLM7 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxdhCQHgpqWeISJ4f783VgrHP4PBoaK6C4i/1sqKyzlmWDNsjvHG7v0UoaaWTaWSlixHuvbsSFQBAJIhS7uzqFEa+7xjEEC2GaMg9iYKQEk4KpIFc1D8KMUiYrV7iacCtl / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxgHa3zknsZ7np0cSCCqrIZ7lXRybk2/MEoWHBQS9a2+cw+L/0RHuN6Fq8eDsMxJUrSNzGHQXFk3YP1xCNOvcHkhKJMNaBy4joQoGzkD4vBMgFIa2Ac9x8kHEiRrynzvyb / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxjHZMonvY4CuuBeB8E32pmrkv6hsdmWF76pCliJsux4W944DI6KA/D3CaCSBcM/1YU/nwVTpHb4UGFDb919fz1RPWwyiUaMlFIry3tWNLgkkgxwa+XcjGQWHXulKUUljF / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxjMRH6KC0cOGax+6now6gWNP4RBW6GF7L2y+xn6Wi2uyJaB7lRrQnB5Wx2+l7oMFYXtaCT0bHc2ks2iL6s4Idjq9BWJBAEL7TnyZsawGZXWPMcguahYnYaOd1BM1KLFZB / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxnqSoly/Me+LGRiuZxPfS7b48zGo25U2rHX92R4C+j57p7t02+NYe0biLHqfAQJFfnF+6ROYMPoTMmA/uMHATJNRGEmoIRLWguUCFLGl4o8OZ4LlGlnMFCo1RfkCXSqFgHfrINHDDzsaLy8SXmro5Qw== / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxtFbwjYcJgKe+b2vZ/EKgFYGK4qp9XspOo5mQUDFaraKOZadoIHBWvxKKzH5yzwH/DBE1tTuhiHraUSP+NL5TSL7BgUTiMmisybtR/l9rAVIpoEnRlYQaQCjE+/+EXT+I / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxv3NpSlGT9eFWIUkDHRAfpIoii3oDwOkww80IL1VMDIlVOMHq+M1HuhMvEHkjNCLJU8CjjcVl90Tanj5gAi7FZoa4PsaT/ReJ57pFyX0ww5eBAIQHE7IXoLFLBDBOlIyT / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxv3NpSlGT9eFWIUkDHRAfpLFyLoeogwhyPxCJX42z/OREeAqsUiF15OnausiiMX6EXiFxo8M30y1wkSAsw8zBdpa4de1loYuB1fQuYv+Kn7J6aeRFlu/jin8noIyfeMWy / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxx4jvMMao/HrzbHKhmZbMynNTIIwfejYU/jD29Q7kROCxguZM7e+21c2G5PGdgPOrsPeNWTneNL91ZwVJA7QgbBVq1kw7HUtTeuzm2WdfkSPZE+0Vn2GwWD8430Kac/eM4Df9uoK1EDPDn2PZzUJcuA== / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxxJhQbZrKhMQIH4WJzB/a4PaWOncYlRZHAQ6OA+6jrmDGEBqiDgHqSno27qMeKVvU5+eXxZpQbbLLSYlebJK+D1F3GBF2DnrSyAG6ZvC+MXgxqpzXYepFIR17/+QDq/MT / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+05nZ6XvTUDfS7tfJSpxXxy/mfMLpF+h6Fc9bvzvj55mn9ttuM0G/ZNfluTU/YbymjEc6greBplXxUJU7HI+VpRPvd8/V/D+/3+FlBjOkgjW8MFHgLQkxnt0g486IKb0p7/Qa+LXdSCcm3uk5YHCXAZArF93bFaCcK3Dw+m8uLbA== / (not set),1,1,1,10,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+1iLCk3YPnSPT8a0vu5S2zINdri/W3fx/yeVbE66DsbCZD/z91Z7bc5+lLA//luaDTZ57bnVqD14fDgMxUz66yiFXybIkp5u8/JRZqd2ns1nQF/Zj4jFF7nMnnWg+fNHcaLzPxoGXpnBF5bCRrpzU3 / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+1iLCk3YPnSPT8a0vu5S2zw3lFWok6aHDDD0iFyUn2ff1pR2vHK8Ouu9Ekt8Msb2te+8cxtpHYJ+aDAsNOrSHvhr7ugi8xFYTQBi9ZdEGcuSTW2gpby2IDVp6zQ0CDCYUCkRMcPwjvbBCWH5R4ASjx / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+5W+Y6KVGFisBshQKZ5ajVTP3lyms3uYkFJYPtZAWFcrUWgWA9rcn8pRiERtKti27lAHvPWJ+g57wdiotR4Hp7LbV9WqDwu+8VLGmTJgZAaarYeQmMIVwrCbhA5yAMGN6alaIKLJ+Bb9P8F9tvhgel / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+5W+Y6KVGFisBshQKZ5ajVmqWOcd8jOh3ikVHULDJGwkf3gIXLCCMGeOcBgkIZPB/PY5sxX/gj6sSlMb7QiDqVZoksBUeOV3L/mMVXiQYKl4H7MKjmH9kQkrjPefaM2S3IcRP5TZJBk8cw0zZsSfKr / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+9Mvdg0PigVLPci1sjIl0zZyp/HFK305D43jicsyd3d4wqMDOK5T18rZUveqG4y4H7GOE5VU4f7Ipjkz++OFKMV/BBVM0aH933bAj/yd8Yv4Ea+IrQ4V2lu/o0kXQLLvreqeNpytJfJ+kpbLXHa9cz / (not set),1,1,1,467,12,12,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+B2zL0gYFuvPYyVM8r6lp1/1rB/HOMy9guvT8sW+mwsAGRj9xiSFozBsEo+sp2FNp1bRatbrXIFxONKxVzdCuCHVbZHSFOnqtAOGK2eYrygKK1On9i5RI2cDPexzEtIuEk38PuX/OyKr6EJ+sfJSlA / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+B2zL0gYFuvPYyVM8r6lp1MRt9IkP2hHzba4KVciYea4CCV1rdyfReJcGEzLv3nvEyHQfpn79DGWS1C0J/YwfR0Xs+ftuw/UD26hlpkOwmLhnGcsDKFp/uWVkAklFsEH8Zk8Bd8s7zyxukXicE2WA3 / (not set),1,0,0,0,3,3,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+B2zL0gYFuvPYyVM8r6lp1RnQVOIb5A1QaOI/8B85Jgi6MPT7F8zK+M9ThxdXu3jihDv/JNXiOJGwT7ablR3Yl+7whDJydHnUEBSIN5H8tNCNsxdByKD2Q3aJDXxtV4AqlfWih4kU1MnKu0tcSoO8m / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+B2zL0gYFuvPYyVM8r6lp1YanVgTOjVa77hG42xfjker0y7YbW49MAzszqq9rQsPDewNDTs11L1libnLbDIrLQpJ+ZV0pgvrrDa0RNZR8SS34dTQMIAfAfx7jYUzccvubot0YQfWbJkzxeub8q5EW6 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+B2zL0gYFuvPYyVM8r6lp1hvpcoLOZKTu6YcDn8l5S5uQFcGcP9kwYlyCMxi0JIUWqmimxHlvQA9itsdTndI3moYjtv+iPz87cg6NBiYSqPRE5Cy4q8avEB4c0sPvXnIEfYc0wnS4htT3Qz3ywr7Cy / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+B2zL0gYFuvPYyVM8r6lp1lI3GuLfRMhdbLUxEImFg160uOMG9pxGwyCozThBK6POR+rRpJhDsek8k8bRpkIZDeSNZvvP8eB/OcbNVXjtyVxpz0XwFhy4G5Wa8HE4u2zH4UVdU8DLAoDSAu2iseq13 / (not set),1,1,1,136,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+B2zL0gYFuvPYyVM8r6lp1nfio67Y4qluGC9IITz0Q/ncXTSY71p/e65IWl5Er7KU8A3w7X9Ek2BNGZrBRA8yVofCGDMPG+4gqQ+Rro7b2OefC/O2Zb4hbr4ABiO4+zAOkVedjybWCLpd2+ez5CsPS / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+BRlR5kOScUPCc6xUKg8suN08BxYqKpPEVz5BvHM9JEjVKfii1NC07MNglBWPtm89owax5OQytz7yxsnhWEyPsnULu78nAHYZWAVcS0FY08fw/FYIWxUmnKgqK8gElYXhgq15wJ4I+jT353tfp9xlG / (not set),1,1,1,82,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+BRlR5kOScUPCc6xUKg8sukWS0cXuVjql8f0UMci1Szw9qf2jWbHzL3DdHhepZm+Ai8YICaRdgcN9CITeUUvVKJcWrjnTRPOTzdumy0OgMDMu/7llb2zWFx2UCPPjVumkVNAyjjyYH4Uu+6TKDnizN / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+Ch22YuCLdPdEKyZf1wNiYdel6SvV8LzYy9xCY20CVluxvFHvTUk6DnKsnVBmP8TeA6wb0RgJot18Dvk6tEwsSQOwsOgcyjwP/3B8+VK1DI4V7MHzJenSEv9h6uvB1GJgcbpkgajZ0bNJJObfIUtBP / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+Ch22YuCLdPdEKyZf1wNiYeWJ2/cdzDAgdV+BXF8o3FVmxDbrzpL3Y5/IStW9qRGGoylWbSgR0Q9oC4TCNh0ctC4dIUZlw2IaCokq/9eIn8tb//qxlMVR5BS1mjy++4KUlgMA4gxId6F0SuTwygzmt / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+Mk8+S5bd2MtUap4eufvY4GLTm1yiYn9MoQ4dMTrHy0U7JJ9UuOfCeVJf8aT+mB0yg+DNZbOb30ahhabXuYVsa4cWItZrFC2T3RatATew9tBWELESgrj3z6OqT8mdI199yo/qVl4FdV1sZx7dE8rFa / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+Mk8+S5bd2MtUap4eufvY4TkG44zOnTfte2IsnNH2gVGTteU8XGI6p1cBxFsPyyiLmXyAiVfWQhvaiReflu3PGMh4Gk9EztnUHKTaiEDvJRLlBL1oqm7L33UKIQVjxBj4fAHsAY6mD4rL1H2uPIALt / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+Mk8+S5bd2MtUap4eufvY4WXByijPj9TQx9NUjwmg8GSseRwARDk7mi6opbb/ml21L+mYJ9shBmqCYTOVNF9lQgk/UMG7z2szk1gFS43uPM1DK8OTmjmZ8Br+jqQ813nJjkk1teAlSVCEiqJfanI5v / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+PntEKdeWLViHYVkvnatTb1sELEqVyCSQemZCoBpQteiLRY8RzK5isMk2LwUSkcpFmcOcRi3NIergZC9n4kIkQZYzmp5SiYNzYS6ZKDBzY+356tQSUUImLjR0YmwxbDGhLM5xW2pVYxhb/nXburQZr / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+PntEKdeWLViHYVkvnatTbKCbAibH+a/p9gQ+QiSFNpYgRb9Q/kwg+C1rfRqUyarF+3aEjKfdjcgpl493suMfD03fK4tageMCo2V6ECFAo/mrLeCYFnT/8yUnFptlrrOcaEn0AkXfCq1c82XyXmybv / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+PntEKdeWLViHYVkvnatTbLSU1cEjs1DPbuElncvp5wpk7pKibpqPepilO1NR9r8QH0V12y9oLxzLNHggiCSqN7NYQidTR/2VuStjzwaJxCYVFuocge1jR2ZcP5fiyfpNWARz0EvU90mVmjkjhoE+5 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+PntEKdeWLViHYVkvnatTbiJkMNEi9knGI/DGPnuTZPWpEORWy1wBf3vr3aHdMm2b9i93DkaxLXEW8Q2OpUaX05ejL+7yK8BpvUToxmouoXmWFEZedE2nx8f9WeRncrBY9uQhm03sK+bPHdSIA0NNb / (not set),1,1,1,43,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+PntEKdeWLViHYVkvnatTbiN1swQbO6uQsQRGKC1J+KKV2IEBxPSx88x9pxyZwX+9EVAfsrDzK03mFhgwHIzmS8wHmO+LKH+AKr7+gUaDO3Q1cCuauTHgtA1JGjVgB/x19kijsO+dngqXquxl6aRMH / (not set),1,1,1,39,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+RrskLf5ddEGEGvo7EBBmu3oAuG0NNpeMw96SDT2332eoVcySgAa6RDKFZYS808a1LiESSs5HFlxMY/+GkXyrTR/qpytqcKLoLheux5eDtKQq0Af99Ae4obR9HGGNhWGw68aj90LJukoRkitahypDt / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+RrskLf5ddEGEGvo7EBBmu6G9fdTWaCjEmmyKuErNbZYDjcNZFR+74kAkYwwcabVZos16H9UusH9VvoXdXLcXIGv6wszdNK4XNutKsjkUbvCyco+crv0o6YcyFoN9evoEnuHlH9yIfct6aO9nBeiEh / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3+ulh0+umQ3FcO9KQisdmAP5UI0NPw0jfgPV/DM0ECdbuFJIz97TSibhseZ2Z8Awm6/b03X2JG45pG+1wc0ZNMOcnRxhedb2DjQOnlRbXIMbyPifC4ns4cWvsWXJPG1m/MXxe+kNsIVm6ennWFICzCa / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/+v/v1t6X1Uw7GG9uoPtBevzANEcFBbz2Lh7EPjCUbEhFYdLHf1Vm9+amN8DKaKZn0fC2Rnj/F3zya+BaG9V8adVO9RCg1uNDLoJIwtkQaACqa5Eq6hIj3sOdw2LteFA2w8WhZW63nkqHiOyokc5ga / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/1zDlrqKFqcbfWxkHQ8NYx++1hNx3UlMDzp1P0aMXLZU4OQpJ5rjegrlB15KckxZW5/dOmntyc/DKQD9ZEuQtUyEbeNA3/IKK//GaLGQP3xVP9shcgsC0UYKGuoqxISqrT+oqMcg8mBSa2fo8HVJhH / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/1zDlrqKFqcbfWxkHQ8NYxXOi/xa9Zgx2RE6UjKBuvJ2c6cnVmwnyKhnOWrqFK+aPxx+Ko03UfsQUCAGtiGxArcybRhZ6LoOlsHac+PyERYoijfHI8M/2KdpmyCJ1431Wqpg0wM81mAjQ43QKUZMe/ / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/6ScfRCeoHMs6uovKdgcPs/CNrv6395WWD2t3n5SX4iaJYZGLfvYD+e1lR56ShtLAvkgf9iXzNVvaLbyPwMfpcq2RkWxPy0yqzOhY7fo7pe5coHzKMzoXGHk6qP5rqrRmrxq2iRBp8GoABgpT95PlT / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/6ScfRCeoHMs6uovKdgcPsFR9zAN8/GWkTtjrpC/DjMv6DtP+9+Wht17gb8FQ4ZIP67ku13B2B4dWKRUvtpbxycLjHEW1lPPQj/MbUBkOdOwANW8CJX4rzEcDoOF931B/Os6D/hTpnz1zi7c65fSVP / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/6ScfRCeoHMs6uovKdgcPsQ0LqpKajqf+nE+l+5LR0tGbJYZn/4KurNnyGtoUSCPnMhMrb9LHacOWL00B9MLKFYgMHv+mZS9gO7uds1G4QskUzVZOeVkLxEyOXc87/Y+EN+bFl4+ujMNOVVMpjT8pJ / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/6ScfRCeoHMs6uovKdgcPsmDMViyr5bkPDK3tCzWsqthlzZrC8aZzqP2K1N0NPqj3zG0AVsV8AL/FB23iJ+wxkYpO0Oq5M0LmUsayE6ANaT1wDsBOYS/ySE7gFstLCkt7gu9UJOkSSClVasJhNlryg / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/6ScfRCeoHMs6uovKdgcPssvzbNvUDYL5U7WgCj9UXep/leBIQCpQap3D+7awGwMBIffhWP7ep5l+VImmkvQv8d4wQfWlsDcb2tM7aJycU9FDrVOR2FmGG5Ma4QMG31mZuF1go9iOcm21/fFYj81GR / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/7ZpD9Hbgu37ga3ie76g66HxTMYQoYGbKO9MI+MQHwni0xIPxQJf4rPSf6oZoBIzryvVS6Vb+5o8T3Op8oS5nKOqEizifIajmILI9RUyHVDG7ksdBmFNPPyPKMaL47BpsVMrwpTYSg1Hx7GDqiMkwU / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/7ZpD9Hbgu37ga3ie76g66cj6u7vF/1qmHzo20OcSVDMQW31o1v5kHrm2ny/rq1KR3XC8cGCen5Fp0EPYUcEBAnCfTmpPUKvepbTkiO5Z1PUcUISBf8L4s19ytMhXQozLD8QmgW+5GWLjuXYkjB7q9 / (not set),1,1,1,3,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/BFUVtzlo3qQH8BXmWXzhcskJw08pk8hu8jYFrYCB1sd6Byalh4307CjdPObFNqmN7hI3a1VKPdoVqX35dsEsW/Ft709KdtAIdgEuGeaG7igvICfmOw/omqv3gfaKimf/3J2IKfR1eJVMHHzwiEjtp / (not set),1,1,1,140,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/F7dfrosl61fK7Fah9Pv+KS7I3lOY/GkcYKbYGtV7AzVO8oTLwfrRXqNpFXebeLqg6CE1J5tghcB3W/VKccxNJ4GeZPLPLUIwaMQShTV3QwmKekwOsftfIpCxvQvpUbgKt8nt9LVghDUS1veBuUoU3 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/F7dfrosl61fK7Fah9Pv+KedPRCo2qP83WYf5a6rGKKRygk+YIjQIyA5ZtgeKT9iOVjZYrdNU/uQPQYbX+XDn5+FPmwIkkTtg63ZDNKbecXU8PZsedNcfEU2qG9ZE2PcIhEgRZPakXjveXGmEPqdEp / (not set),1,0,0,0,3,3,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/F7dfrosl61fK7Fah9Pv+Kn7fBlH4VaJs9faT5moY94JLwSi/3Z+ExN3UwmBbIbgV8P4HUGUvo/oGvH0HaITZ58Yik0sjD4+an1vy+JOMKiRFxDqf9ZxmcBo24NZCktALHcX60MMzOsuVMF0tMBbVU / (not set),1,1,1,73,12,12,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/Gr7nRBtuQ5cQYtyomOCQRnlb6VuIEZpvceKehH6ROt9PGzx2ei8N2EJfzeR9loKVSvcPZBOk7Egz4B1+4HO77aTZ652DN9oezwcEo+tH1oB/r+SzpvpMAsz4DGjDSwk3niIkuEKXOF0t6zPWFIBYw / (not set),1,1,1,4,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/K+sPm98+gD0pJCMTMLpTKNfqiVmeSSV9g7+KigBKa2+I8+Rp9AUexkasNPIBGWum6SiFaRzA9SGoROWaPaZ0fGN3SpOA3jVAGsTwwWaaMtVW+OVv05qHj9GW43bRXa7nFlP6MJYvXochSxXYigHf/ / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/MYU51XTTSCTAugSYPmOCb0uqxwVrNLFxpzFZVRazEBn4qWBePE+Qx2fP413/9g/h3FVoDNT2XVUVmSr4lQAPJ/Ar9KpJ774TIVab8ZRjmkxPmUb0jlXnv2ZFlZRiArvGHkXC2OIeoIqlkKEaOFW9Z / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/MYU51XTTSCTAugSYPmOCb39MoFrbxfmgE7ddjryUM4N1i7S0j87NPHUJT3zLQ6su2VvifT56oRVfaI3fdvaQm0K0WI4ekoNFtK7GpMoDsDT/U/Cdt/CzWzLGiJaNdITrHIuRQqgsAbIjYQKhLeNWV / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/O/Bv7DihCJXSwsEr2SJR5pDbSUR6GpY0CgkeKU7MnCvlFDKpDFW2ASWm/6SmPSDGanZJZ4XH4uusLfkfk+k4LxEzvanmdiulMh9e6LyBNRrsBfjIahYzf7qHMeT0yIN+xZ2Tf/W7EQ7/MJCxH4gd9 / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/SCql+yh/zESOYHcxaXucagSkY0J2FFonbyMLcJQCLl6Fem3eV0cO/K44t0L6D2WmonteQAfjIosk2OkAvsb9qNNJdj4yEBMUsd9oHzlM9JDWQVgo6+dKp7soiIYf/FamAsB+y2IjELqz2CFBWLd/P / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/XTluqJuFZijn55RhMIbaxPPByhgU+oGLNsjylGzG4iisOB2JP1AUuMpEz+8uTyS/H8MFvM2Jd9r+9DJzzIctXGFzgwYYQ3NZYVSCwKAORLGBn0ff/fjfRcp/FmcoyqqX7R5FukYEDQmZ61ZvXJqmt / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/XTluqJuFZijn55RhMIbaxUHC0cnKXDHkRcMCphfRz4sTuX/Y9j8H2Td46qWwuEyBM1OPV7CYp+lS1M2fwB8tO9Fu2ZUSZuQ23lpzf3hUnsSwJi4ruP+YGXSPVniuFxB6P/h7nvtfQ1mRzCqPSDjEU / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/XTluqJuFZijn55RhMIbaxctsRJZtc3B5NqjZHczrvMZydxrxVsCLnMod1VVSGC1rIDDBtXDW7/0q5Cb2hLb8TR2Ix6sGKiRbWD41+jtl9UAszSl2fMaWNQBrpNFkfql2E3UeTUYQ0eTGVqylES4Zy / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/XTluqJuFZijn55RhMIbaxmLisoaC/VI9Q0TB/Yjb4sEd1z/1BMUcPTTVIwbNBkPRr0wXL5HFE5+eqKuVZpaLWnxqp7ay/QAqCZ/MJmH9jyVeuvmgaVJOWMZIrQNUK3LvhipkuVA6yVl325Km2FRN7 / (not set),1,1,1,2,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/XTluqJuFZijn55RhMIbaxqs77FnRVcbnR+6x9zWoJ9OsGug00BnrqB/ZZe+6XABGXTzAcdyAhwZlEY/RiT657BsTgU0yh08gs4hmUy5ZVv0OH9XGDIzoqyJU2HIwo2RW4+iYsJGPdTzXiAlesD7iZ / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/fOf1m0L7/PFIS1DMosxA4vxLlY2yFmrtRCTzjwChFuGhzbkIGkhZxpnuWKA3up+AFpWksHzbO14p9k0tRuQOr+d2WF65rHjAmY77xJ+tZdl/EUg603MGwFJbEb2DUQ5+DXrMXxFmx4KaCGuenHP2l / (not set),1,1,1,39,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/kGn2pRPZGt2wxXZcut7ltGoPBgiNaQHHfaqHc0FhlZ5YmAB5QWJDNDw6jPeXzgfYHbldG4AASb2DTdpb5wo1OubC6AdVVoPCwZwgpa2AbSJr1ovWZviWxJVsw+gSlZdY3Jiv7rweNQqubYd4GbKj8 / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/m7prsA4WMbZuvrj60Vs8W6yvCGPvuF6FGpG9CnRmhd5e58MrsBQUGG/4C2d7D8Jm2IMstWeIu54DDJp9HD/s2kwSzVoD3JChbTXDHIB7/Ax4uA8XIAn2rPrOIVhM+agwnBnaDOcMX+psM7LNUkZwN / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/nRPx3GWfS4X6bb7clhMmRdhTOMONXwEjxtJgikP5njEZnNJ6NTwIgiDMBfWnYksfjE+DOOgvOqJHLNmxgWXdYQnnQSMxQy3S69wAdhS5aV2jKNUUkkKfUjPQehJA89aevx2d6CsRMPmvm7UV6FC74 / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3/nRPx3GWfS4X6bb7clhMmRyXNmr+GkJh4Xax3Py0jsFSVGZZi6rWveIySERsxbomSGXyna+lVgMqBSvpl9mhJMaHllHac+ZUkbg7u80mbky8FAkOuQsagGEAchtZmm7an0NCy1tbs7vRRBHSIiDs4+ / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU380qtW5vfLOnA1CLuw1Ii5vJ+62haYai6Jc0RVXtraGW8NKyfmGjxdDWCM5CjzgWd+yHgv1wqm0Ix4BLqaWy3NoQYLs6i9f5wt6SxwRlIWWvacy8i+FE91uWYv0UJuCMCQDo2fSpK+G9nsx8UiF4xC0 / (not set),1,1,1,22,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU381KUiK5KkAwQWyuXJ5dznhBXNfFqtubNVaAvr+DmdP99NBWuG/Ak0JUjZQd6pP16XF8pQ9H4a6lVmmgxRHqYf76EQubhOi3EvfLRVQPFalFWUbOyizf7r+AVZB0uSjf/cqxq+z9roZZ5MlrDFijjau / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU381KUiK5KkAwQWyuXJ5dznhQEuy6+1cAk4qCRCyVIrTp1MDFQvoTJ9FZWXwzhQDrvI6LZPJ5oFgCD0qVKWVU42S9DICKMawNAIY1OTf7FvbwGxlkW5PJt0Y4WVAavcT3/j+PIpYe1Wa0ARuAIGV5D2s / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU381KUiK5KkAwQWyuXJ5dznhuTGswrB9oB8MprnA43HQvkSfrmXF4VhDrGASWLzbxOEfNLf/PlAu03/qb/ia0Yi8gdwA113QymuYWvKVZTx0Llj2J4r/uWAOpy4jfJ2uQ3Z6KtoFQgroYKgRoPuBYmZa / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdD2grNd7OuB5niHsx+mEMqlw3Li4R0skskimX6dTPE74kfFeakombPOhKWUFCBn6Hz8Llf1jPNctusmH7tJ+Eyntn9/lzlp2E3+y3E9rW484fo+lqaXZ8+58pZqYsIN42B / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDKXh0eFumAFsPV+hLH8fN4/g0bzjMPnmufY7TjaSDc8llyUuhOoJ/6r5Sv6ADtM74/50uWiMZOHrLtMInewOabcJgQKOBRG5n+xc0gUGp91t2Cf1bT9pheNTvVnC0e7HS / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDT2zG0/NghBu3M5afso3p3u0T8Qd+6xFiXDZzIXCKgBNtsK6QW6zJH74tckBXj+T8q+pPOrOg8fBy0aWOEGYcASBQzq6T3adL3KvSiDvzYPJiNPm6AWGWnmciN8b0Dzwi / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDbFEbh/7+4vNDGcp+KkY2A2gD2k/OfQ8SFZKv/wXhRu+EZEJD06KJbFmfnd0U5nGPSFmlaAOhHZzZAO91zyqzpqKZz8DrWrPPxl7CXSL/ifzau1pWe0OtGOb/ECGYBmDk / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDcDoTavZkUssni1nS3na08GoyciBQib77RbFsNJrjc4gmkhyEBhFkAUs20SfPh4o/W25sH/uSRytvya4W30tvAeo0WM1lmtl8OT1gOrMvUjGZCjCxPGWR6xQpBwz+vfXo / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDdzqhRrN1H/D9Z/TKD8/bSRDQNcDeNrBWKEmugljy2uV+YY+Tk4Qls7zR/WJPtVizUVu6JqH265t0dLO5ebfEGWgRPbVy+suacGTpsLJPM2we3FrLQg2zbYIYVYBkbMxs / (not set),1,1,1,0,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDmQ3BiZ8ML3YBYvaLIBH56E1dV1bfCqD5FRU/Efo+ufFtAWRfylOCd12qtLapJFaBT4vAcbATeZxsTYwfACgPlZ20G2YBOvSvej+c3p2snYdVH+qOPNMKLPBMx8PwxFJ3 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDsBcnDMKUrqdTBGOpuAz2VnxjuVC37tWGBW1RZ/51o0th8QeSumapI3CVVAkjHiZp45pb4AHbZ2Md7YUS+sReGgQzQquFFD0x2lqc0/wB4frB3NJlLSki2qKrlYSYeBlk / (not set),1,1,1,8,12,12,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU3852W3K/eiAsvodyuRg3YdDy3G894spKl9qnkUMxjpXB965FzVZIbfQnVzEXekfHvetXsykpwLnh+vEvEWstDev7uEVcsL+gqcvkdS8GgunNkCkYh/cImnd3RgWb2mt5bi2j4axcTT4YGVkA/1zB0mR / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38AhEq3cbQinCRdisuy0LjgCVls5oZbQakhp8giSaj6vQvkAO+1WdMSiYBKgT1eZI8AploQVqzr8O//dHRPkyvCARTRWYvTmwK3aIB6C3N64sZ+CHob5hUpERtc/l2ARwhAhGXz+ubeeia22KDmkrBQ / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38AhEq3cbQinCRdisuy0LjgcujvUDu4FzXow6mP5OloPmjNhZKktqJAkaM2SVslQHOyj5HUBKfOmoY/PS0EFRULdEFnYJJ14S+S3ZDsIAJBttnt1axjAOn73YwNNO1C/oakVRd9VVvjR3KHiV+HVDtV / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38AhEq3cbQinCRdisuy0Ljgm2P0+ce3/ChXiy7amQ0zPsy6lU5cklOm5Rc+ATKHegZw/5VqDZem21YeWPnAWf4McPxdVJR2mva84ajo7CoIwm45n54yheJaZgClzr+C7qs0fGgh7ayz+Ynd42AHIcqp / (not set),1,1,1,12,12,12,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38AhEq3cbQinCRdisuy0LjgwVIevIyQ0tGTrbjWGxNLexfQD84Kk2Qb+OP3aGUv6iCU3ImfY59b//M6jj/aBiwVGnh/v6CWJFy0GOUaDILplwYEM2t5yFV67aLli8xVS/r71ZpZ1FIYbhFPPwwSyPTo / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38EcRgQXuHpiNDG6Uk+M44LhqHEf+5QTUCqOlTAhRGt5I+J9k3H7A3m9DDh7sfW7gyBlOBM9YsYfEj6Dyy1oYnYeozOEXrytigwYex1P/Y98LfNGG2mDUwwLnhiF3k2I++J4nEFtbduoLKSPgv42mXY / (not set),1,0,0,0,3,3,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38EcRgQXuHpiNDG6Uk+M44LkQgbYMCQ0WyTRCz50xsgS+IovzIrzsgd9fEtlkwgFN6ZRxEQ8eFHspkp5wo23Ni3HZ/tdYpF6NmHNwLhhv/tP8DLpvRrAjhJqch8J7i7oCu77Y+8aR2ucbATipn/DdO0 / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38EcRgQXuHpiNDG6Uk+M44LvCoGHuCNzn05wJi2bBSYsuEMpjmGwggxZqhWihtfR7sDaRXoT6SDPk+cp2b0ge2cWP8TX/xUf+nsRJRsJih/9gd975WOlMlW42KpMVzr22RaZky8PSAkwffgmjMY4V98 / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38T0wKqpwoVUSn8bq6F+KnS7qzRKJvCafP8LW7cKhh3nJO1xAVszcCb/vyP5ff17yooL9XyC3K2qbXHZCoLZt41ZM8Eex4NTN0rv2N76NPpZnGE1ZowxRYKbkyvuPAXh1Du/jfT5scTaxRJyZkowx+M / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38ZqrQ76mfhosuUPMtaDdZm/4AP0dG/JRQN4nsk+LdOBBEm6R3EC4ySYKucJzFvhipjXFEIvCZfTHXE2xajHFATO3QptqDVn1ByQCw2vY+LJfjbTcEtAz5AN91i49dA5NyWMgxHycqBOTyxsmrCKM0d / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38ZqrQ76mfhosuUPMtaDdZm78GTYMR2fbL6/dl5+EJnebQlN/Oy77TD4XXvcUooXg47LlLnFCojJqeNKFqRVxqP6yTF6Y+YKhdtEx/CU5xpmRyGiDbfIy4PFid/87MsMXCX9cvnujHevH0vPwNQG3FU / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38ZqrQ76mfhosuUPMtaDdZmnsDebPm8Jzx3NYyL1qRZhsV17FgEcm6+IkuH5l5/c6KJh6vlepVtjZGmvXTi3/C8MvDG5fMOpkIM55vFyYUaH8LL5ZHcfL/ez2U2NJKaE0S84DCBH9GTfd4s3llNT9fz / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38eBLadNFaCfhvtmGhksblqeMqwqEg91c2ul0s5U+FIiksIrFuL0O7yN9Zjk0AeA7oiVJnPKez3kTmExgcdFLoLczQ2rHBsP+tiD38C6mtFjvR5GToTJKDNLXlBcte+W34LMBAaJ+sjYaYfvYE+D0tu / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38mcPzf1w3zVYfDBMpo7lOLL60P47j9t3v7mNZAjng/iaXk9pASak4OiirAOYjPD1zfr3hWNeN+q6sVxR1GdhJ6TN+hSvLYstXtl+qbnJHVZ1NRygSF9MMHYJZp0V44RgAJL3HmN3eaM777XfaaEJVx / (not set),1,1,1,23,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38pVrfAAfajtxh3puAHKXeqDyouE/fik3i6u21gmKxkhLDuBjszSkoNb/IFRRA5Sh1lDOSNaYUYAJN480VdXNnkAjNFHFT3+vmp9iZMl7wa79yUx3fcEh6DUC1qvD15kupHCrY0aAg8apSyLfYK/YAQ / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38pVrfAAfajtxh3puAHKXeqUJfJ/CSAKs2Xa5Zqqlvof+aPc6GWaDIRBFKHdzSnru92RYDHOcC0qyxL1rcjHajdvuFJ47TvOEHRHhy98ithLdy8fWTzvp6TGnHvViPDizd/3GA8DhH0e+i5nuBWAWa9 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38tzc5mZmWynezg8MGFUcM+U6wSvaq66gt+YbRccgnTatMMTXy2St33sEQb9XvGPMc7b+azFW8D3bqr2Ctpi79pLYPjDqeupgkayTwyvMmBiUmDg7V/ti5scM1uE/Nx+YnhkJaoxForx1Ymx6+83vfV / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38tzc5mZmWynezg8MGFUcM+nRgYaEhVAlM+dFcXzBANE2nd/amzqtator4mnZUrRRI7yRmNGGl+eMcb9nRO0uQVHDZ1QJRdSMnz5goURLB/liepWiYXbR5weBkF7qMhSxkz/fO0ewg7TBsRZ4sZVa6/ / (not set),1,1,1,11,10,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38tzc5mZmWynezg8MGFUcM+vEY5oNqZRDFDK8CQ0O1r4+zniVng9d0ZRoU5ZxH8o/zoqbYcopSEUAM0kdc/+lH3hSh+if4roki8fmSHULaGfr9huDkBvnEwxBbHSI/SpecBD0LLb0DpenjnCWk2Gjab / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38ufi+jZUGutEWqu2nTRDE4/rsJ3iIttzX3QQVewanCCbIcAFIrLFFTEiAHrtemw8KR2O+sXREkYAJleJhdYtmwIGlpSS1dGbi796H3tP+5lPQolraVIKpwaS/tnq3oI7jMOnebOVWb/Izqm5P4qXXS / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38ufi+jZUGutEWqu2nTRDE4iIgcAG3jEZNKymYEvY1OtGioCkvhjOi+cYLNWz08N/oQ2LJZNrdMArql3gunQ7lSN7eGAmz8DNdrTfd/06sRcL97qp5vGsVUqg8MetF+jYuQLQ3xzFS4r2CKNPNcMop5 / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38zTxYqr7gv76RX643RUJ/0M1e2G5eHbJAJryue24v+L4YDgn8Jtjf2gYMdN2Km7OGzwITPSr784i+zOmHP3RL9I49foUqtOJqt8VeGasLoEKI3nTr3DTPqph6Sj2JohwlVbOWtV+9TAHxi/iuUQ58K / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU38zTxYqr7gv76RX643RUJ/0wf6mDu8xvR3028pmumVpRJygsVwpZZiwGcsi8kT979f3kFqhtBU8angxXIzrUur+q8orvwquVQr3gRS5xuBe3i0XgvWLRnWsPfHYsOfIAep1IvpgGcRD3McPsH1wWDTv / (not set),1,1,1,0,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39+9sWVaYjhhVxaGjv82rA3SV+aiE1eO3Yz1cGE3u8EU+R4SvGLBu5Yvdtb++/vLySKJiHRWzIdGvM7ct5li5JSrLz18t/nhNNVGEReJ+ogHKiGHN+Z10sTk3qWBoJTy2YV95rocA5Zfwf7FDypJ0V6 / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39+9sWVaYjhhVxaGjv82rA3o2elNNnZyhM6UAsiuRdx1YScTWg8lWfS7VlhSirIDuvGs7A7ZsX6CX4MNH31PR2XaaD+I+RyMtDmlpMecTTezaQB9uryI9OCkcLHcCEdLuc3+zg54rderlk6u3FGGASE / (not set),1,1,1,12,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39BBOgfh0knSWSuyVg7vgD6frUhI/C9ZGYji9PpvtTc4iilJTzs/mPSkbMhFeyIdDqJZCGgoayKS4zkcArCayhTC+OauBa2GQ4GTUPKgMea4GK3SMKmBTb4m+7U4FHu/BPy+jOroqJy2axj/W9kF/lw / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39Fs0Moe8Cor9AgEBE9GISMECv9EwOrRk+B36X8bkJBqhjLKYWhg6VF5rDY7jn3NowPbacvrlxj4lyT0TiLCChW6ktrXIocJZPS5umvUk66hRzhNODoa5jr9oZEOfkFn8rmWovn+WvnQ7WU0PluyKcW / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39Fs0Moe8Cor9AgEBE9GISMITM7PHcsHTvgBSM9bpwGjG2ZPUR/YQMnFvZEi1kp7A5TlGsbkj/3PA9JwGu8hVQ+/khEgOmuyw0SAYfzUVXfUeJFsDE+rus34EvvLxBruet5CaZiOuB7cAw2zpeQAyzp / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39Fs0Moe8Cor9AgEBE9GISMKpQiYxiig8XMXNHRYUABY36Z4UI6KKPTp1nVDUFoCFubkOIe3Ir8TxWyIFQS46ad3nRnS3OFTRPsz7CdtbSFRsqWF48F6yVmPMNxBB6Y1dUj3BIq8XtPxy9QiVWVNV1E / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39Fs0Moe8Cor9AgEBE9GISMxO75AZM7nNFD55BwyLp/YQLSuvd5cq20YXZ27Mi/yClyw2zRTsUJQ1GMw26hpXffJ6c25Nscu2454YDRsdome/Fu6cE8J6LeAVzoN9RML+yRkqZVjs2r/VawHZzHd+8s / (not set),1,1,1,5,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRD0JyMvnXzvDpX46QTJ6w9OA6DMw6OZK0vA8LxsDdcsggvLCF/p5jDKQGeEaU40ZMS+R/jVAp4COlFduR3hgmomOp47UUMnIVFE2Kc5PbIvxVc8kbR96eeueV4UQe9auMD / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRD2HI5EFAqmkmGv14sQkCezFbz2ajHckPekDAvprwURAUmPOeRAzUzT9q5g4U68rBLg90lPWGrIHAHJAjjHdzl2Qt8ddXL7rm/wf6YgnU+bokaPS3CtM5DBxIeHwlmwtiC / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRD3Q5IFA8WBNRA1l01Uj96xCR67MEdXqCaeYqqwMr6QXbWsgps60SvPFbBT0+RDnIF1M4zBKTpG0PsTjFc5xILNtUByfrtNh1cSj/4K9rKbmSMyN3NG+8f2ANiAHKvtDHf / (not set),1,1,1,25,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRD4iFWh+64yoy6dnc+sh20lrQWs8Zdf8VAYUf+cCFEXC7ht8BlcD0zPgKRreVmDNyW4kfpr421klAEnMas9RmwQEXKKd07+DsO7BgTIwstdtqENjtvAxY5eSX9pfbQHt8Y / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRD6vsecfaH2qIwxZymzMEKc5vsCOSarY/dwLWkCGK9EdwE8ItriKyPn6Eu5BHvMSK54MRmnXA+CLFOyvPeIKqDVvTMGwXnKGQtOJZ+O7z83PVaWzF/hTGt2iHsSYoGllru / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDBj0yiTfsASV1tgHTRtaFIwav4JKGuv9WXYiWJIDcwestf3w0IY5eVWMTaY0XvrBB/V/r6nfuwClkO0aeO92i7yU2BRpJCZR2jO4suWjfr0lS4NwwicCqKrSZ2kN3uKX0 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDDkzWNlXBcqGsTmx1il9KX86UCZzKNlZ2gl1uwyRm8oqNqf2YG5YFbmnN5ZRN1wldUuITLhx+u0TnesDn/kNMjDnEZ52VvAq2jPsDCddA7sY4sB8DLA7+ZAhIXhZSIRJQ / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDLiWNyfDrY01KNSYpLCBuLcxMBR3H4j/npKlHv2/LGvutkFxKEGTsO1URjM1KViG/MM04ZUvBi6GBYV6pi2jg8yeXQ5AT8zufNFrKPZ6JSG2LRU1ApV9b/PvB9jqASzFF / (not set),1,1,1,10,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDMMNCLTMGrQEp4AEhml868MPYPCRPpSwLg4VPhgPvWQdE04E9uV/0h6AgK61kA8EXdCg+HFhnpLUMDay9t0GExVlP1cQhMDrpAIiPeZHBlj+hHjT8g01kBisE/fSUy+4z / (not set),1,1,1,0,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDO18ap+5wTCyb6B3HKDCb22JhKzyS5XDHd2UCGz8Kz//z2NMR1JGw+ewhj9L21w/0nui6GiaF0YF4M3PmBbBUB2kFWU4sYGUltJgkl+/Q3hlSDV3Y9+G1C+u8z7ZrcQcb / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDVcCnqniPJ0nqJP7285y6V40TcEdLUCVap/4NkbN/y8J8uwZvQjWeMrCnvyvREgxKcl1wyzif3UKtdODZFZlnViDdKcHPcgPr6pHWp99urC0lyfsbHgryu14t1Ef4PM15 / (not set),1,1,1,18,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDZ8FjDqNnAr3mFrQ/WNefqErcL7mpeHtd7KubPVCqmHMDQOCmIQSYIftsLxICucstD4r2RIggwKth+s9B1Vi2MPMAS/RBwLAnD+rfTuKbzYpXwMhc//6dfT5nTbV7+USh / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDgMHHE2QhLa6tEevRJmfqg5o4biTuD71FCSDM5rgTyvDLJekFH2wmoGWjnC3PNxCLg0ee9E0cjHxSmtjxqbutRd0Xfe5UhdVKn08fc/S0Kilo81sv8rvIoyDiIF1Zhct6 / (not set),1,1,1,0,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDi6kiwK2Cna8XIbZcZtotuQgyS+db9+Pm1D6diRf2bAeKfXcP91zOSyrHRxk5UYOmC20ddypIt9sGbsu/9NO1ng4vzHXV6etr+2ohAFtszCLMM/RXYFewhDEUm9K8s+g+ / (not set),1,1,1,139,12,12,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDkCZJD63j0OKiqB+Uea3ZZK/zWSCqh4Z+Yrxscbfqc9ZDxufXJeRXvZskUFwTDnxtWykqLjobOdDVlRrtbYERJynn+wQ2pUtii6hZfzeJ5di6sL8V+LfeVO2YoFBKUMoo / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDvAtDvso8FtPtDBiE5Yai3okPks2VxcfTm5pX6SFCrohd/Mag4WWip0j+qJmJNzZ/hLEX0nnp+q9Wx7B9xe1Adjsdo7WyDy1JB1+Fqt/TH8mI0rjl5BT8OxfT0S5jOxx0 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39N41EzyE3U1zd+qvVR4jRDxGfGs6odRIQmb1a27l1n0/By6DNp7CMf4YrgJLlDUYc0cTTZpMkkzX8pOzf5bs61E+Hm+j3IcSkRGBD1oxz1JKS0sohElsOfmT1BXddBiqhMZ6FJP4q3pLoaTyDmRWOb / (not set),1,1,1,0,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39NNBlVbM0j8mihOI+v6QN/21KIPAc8hvPggftXSHRBlFyNRnPdN4/IWhGA7qUBaPw2Qx8BPiiyoxMhmMYpbnGAfAVkyLTvKo4UU3GYZqf9KlgfoTdPn1I52nLlpI8hIjH6jWKRJNKmZXGKTejzQw0f / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39XAbtPjcBAFd3gGE9w9Xuz5ESyXeFd8pMUt6iAFyeVeFFcnojlewEoMmwntcwhun97D5DV+MUTx1F6ZkuCHbj82ViB6hakY8EDVzA2/obHgM3JJ5Tt9jwm4xR6tjnzi9QMMr/gdz0sLnHJCI19YrD6 / (not set),1,1,1,0,11,11,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39XAbtPjcBAFd3gGE9w9XuzNna9SNa9NIFarjU+ZfNeb1E3/Sr9BTP0+ronsrp/J4jsk2mBnLE/0BrGoKWil+2XJRa5K9mVFVjQvGPWAeHwMBkr2HkD0HZ41DnrGpx4HgESLz0OB4bxLsYsY+/kkh45 / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39XAbtPjcBAFd3gGE9w9XuzZ5cFJh6/BZ1M0K1nNMOy/uG0J80vrNp1ZFyQj5i/K7dZwLT8bKo9E9521t0V89ObfwTGARKE3VeYri6t/jiQrSJiZhywGnOpERRfW6+Jee5l/ukGlkjIZu58N9wtZXPz / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39ekYidYUVY6lw1gQKWMsGkJjk3gV/HuzpksWCMjw9uW4T4wXq8Thug6pXd55s76wfFdNf8uXYle1EOYUJVuXBRkVrTEDoyrXDNdC9DXnVWdiXRBlmD0K63Fm2xFeb6mAuUWrB6Y8lHNTiuCfbutMjg / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39hSS1/cyDzsbcQxGxyy3rvFcFT1I0msXEQWfyN+fjhmO6j4uoiMYkyREyViyItxNtEhFgfyNhoKrYjGIDpj45myGRF5dYPIKtfAEvaLkIZfBAbSakaPeaHlWewbcYOjDzXOd3z+28yzg4Lv8GIZ2FV / (not set),1,1,1,0,9,9,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqIrbnoXqZ5F7vnlMujpAU39hkDdCUUcb1hQ7hU50sDobrE9HUxa6p9dykB1+N8YFV1P8HrAUkvii8iIwmH8JOJaFp/rnRO+ZsBYO65v8/epZKFsiSZLOlVyaBvjon7zH1MJ4pmgQj3IVIKNttQ4lrodZ97xCEDpUkCmRpQm3NSCe / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu/0av0IyHdJp4wenyCLT63wFU80DFGPDwob7lAIZUuoKiU8v8SrCDu3VWx7dWj+wBnrFaCX8lYR14zGU1E3xsmO1mDX4IgO0ygzfDsCD2LIg= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu2WXTbIi/JFpyIvmdpmKgh+f4FTMbfWFfrir4psuCL8PhDlIu+jJFjYPDZUZbyAcQ5watfdIi9JAKbc3UT12vuNkXaCYy6rpThxShkmLlC0woGlzaMBN+9oXI/g5+eXin / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu7JLj2g+V8V1QMIEItAQv13u9rdYmjZrAkfGIQ2FZE2kn32lf+adSn+QiqMFw9by4xMO97CkAOqeJB3zJhfqCnJb5LHh0MkW1VZ/TTxGX2pM= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZu7nFvPDLRAJLNVbZjcGoIKTuHE+oOsdExmLfVVNFpWKFMxRAAOc2/EXvgUknH5Ai4BeW0A5F8bAuK8qmfsvUt1J+djtellbfOFmUriWm5fB6EK1MmhxY9RQHTG8Njt5Ki / (not set),1,1,1,3,8,8,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuB87mVUxsybiJsLoqrYWgp3uR7V29bKH3EzQtqr9ifNs+7fymigozvQdI6fOMzJDfGhGTAM+ADJIHbnE2CqLV2Tzd5+lfTDaWlqsWZGbDfjBgt8J8twAT2OuUlAt2pyBh / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuFDNv9swQpbuI57iLMOeQnjfJJZeKFsamfqRhZGcxWURZVZQESbsh58MFzO+xMnf0MqZcINJkMsK8j3FWQJmXY5ICuBXxCtjQEWR5KSHXgT8= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuIbFUYuTEEl9F0kkJtLc6tZ5XdrrwPRUzTwWv5+QPzC3WH0Dv66bie8O+ELKgomdpHqsLn7d91S5rQCxmrfSz8VjUAU6rc5dQ+mNuiFiCsnA= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuWCQeEW8wJjVMIq90+6yQN9TqWQ1LLnLUeRbZCLVAqBeTZy8xnxejbgeUQvBTbg7WhIuFTCFpJSXJFuaoHFo5e4XRE6P5UK3aIw75LlGMQD0= / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuZHE164wFOqq6PtYYMTeSXzPB4RGD6G2LVwjdUyO8o0npvNqzZFLeq68a7hjgv5GS4zmJpNVn5OcKsJZK81VybLlcxMtSaQgvWQI+I3qLiKg= / (not set),1,1,1,0,5,5,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuZiwHH70UpIhITnVyN19TLrdJ0tGE4JuxGG+FGDt6Ou4H7GU5LbeGW3h3FbgNUm4/qiIYLvne0EbeBmtKHwnfDLDfuEIbZY0Ulkb4TdslAcszSQ6ROGb64iiLmKVZmnBX / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZueQgsVDY/Q3N8nFTYneD7F0ZhsBFSHAOXjsoAFFYUav90TsOanD0FyUdV9HsLFRdzffnv6NAPENDqIKVjxbFyTrQLXmj6o5DS2wO1WeyqwV0= / (not set),1,1,1,0,10,10,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZunatwS9Doj5cJSNkuvvIkB3xlWxM76a5qu7WOmHVkZJtUXao4PqrCmHW6kJI1hLLer/TzcDlmbWf4h31nQdZYwES24oljOXQlhmgFVOg6CdEQTmjF/GN2HaMvPG1pF90q / (not set),1,1,1,0,6,6,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuo1n/nWMR9e7vzmaRfLzNwUyelTD2sqLxEEAUq9pUOJa6ZZYULLjVYJYwweFbxmVgAMOOdKrOVv29coHxlCoxaB4dYM9pfNZQm+yYJ7odUD4= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZut/LSGhAExDSyRq6yk1UQYiPT0gAiuxSxb/6HwSMH5qY1zhzonWmmsw3y9qS3oC9AqfdxOV8c6TpxCy3IYdi48QoZpBlHv/sCGMl5ryfBHI/0Gv9/M0cEbGQU8FAxW5u7 / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuwxk0uxTlZMpWHb3WZol0t4G6OoxpV7W6r44JjaRc/Dl1EpRAHdGYoyXCJSu6FoxMfbzFSczwO0JyVZi+7T1fsLc1Fc+cKZIqefjqHSweH6I= / (not set),1,1,1,0,7,7,0,0,0
+CT-Campaigngrow_input=p/ST7jDGNZsmOZU+eCBBqNIL2z3fbaBCL57BnLjqr3J1f+bhuLuRSh8e+hJxCOZuzefV6ee/YLw8AzBss1oY59kkQGSshy1cTmgy1MIBNRYT+uba/KyQy9mjOFM2hnkHCAMz2Okfr+EqZb1OEm95VkOz1uMpNHoPzqvlZZvlre0= / (not set),1,1,1,0,7,7,0,0,0
+MSU Admissions 2025 Meta / Online,1,1,1,0,4,4,0,0,0
+MSU Admissions 2026 / B Tech AI ML Brochure,1,1,1,0,8,8,0,0,0
+MSU Admissions 2026 / Offline,1,1,1,0,6,6,0,0,0
+MSUEFOS / cdwm,1,1,1,0,5,5,0,0,0
+Offline Brochure Download / Consultant Nps Insertion,1,1,1,0,7,7,0,0,0
+RAW DATA / Assam,1,1,1,35,34,34,0,0,0
+RAWDATA / WEST ASSAM,1,1,1,95,29,29,0,0,0
+Raw / Assam,1,1,1,14,5,5,0,0,0
+Raw / West Assam,1,1,1,16,11,11,0,0,0
+Raw Data / CBSE,1,1,1,7,10,10,0,0,0
+Raw Data / NBWBCHSE,1,1,1,3,4,4,0,0,0
+Raw Data / WhatsApp,1,1,1,3,4,4,0,0,0
+Webinar / WA,1,1,1,0,3,3,0,0,0
+West / NewDelhi,1,1,1,65,23,23,0,0,0
+a70ef9029418cfa444f8ea4788d27850.safeframe.googlesyndication.com / referral,1,0,0,0,3,3,0,0,0
+a7858e830266511b1c75f2680c313e6d.safeframe.googlesyndication.com / referral,1,1,1,2,9,9,0,0,0
+ac1dca9f2c1c559642c62bc37fcf7bdd.safeframe.googlesyndication.com / referral,1,1,1,1,5,5,0,0,0
+agent55.com / referral,1,1,1,105,15,15,0,0,0
+ai.earnhari.in / referral,1,1,1,1,5,5,0,0,0
+alice.yandex.ru / referral,1,1,1,123,5,5,0,0,0
+alleba.com / referral,1,1,1,49,6,6,0,0,0
+almashines.com / referral,1,1,1,0,4,4,0,0,0
+ansearch.com / referral,1,1,1,0,5,5,0,0,0
+ap.wps.com / referral,1,1,1,12,5,5,0,0,0
+apexoo.com / referral,1,1,1,0,4,4,0,0,0
+app.lemlist.com / referral,1,1,1,20,13,13,0,0,0
+app.linkee.ai / referral,1,1,1,2,5,5,0,0,0
+app.sptix.ai / referral,1,1,1,9,5,5,0,0,0
+apply-msu-edu-in.translate.goog / referral,1,1,1,0,4,4,0,0,0
+ask / organic,1,1,1,2,5,5,0,0,0
+atinogroup.com / referral,1,1,1,256,6,6,0,0,0
+au.search.yahoo.com / referral,1,1,1,199,9,9,0,0,0
+away.vk.ru / referral,1,1,1,0,5,5,0,0,0
+baidu / organic,1,1,1,0,5,5,0,0,0
+bbb17b91ad83f688eaa3d28f8fd432c5.safeframe.googlesyndication.com / referral,1,1,1,4,6,6,0,0,0
+bdd7e90dfad122da2bd471f4675d9e71.safeframe.googlesyndication.com / referral,1,0,0,0,3,3,0,0,0
+behjoo.com / referral,1,1,1,0,4,4,0,0,0
+benefits-dashboard.billionscareer.com / referral,1,1,1,0,10,10,0,0,0
+bigrock.titan.email / referral,1,1,1,16,6,6,0,0,0
+biomed-search.com / referral,1,1,1,0,4,4,0,0,0
+blackbox.ai / referral,1,1,1,8,5,5,0,0,0
+blindsearch.fejus.com / referral,1,1,1,1,5,5,0,0,0
+businesscentral.dynamics.com / referral,1,1,1,0,5,5,0,0,0
+byupw.instructure.com / referral,1,1,1,15,5,5,0,0,0
+c417053c3b22597f8fde9f808b4a44b5.safeframe.googlesyndication.com / referral,1,1,1,2,5,5,0,0,0
+c7afc342896b19aedd99f724eada0b35.safeframe.googlesyndication.com / referral,1,1,1,2,6,6,0,0,0
+career-kiran.github.io / referral,1,1,1,0,5,5,0,0,0
+careerji.com / referral,1,1,1,0,4,4,0,0,0
+carewellpharma.in / referral,1,1,1,0,4,4,0,0,0
+cfcc69b4785cc954ab56490acd57490b.safeframe.googlesyndication.com / referral,1,1,1,6,6,6,0,0,0
+cigmapedia.com / referral,1,1,1,0,4,4,0,0,0
+coccoc.com / referral,1,1,1,11,5,5,0,0,0
+collegedunia / (not set),1,1,1,0,4,4,0,0,0
+collegedunia / drip,1,1,1,0,4,4,0,0,0
+collegedunia / text13,1,1,1,0,4,4,0,0,0
+collegedunia / textmailer,1,1,1,0,4,4,0,0,0
+collegedunia / wapp,1,1,1,0,4,4,0,0,0
+collexo.com / referral,1,1,1,0,9,9,0,0,0
+company-grow.hamaraacademy.com / referral,1,1,1,0,5,5,0,0,0
+compfight.com / referral,1,1,1,0,4,4,0,0,0
+copilot.microsoft.com / referral,1,1,1,152,7,7,0,0,0
+coursera-enterprise.lightning.force.com / referral,1,1,1,0,4,4,0,0,0
+crimejasoos.in / referral,1,1,1,0,4,4,0,0,0
+d0216b3b969722c4f16804dabf3fcdea.safeframe.googlesyndication.com / referral,1,1,1,1,6,6,0,0,0
+d37e99ed4df855487429f0d65edea947.safeframe.googlesyndication.com / referral,1,1,1,25,8,8,0,0,0
+d3d873d9d5e3d3c1807cfdbcfe5ba3fa.safeframe.googlesyndication.com / referral,1,1,1,2,6,6,0,0,0
+dashboard.aishe.gov.in / referral,1,1,1,28,6,6,0,0,0
+dashboards.corp.google.com / referral,1,1,1,1,6,6,0,0,0
+dd5edfc8fdef010b99452c0621ea93ce.safeframe.googlesyndication.com / referral,1,1,1,3,6,6,0,0,0
+deeperweb.com / referral,1,1,1,2,5,5,0,0,0
+deref-mail.com / referral,1,1,1,395,48,48,0,0,0
+devshrmconf.wpengine.com / referral,1,1,1,0,5,5,0,0,0
+distill.collegedunia.com / referral,1,1,1,101,27,27,0,0,0
+draze.com / referral,1,1,1,0,5,5,0,0,0
+drm.lightning.force.com / referral,1,1,1,13,6,6,0,0,0
+duplichecker.com / referral,1,1,1,5,8,8,0,0,0
+e578d010240b3cf7c79ccce2c016e51d.safeframe.googlesyndication.com / referral,1,1,1,0,5,5,0,0,0
+e9fe4988dc3dd04f622947edeaacd265.safeframe.googlesyndication.com / referral,1,1,1,1,6,6,0,0,0
+earn.jkjobs.live / referral,1,1,1,0,4,4,0,0,0
+esportesblog.com / referral,1,1,1,8,7,7,0,0,0
+euc-excel.officeapps.live.com / referral,1,1,1,4,6,6,0,0,0
+f312e126acfc659cca3027ae68ce11ac.safeframe.googlesyndication.com / referral,1,0,0,0,4,4,0,0,0
+f3ad76b8b687c9096c12ce756c7e3110.safeframe.googlesyndication.com / referral,1,0,0,1,5,5,0,0,0
+f5email.rediff.com / referral,1,1,1,109,9,9,0,0,0
+f9ee8abd4ac20cf591064449f5acf64e.safeframe.googlesyndication.com / referral,1,1,1,76,12,12,0,0,0
+facebook / sc,1,1,1,7,6,6,0,0,0
+fb-SiteLink-2 / paid,1,1,1,0,5,5,0,0,0
+fb054b7f64e36702f36e526de56abf66.safeframe.googlesyndication.com / referral,1,1,1,2,6,6,0,0,0
+fcmobileredeemcode.com / referral,1,1,1,0,4,4,0,0,0
+finday.com / referral,1,1,1,0,4,4,0,0,0
+findelio.com / referral,1,1,1,19,15,15,0,0,0
+forelook.com / referral,1,1,1,0,5,5,0,0,0
+freejobalert.com / referral,1,0,0,1,5,5,0,0,0
+futuristicskills.com / referral,1,1,1,0,5,5,0,0,0
+fuzzfind.com / referral,1,1,1,0,5,5,0,0,0
+gayathriayurvedics.in / referral,1,1,1,0,5,5,0,0,0
+genetec.crm3.dynamics.com / referral,1,1,1,20,6,6,0,0,0
+gjlg.com / referral,1,1,1,0,4,4,0,0,0
+glassdoor.co.in / referral,1,1,1,0,5,5,0,0,0
+goodsearch.com / referral,1,1,1,0,5,5,0,0,0
+google / Display,1,1,1,0,4,4,0,0,0
+gpt4login.com / referral,1,0,0,3,5,5,0,0,0
+gstatic.com / referral,1,1,1,20,6,6,0,0,0
+gteckayamkulam.in / referral,1,1,1,3,6,6,0,0,0
+gv4eq834op.in6.nopaperforms.io / referral,1,1,1,161,71,71,0,0,0
+gycore.in / referral,1,1,1,79,7,7,0,0,0
+hamarahr / (not set),1,1,1,7,8,8,0,0,0
+heapr.com / referral,1,1,1,1,5,5,0,0,0
+hr.economictimes.indiatimes.com / referral,1,1,1,22,5,5,0,0,0
+huubs.imente.com / referral,1,1,1,0,5,5,0,0,0
+iconfinder.com / referral,1,1,1,90,7,7,0,0,0
+incrementors.com / referral,1,1,1,4,6,6,0,0,0
+influencer / instagram,1,1,1,1,4,4,0,0,0
+instagram / post,1,1,1,0,5,5,0,0,0
+jamasp.com / referral,1,1,1,0,4,4,0,0,0
+jariblog.online / referral,1,0,0,0,3,3,0,0,0
+jnq9rk04dw.in1.nopaperforms.io / referral,1,1,1,260,25,25,0,0,0
+jobkaka.com / referral,1,0,0,0,3,3,0,0,0
+justdial.com / referral,1,1,1,128,6,6,0,0,0
+lambda.qsensei.com / referral,1,1,1,109,70,70,0,0,0
+leakix.net / referral,1,1,1,61,16,16,0,0,0
+learningnetwork.cisco.com / referral,1,1,1,0,4,4,0,0,0
+letest25.co / referral,1,1,1,0,4,4,0,0,0
+localhost:5500 / referral,1,1,1,0,3,3,0,0,0
+login.microsoftonline.com / referral,1,1,1,0,4,4,0,0,0
+login.webshield.com / referral,1,1,1,16,9,9,0,0,0
+m.baidu.com / referral,1,1,1,2,5,5,0,0,0
+m.youtube.com / referral,1,1,1,3,5,5,0,0,0
+mail.icfre.org / referral,1,1,1,15,10,10,0,0,0
+mail.yahoo.com / referral,1,1,1,4059,129,129,0,0,0
+mail.zoho.in / referral,1,1,1,0,4,4,0,0,0
+malaysia.search.yahoo.com / referral,1,1,1,23,5,5,0,0,0
+mamma.com / referral,1,1,1,5,9,9,0,0,0
+mba_raw_data / whatsapp_blast,1,1,1,0,4,4,0,0,0
+medhaviskills.medhaviskillsuniversity.org / referral,1,1,1,195,15,15,0,0,0
+medhaviskillscenter.com / referral,1,1,1,0,4,4,0,0,0
+metacrawler.com / referral,1,1,1,0,4,4,0,0,0
+mokka.corp.google.com / referral,1,1,1,38,13,13,0,0,0
+monstercrawler.com / referral,1,1,1,1,5,5,0,0,0
+msftconnecttest.com / referral,1,1,1,0,8,8,0,0,0
+mstv.co.in / referral,1,1,1,0,5,5,0,0,0
+msu2.eazyclasses.com / referral,1,1,1,4,6,6,0,0,0
+multisearching.com / referral,1,1,1,28,15,15,0,0,0
+my.hamaraacademy.com / referral,1,1,1,12,20,20,0,0,0
+naver.com / referral,1,1,1,0,4,4,0,0,0
+nextgeeker.com / referral,1,1,1,1294,6,6,0,0,0
+nexus.appen.io / referral,1,1,1,527,7,7,0,0,0
+nifandheri.com / referral,1,1,1,0,6,6,0,0,0
+nism.ac.in / referral,1,1,1,166,6,6,0,0,0
+nnwa.in / referral,1,0,0,0,2,2,0,0,0
+notebook.google.com / referral,1,1,1,54,5,5,0,0,0
+nowgoogle.com / referral,1,1,1,0,5,5,0,0,0
+onelook.com / referral,1,1,1,12,15,15,0,0,0
+onestreamsoftware.lightning.force.com / referral,1,1,1,1,6,6,0,0,0
+oolone.com / referral,1,1,1,0,5,5,0,0,0
+p14686057m.in1.nopaperforms.io / referral,1,1,1,180,68,68,0,0,0
+panda-search.org / referral,1,1,1,0,6,6,0,0,0
+pk / blog,1,1,1,0,6,6,0,0,0
+pwrtool.online / referral,1,1,1,30,7,7,0,0,0
+querycat.com / referral,1,1,1,7,15,15,0,0,0
+quora / quora-response,1,1,1,0,5,5,0,0,0
+quora/ / quora-response,1,1,1,0,5,5,0,0,0
+qwant.com / organic,1,1,1,1,5,5,0,0,0
+raw_data / whatsapp_blast,1,1,1,0,4,4,0,0,0
+rawdata_blast / teacher_conclave_data,1,1,1,2,7,7,0,0,0
+rediff.com / referral,1,1,1,0,4,4,0,0,0
+refseek.com / referral,1,1,1,0,5,5,0,0,0
+roamroles.com / referral,1,1,1,4,7,7,0,0,0
+ror.org / referral,1,1,1,1,5,5,0,0,0
+roysearch.com / referral,1,1,1,3,5,5,0,0,0
+rt.uvic.ca / referral,1,1,1,329,11,11,0,0,0
+safe.menlosecurity.com / referral,1,1,1,50,6,6,0,0,0
+saml.saasprotection.com / referral,1,1,1,42,6,6,0,0,0
+scour.com / referral,1,1,1,1,5,5,0,0,0
+scrub.sourcescrub.com / referral,1,1,1,0,5,5,0,0,0
+search-dra.dt.dbankcloud.com / referral,1,0,0,0,2,2,0,0,0
+search.com / referral,1,1,1,1,5,5,0,0,0
+searches.com / referral,1,1,1,0,4,4,0,0,0
+searchhippo.com / referral,1,1,1,23,17,17,0,0,0
+shiksha / CM-RECO,1,0,0,199,3,3,0,0,0
+shikshaads.in / referral,1,1,1,6,11,11,0,0,0
+silobreaker.com / referral,1,1,1,1,5,5,0,0,0
+similarsitesearch.com / referral,1,1,1,0,4,4,0,0,0
+smallseotools.com / referral,1,1,1,0,5,5,0,0,0
+social / referral,1,1,1,0,6,6,0,0,0
+soorsa.com / referral,1,1,1,6,13,13,0,0,0
+soso.com / referral,1,1,1,0,4,4,0,0,0
+squikoo.com / referral,1,1,1,0,5,5,0,0,0
+squishysquashysearch.com / referral,1,1,1,4,5,5,0,0,0
+stinkyteddy.com / referral,1,1,1,7,10,10,0,0,0
+str-search.com / referral,1,1,1,95,7,7,0,0,0
+sweetsearch.com / referral,1,1,1,0,4,4,0,0,0
+tatacomcrm.my.salesforce.com / referral,1,1,1,1,6,6,0,0,0
+tech.apkatm.com / referral,1,1,1,13,5,5,0,0,0
+techcornernews.com / referral,1,1,1,0,4,4,0,0,0
+terra.com / referral,1,1,1,0,4,4,0,0,0
+theimmigrationworld.com / referral,1,1,1,0,4,4,0,0,0
+time2inform.in / referral,1,0,0,4,5,5,0,0,0
+trainologyx.com / referral,1,1,1,6,6,6,0,0,0
+twicsy.com / referral,1,1,1,0,4,4,0,0,0
+ubaiidansarii.github.io / referral,1,1,1,0,3,3,0,0,0
+ubzbebue / (not set),1,1,1,4,7,7,0,0,0
+unplix.com / referral,1,0,0,0,3,3,0,0,0
+us3-app.outplayhq.com / referral,1,1,1,0,5,5,0,0,0
+v0936we98r.in1.nopaperforms.io / referral,1,1,1,10,12,12,0,0,0
+vadlo.com / referral,1,1,1,0,5,5,0,0,0
+vatrouver.com / referral,1,1,1,1,5,5,0,0,0
+vertexaisearch.cloud.google.com / referral,1,1,1,0,4,4,0,0,0
+veryicon.com / referral,1,1,1,0,4,4,0,0,0
+wbjobupdate.com / referral,1,1,1,2,6,6,0,0,0
+wbsrch.com / referral,1,1,1,1,5,5,0,0,0
+webcrawler.com / referral,1,1,1,5,5,5,0,0,0
+webfetch.com / referral,1,1,1,0,4,4,0,0,0
+webnocular.com / referral,1,1,1,0,4,4,0,0,0
+webtechs.wasmer.app / referral,1,1,1,14,6,6,0,0,0
+whatsapp / (none),1,0,0,0,2,2,0,0,0
+whatsapp / msg,1,1,1,3,5,5,0,0,0
+whatsapp\ / (not set),1,1,1,1,4,4,0,0,0
+wiris.lightning.force.com / referral,1,1,1,0,11,11,0,0,0
+workona.com / referral,1,1,1,0,3,3,0,0,0
+wp / doc,1,1,1,7,5,5,0,0,0
+wz84pj74qm.in1.nopaperforms.io / referral,1,1,1,440,87,87,0,0,0
+wzol10wmgx.s30.nopaperforms.net / referral,1,1,1,0,4,4,0,0,0
+xlm4wn1407.in1.nopaperforms.io / referral,1,1,1,17,11,11,0,0,0
+yandex.com.tr / referral,1,1,1,8,6,6,0,0,0
+yandex.kz / referral,1,1,1,43,5,5,0,0,0
+yep.com / referral,1,1,1,1,10,10,0,0,0
+youdao.com / referral,1,1,1,12,11,11,0,0,0
+yummly.com / referral,1,1,1,0,5,5,0,0,0
+zapmeta.com / referral,1,1,1,2,10,10,0,0,0
+zhongsou.com / referral,1,1,1,25,17,17,0,0,0
+zuula.com / referral,1,1,1,0,4,4,0,0,0

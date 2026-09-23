@@ -1,0 +1,31 @@
+# ----------------------------------------
+# Events: Event name
+# Account: Medhavi Skills University Sikkim
+# Property: Medhavi Skills University website
+# ----------------------------------------
+# 
+# All Users
+# Start date: 20260101
+# End date: 20260923
+Event name,Event count,Total users,Event count per active user,Total revenue
+page_view,2316903,333480,6.948943968232069,0
+scroll,694731,144085,4.823482444751477,0
+user_engagement,547634,116122,4.744829617820598,0
+session_start,490682,332880,1.4744493524444846,0
+first_visit,329860,327456,1.0073414443467215,0
+click,53039,18107,2.9298458818980277,0
+file_download,13647,6602,2.0671008785216602,0
+video_progress,5575,1059,5.264400377714825,0
+Lead Form Success,3841,3440,1.1165697674418604,0
+video_start,2543,1459,1.7429746401644963,0
+video_pause,1197,571,2.096322241681261,0
+apply_now_btn_click,726,298,2.436241610738255,0
+video_seek,267,143,1.867132867132867,0
+video_buffering,178,49,3.63265306122449,0
+apply-naw-mid-button,105,95,1.105263157894737,0
+video_complete,97,60,1.6166666666666667,0
+Crux submit lead,29,11,2.6363636363636362,0
+form_start,9,8,1.125,0
+view_search_results,8,7,1.1428571428571428,0
+ThankYou_Page,3,1,3,0
+form_submit,1,1,1,0
