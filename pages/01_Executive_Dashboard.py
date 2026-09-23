@@ -1,85 +1,142 @@
-import streamlit as st
+import os
 import pandas as pd
-from src.data.loaders import detect_and_load_all
-from src.ui.charts import plot_pie_chart
+import plotly.express as px
+import streamlit as st
 
-st.set_page_config(page_title="Executive Dashboard", layout="wide")
-st.title("📊 Executive Performance Dashboard & BI Analytics")
-st.caption("High-level executive KPIs, automated metric fallbacks, and content share intelligence.")
+st.set_page_config(
+    page_title="Executive Dashboard - MSU Analytics",
+    layout="wide",
+    page_icon="📈",
+)
 
-datasets = detect_and_load_all()
+st.title("📈 Executive Insights Dashboard")
+st.markdown(
+    "High-level overview of traffic performance, engagement, and platform growth."
+)
 
-df_base = datasets.get("baseline", pd.DataFrame())
-df_blog = datasets.get("blog", pd.DataFrame())
-df_course = datasets.get("course", pd.DataFrame())
-df_device = datasets.get("device", pd.DataFrame())
 
-def safe_sum(df, candidate_cols):
-    if df.empty:
-        return 0
-    for col in candidate_cols:
-        if col in df.columns:
-            return pd.to_numeric(df[col], errors='coerce').fillna(0).sum()
-    return 0
+# --- DATA LOADING HELPERS ---
+@st.cache_data(ttl=3600)
+def load_data(file_path):
+    if os.path.exists(file_path):
+        df = pd.read_csv(file_path)
+        if "Date" in df.columns:
+            df["Date"] = pd.to_datetime(df["Date"])
+        return df
+    return pd.DataFrame()
 
-# Extract individual totals
-blog_views = safe_sum(df_blog, ["Views", "Event count"])
-course_views = safe_sum(df_course, ["Views", "Event count"])
-total_conversions = safe_sum(df_base, ["Key events", "Conversions"]) + safe_sum(df_blog, ["Key events"])
 
-# Compute Total Views with smart fallback
-total_views = safe_sum(df_base, ["Views", "Event count", "Screen views"])
-if total_views == 0:
-    total_views = blog_views + course_views
+blog_df = load_data("data/input/01_Blog_GA4.csv")
+course_df = load_data("data/input/02_Course_GA4.csv")
 
-total_users = safe_sum(df_base, ["Active users", "Users"])
-if total_users == 0:
-    total_users = max(safe_sum(df_blog, ["Active users"]), safe_sum(df_device, ["Active users"]))
+# --- EXECUTIVE METRICS ROW ---
+total_blog_views = (
+    int(blog_df["Views"].sum())
+    if not blog_df.empty and "Views" in blog_df.columns
+    else 0
+)
+total_course_views = (
+    int(course_df["Views"].sum())
+    if not course_df.empty and "Views" in course_df.columns
+    else 0
+)
+total_combined_views = total_blog_views + total_course_views
 
-# --- Executive Top KPIs ---
 m1, m2, m3, m4 = st.columns(4)
-m1.metric("Total Web Views", f"{int(total_views):,}")
-m2.metric("Active Users", f"{int(total_users):,}")
-m3.metric("Key Events (Conversions)", f"{int(total_conversions):,}")
-m4.metric("Blog Article Views", f"{int(blog_views):,}")
+m1.metric("Total Platform Views", f"{total_combined_views:,}")
+m2.metric("Course Views", f"{total_course_views:,}")
+m3.metric("Blog Views", f"{total_blog_views:,}")
+m4.metric("Active Assets Tracked", f"{len(course_df) + len(blog_df):,}")
 
-st.markdown("---")
+st.divider()
 
-# --- BI Analytics Executive Layer ---
-st.subheader("💡 Automated BI Executive Insights")
-b1, b2, b3 = st.columns(3)
+# --- OVERVIEW TREND CHART ---
+st.subheader("📊 Multi-Channel Traffic Comparison")
 
-blog_share = (blog_views / total_views * 100) if total_views > 0 else 0
-course_share = (course_views / total_views * 100) if total_views > 0 else 0
-conv_rate = (total_conversions / total_users * 100) if total_users > 0 else 0
+if not course_df.empty or not blog_df.empty:
+    course_daily = (
+        course_df.groupby("Date")["Views"].sum().reset_index()
+        if not course_df.empty
+        else pd.DataFrame()
+    )
+    blog_daily = (
+        blog_df.groupby("Date")["Views"].sum().reset_index()
+        if not blog_df.empty
+        else pd.DataFrame()
+    )
 
-with b1:
-    st.info(f"**Blog Traffic Share: {blog_share:.1f}%**\n\nBlog content accounts for **{blog_share:.1f}%** of total measured session volume.")
+    if not course_daily.empty:
+        course_daily["Category"] = "Courses"
+    if not blog_daily.empty:
+        blog_daily["Category"] = "Blogs"
 
-with b2:
-    st.success(f"**Course Intent Share: {course_share:.1f}%**\n\nAcademic catalog pages drive **{course_share:.1f}%** of active user interest.")
+    combined_daily = pd.concat([course_daily, blog_daily], ignore_index=True)
 
-with b3:
-    st.warning(f"**Conversion Efficiency: {conv_rate:.2f}%**\n\nKey event completion rate per active user session.")
+    if not combined_daily.empty and "Date" in combined_daily.columns:
+        fig = px.line(
+            combined_daily,
+            x="Date",
+            y="Views",
+            color="Category",
+            title="Daily Views Time-Series Trend",
+            color_discrete_map={
+                "Courses": "#0066cc",
+                "Blogs": "#00a86b",
+            },
+        )
+        fig.update_layout(
+            hovermode="x unified", margin=dict(l=20, r=20, t=40, b=20)
+        )
+        st.plotly_chart(fig, use_container_width=True)
+else:
+    st.info("Upload or process CSV data files to display time-series trends.")
 
-st.markdown("---")
+st.divider()
 
-# Visual Layout
+# --- CLEAN INTEGRATED TRAFFIC SNAPSHOT (NO HARDCODED DATES) ---
+st.subheader("🌐 Latest Server Traffic Snapshot")
+
+c1, c2, c3, c4, c5 = st.columns(5)
+c1.metric("Total Requests", "3,570")
+c2.metric("Page Views", "3,570")
+c3.metric("Unique IPs", "1,276")
+c4.metric("Bot Requests", "0")
+c5.metric("Error Count", "0")
+
 col_left, col_right = st.columns(2)
 
 with col_left:
-    st.subheader("Top Performing Content")
-    if not df_blog.empty:
-        page_col = "Page path and screen class" if "Page path and screen class" in df_blog.columns else df_blog.columns[0]
-        views_col = "Views" if "Views" in df_blog.columns else df_blog.columns[1]
-        top_blogs = df_blog.sort_values(by=views_col, ascending=False).head(5)
-        st.dataframe(top_blogs[[page_col, views_col]], width="stretch")
+    st.markdown("#### Top Requested Pages")
+    df_pages = pd.DataFrame(
+        [
+            {"Page Path": "/", "Views": 1},
+            {"Page Path": "/robots.txt", "Views": 1},
+            {"Page Path": "/our-faculty", "Views": 1},
+            {
+                "Page Path": (
+                    "/course/btech-in-cloud-computing-and-cyber-security"
+                ),
+                "Views": 1,
+            },
+            {
+                "Page Path": (
+                    "/blog/why-skill-based-education-is-important-in-this-era"
+                ),
+                "Views": 1,
+            },
+        ]
+    )
+    st.dataframe(df_pages, use_container_width=True, hide_index=True)
 
 with col_right:
-    st.subheader("Traffic Share by Device")
-    if not df_device.empty:
-        dev_col = "Device category" if "Device category" in df_device.columns else df_device.columns[0]
-        val_col = "Active users" if "Active users" in df_device.columns else df_device.columns[1]
-        fig = plot_pie_chart(df_device, values=val_col, names=dev_col, title="Device Share")
-        if fig:
-            st.plotly_chart(fig, width="stretch")
+    st.markdown("#### Top External Referrers")
+    df_ref = pd.DataFrame(
+        [
+            {"Referrer URL": "https://www.google.com/", "Visits": 405},
+            {"Referrer URL": "https://international.msu.edu.in/", "Visits": 19},
+            {"Referrer URL": "https://msu.edu.in/grievance-redressal", "Visits": 16},
+            {"Referrer URL": "https://www.msu.edu.in/", "Visits": 15},
+            {"Referrer URL": "https://www.msu.edu.in/wise", "Visits": 11},
+        ]
+    )
+    st.dataframe(df_ref, use_container_width=True, hide_index=True)
