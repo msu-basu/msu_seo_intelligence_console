@@ -1,15 +1,14 @@
-import streamlit as st
 import pandas as pd
 import plotly.express as px
+import streamlit as st
 
 # Page configuration
 st.set_page_config(
-    page_title="Analytics Dashboard",
-    page_icon="📊",
-    layout="wide"
+    page_title="Analytics Dashboard", page_icon="📊", layout="wide"
 )
 
 st.title("📊 Platform & Course Intelligence Dashboard")
+
 
 # -----------------------------------------------------------------------------
 # 1. Separate Data Loaders (Fixes Data Duplication)
@@ -21,12 +20,20 @@ def load_course_data():
         return pd.read_csv("course_data.csv")
     except FileNotFoundError:
         # Fallback sample dataset for testing
-        return pd.DataFrame({
-            "Course ID": ["C101", "C102", "C103", "C104"],
-            "Course Name": ["Python Basics", "Data Science 101", "AI Essentials", "Web Dev Bootcamp"],
-            "Enrolled Students": [1200, 850, 950, 1100],
-            "Completion Rate (%)": [88, 74, 81, 69]
-        })
+        return pd.DataFrame(
+            {
+                "Course ID": ["C101", "C102", "C103", "C104"],
+                "Course Name": [
+                    "Python Basics",
+                    "Data Science 101",
+                    "AI Essentials",
+                    "Web Dev Bootcamp",
+                ],
+                "Enrolled Students": [1200, 850, 950, 1100],
+                "Completion Rate (%)": [88, 74, 81, 69],
+            }
+        )
+
 
 @st.cache_data
 def load_user_analytics_data():
@@ -35,12 +42,29 @@ def load_user_analytics_data():
         return pd.read_csv("user_analytics.csv")
     except FileNotFoundError:
         # Fallback sample dataset for testing
-        return pd.DataFrame({
-            "user_id": range(1, 101),
-            "device_type": ["Mobile", "Desktop", "Tablet", "Mobile", "Desktop"] * 20,
-            "country_code": ["USA", "IND", "GBR", "CAN", "DEU"] * 20,
-            "city": ["New York", "Mumbai", "London", "Toronto", "Berlin"] * 20
-        })
+        return pd.DataFrame(
+            {
+                "user_id": range(1, 101),
+                "device_type": [
+                    "Mobile",
+                    "Desktop",
+                    "Tablet",
+                    "Mobile",
+                    "Desktop",
+                ]
+                * 20,
+                "country_code": ["USA", "IND", "GBR", "CAN", "DEU"] * 20,
+                "city": [
+                    "New York",
+                    "Mumbai",
+                    "London",
+                    "Toronto",
+                    "Berlin",
+                ]
+                * 20,
+            }
+        )
+
 
 course_df = load_course_data()
 analytics_df = load_user_analytics_data()
@@ -56,13 +80,16 @@ with col_c1:
     st.dataframe(course_df, use_container_width=True)
 
 with col_c2:
-    if "Course Name" in course_df.columns and "Enrolled Students" in course_df.columns:
+    if (
+        "Course Name" in course_df.columns
+        and "Enrolled Students" in course_df.columns
+    ):
         fig_course = px.bar(
             course_df,
             x="Course Name",
             y="Enrolled Students",
             title="Enrollment by Course",
-            color="Enrolled Students"
+            color="Enrolled Students",
         )
         st.plotly_chart(fig_course, use_container_width=True)
 
@@ -85,7 +112,7 @@ if "device_type" in analytics_df.columns:
             values="User Count",
             names="Device Type",
             title="User Distribution by Device",
-            hole=0.4
+            hole=0.4,
         )
         st.plotly_chart(fig_device_pie, use_container_width=True)
 
@@ -95,7 +122,7 @@ if "device_type" in analytics_df.columns:
             x="Device Type",
             y="User Count",
             title="Device Count Breakdown",
-            color="Device Type"
+            color="Device Type",
         )
         st.plotly_chart(fig_device_bar, use_container_width=True)
 
@@ -119,13 +146,15 @@ with col_g1:
             color="Users",
             hover_name="Country Code",
             color_continuous_scale=px.colors.sequential.Plasma,
-            title="Global User Distribution"
+            title="Global User Distribution",
         )
         st.plotly_chart(fig_map, use_container_width=True)
 
 with col_g2:
     if "city" in analytics_df.columns:
-        geo_city = analytics_df["city"].value_counts().head(10).reset_index()
+        geo_city = (
+            analytics_df["city"].value_counts().head(10).reset_index()
+        )
         geo_city.columns = ["City", "Users"]
 
         fig_city = px.bar(
@@ -134,7 +163,7 @@ with col_g2:
             y="City",
             orientation="h",
             title="Top 10 Cities by User Count",
-            color="Users"
+            color="Users",
         )
         fig_city.update_layout(yaxis=dict(autorange="reversed"))
         st.plotly_chart(fig_city, use_container_width=True)
