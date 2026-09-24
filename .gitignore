@@ -1,14 +1,10 @@
 .venv/
+venv/
 __pycache__/
 *.pyc
 .pytest_cache/
 .streamlit/
-data/input/*
-!data/input/.gitkeep
+.env
+
 data/processed/*
 !data/processed/.gitkeep
-venv/
-.venv/
-__pycache__/
-*.pyc
-.env
