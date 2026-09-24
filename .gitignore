@@ -7,3 +7,8 @@ data/input/*
 !data/input/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
