@@ -19,13 +19,13 @@ div[data-testid="metric-container"] label { color:#94a3b8!important; font-size:1
 div[data-testid="metric-container"] [data-testid="stMetricValue"] { color:#f1f5f9!important; font-size:24px!important; font-weight:700!important; }
 </style>""", unsafe_allow_html=True)
 
-DATA_DIR = Path("data/input")
+DATA_DIR = Path("data/processed")
 
 @st.cache_data
 def load_agg_blog():
-    p = DATA_DIR/"01_Blog_GA4.csv"
+    p = DATA_DIR/"01_Blog_GA4.parquet"
     if not p.exists(): return pd.DataFrame()
-    df = pd.read_csv(p, encoding="utf-8-sig")
+    df = pd.read_parquet(p)
     df.columns = [c.strip() for c in df.columns]
     bad = {"/blog","/blog/","/","(not set)",""}
     agg = df.groupby("Page path and screen class").agg(
@@ -37,9 +37,9 @@ def load_agg_blog():
 
 @st.cache_data
 def load_agg_course():
-    p = DATA_DIR/"02_Course_GA4.csv"
+    p = DATA_DIR/"02_Course_GA4.parquet"
     if not p.exists(): return pd.DataFrame()
-    df = pd.read_csv(p, encoding="utf-8-sig")
+    df = pd.read_parquet(p)
     df.columns = [c.strip() for c in df.columns]
     bad = {"/","/courses","/courses/","(not set)",""}
     agg = df.groupby("Page path and screen class").agg(
@@ -53,10 +53,10 @@ def load_agg_course():
 
 @st.cache_data
 def load_gsc_queries():
-    for fname in ["gsc_blog_queries.csv","gsc_course_queries.csv"]:
+    for fname in ["gsc_blog_queries.parquet","gsc_course_queries.parquet"]:
         p = DATA_DIR/fname
         if p.exists():
-            df = pd.read_csv(p, encoding="utf-8-sig")
+            df = pd.read_parquet(p)
             df.columns = [c.strip() for c in df.columns]
             for col in ["Clicks","Impressions","Position"]:
                 if col in df.columns:

@@ -21,6 +21,6 @@ if "device" in datasets and not datasets["device"].empty:
             if fig2: st.plotly_chart(fig2, width="stretch")
             
     st.subheader("Device Metrics Table")
-    render_table_with_download(device_df, filename="device_analysis.csv", key="device_table")
+    render_table_with_download(device_df, filename="device_analysis.parquet", key="device_table")
 else:
-    st.warning("No device analytics data (`04_Device_GA4.csv`) detected.")
+    st.warning("No device analytics data (`04_Device_GA4.parquet`) detected.")

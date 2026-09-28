@@ -57,17 +57,14 @@ div[data-testid="metric-container"] [data-testid="stMetricValue"] {
     border-left: 4px solid #38bdf8; padding-left: 10px;
     margin: 24px 0 12px 0;
 }
-.grain-note {
-    background: #0f2a1d; border: 1px solid #16a34a; border-radius: 8px;
-    padding: 10px 16px; font-size: 13px; color: #86efac; margin-bottom: 16px;
-}
+
 </style>
 """, unsafe_allow_html=True)
 
 # =============================================================================
 # CONSTANTS
 # =============================================================================
-DATA_DIR = Path("data/input")
+DATA_DIR = Path("data/processed")
 
 FILTER_EXACT = {"/blog", "/blog/", "/", "(not set)", "", "/home", "/index", "/404"}
 FILTER_REGEX = re.compile(
@@ -115,27 +112,27 @@ def _pn(val) -> float:
 # =============================================================================
 @st.cache_data(show_spinner="Loading GA4 blog daily data...")
 def load_raw_blog() -> pd.DataFrame:
-    for p in [DATA_DIR/"01_Blog_GA4.csv", DATA_DIR/"blog_ga4.csv"]:
+    for p in [DATA_DIR/"01_Blog_GA4.parquet", DATA_DIR/"blog_ga4.parquet"]:
         if p.exists():
-            df = pd.read_csv(p, encoding="utf-8-sig", low_memory=False)
+            df = pd.read_parquet(p)
             df.columns = [c.strip() for c in df.columns]
             return df
     return pd.DataFrame()
 
 @st.cache_data(show_spinner="Loading GSC pages...")
 def load_gsc_pages() -> pd.DataFrame:
-    p = DATA_DIR/"gsc_blog_pages.csv"
+    p = DATA_DIR/"gsc_blog_pages.parquet"
     if p.exists():
-        df = pd.read_csv(p, encoding="utf-8-sig")
+        df = pd.read_parquet(p)
         df.columns = [c.strip() for c in df.columns]
         return df
     return pd.DataFrame()
 
 @st.cache_data(show_spinner="Loading GSC queries...")
 def load_gsc_queries() -> pd.DataFrame:
-    p = DATA_DIR/"gsc_blog_queries.csv"
+    p = DATA_DIR/"gsc_blog_queries.parquet"
     if p.exists():
-        df = pd.read_csv(p, encoding="utf-8-sig")
+        df = pd.read_parquet(p)
         df.columns = [c.strip() for c in df.columns]
         return df
     return pd.DataFrame()
@@ -247,7 +244,7 @@ df_gsc_pg = load_gsc_pages()
 df_gsc_q  = load_gsc_queries()
 
 if df_raw.empty:
-    st.error("No blog dataset found in `data/input/`. Expected `01_Blog_GA4.csv`.")
+    st.error("No blog dataset found in `data/input/`. Expected `01_Blog_GA4.parquet`.")
     st.stop()
 
 df = build_page_df(df_raw, df_gsc_pg)
@@ -261,12 +258,7 @@ if df.empty:
 # =============================================================================
 st.title("📝 Blog Intelligence & Conversion Console")
 
-st.markdown(
-    "<div class='grain-note'>DATA QUALITY: GA4 exports one row per page per date "
-    "(365 rows/page). Active users is a period constant -- this dashboard uses "
-    "MAX(Active users) + SUM(Views) for correct metrics.</div>",
-    unsafe_allow_html=True,
-)
+
 
 # =============================================================================
 # SIDEBAR
@@ -400,7 +392,7 @@ if not df_gsc_q.empty:
                           margin=dict(l=10,r=10,t=50,b=10), coloraxis_showscale=False)
         st.plotly_chart(fkw, use_container_width=True)
 else:
-    st.info("GSC queries file not found at `data/input/gsc_blog_queries.csv`.")
+    st.info("GSC queries file not found at `data/input/gsc_blog_queries.parquet`.")
 
 st.markdown("---")
 
@@ -507,5 +499,6 @@ st.dataframe(dd.sort_values("Views", ascending=False), use_container_width=True,
 
 st.download_button(label="Export Directory CSV",
                    data=dd.to_csv(index=False).encode("utf-8"),
-                   file_name="blog_articles_directory.csv", mime="text/csv")
+                   file_name="blog_articles_directory.parquet", mime="text/csv")
+
 

@@ -13,13 +13,13 @@ st.markdown("""
 html, body, [class*="css"] { font-family:"Inter",sans-serif; }
 </style>""", unsafe_allow_html=True)
 
-DATA_DIR = Path("data/input")
+DATA_DIR = Path("data/processed")
 
 @st.cache_data
 def agg_blog():
-    p = DATA_DIR/"01_Blog_GA4.csv"
+    p = DATA_DIR/"01_Blog_GA4.parquet"
     if not p.exists(): return pd.DataFrame()
-    df = pd.read_csv(p, encoding="utf-8-sig")
+    df = pd.read_parquet(p)
     df.columns = [c.strip() for c in df.columns]
     bad = {"/blog","/blog/","/","(not set)",""}
     for col in ["Views","Event count","Key events"]:
@@ -35,7 +35,7 @@ def agg_blog():
 def load_gsc(fname):
     p = DATA_DIR/fname
     if not p.exists(): return pd.DataFrame()
-    df = pd.read_csv(p, encoding="utf-8-sig")
+    df = pd.read_parquet(p)
     df.columns = [c.strip() for c in df.columns]
     for col in ["Clicks","Impressions","Position"]:
         if col in df.columns:
@@ -45,7 +45,7 @@ def load_gsc(fname):
     return df
 
 blog_agg = agg_blog()
-df_gsc   = load_gsc("gsc_blog_queries.csv")
+df_gsc   = load_gsc("gsc_blog_queries.parquet")
 
 # ── 1. High Traffic, Zero Conversions ─────────────────────────────────────────
 st.markdown("### 1. High-Traffic Articles with Zero Key Events")
@@ -72,7 +72,7 @@ if not blog_agg.empty:
     else:
         st.success("No critical bottlenecks found.")
 else:
-    st.info("Add `01_Blog_GA4.csv` to `data/input/` to detect bottlenecks.")
+    st.info("Add `01_Blog_GA4.parquet` to `data/input/` to detect bottlenecks.")
 
 st.markdown("---")
 
@@ -110,7 +110,7 @@ if not df_gsc.empty and "Impressions" in df_gsc.columns and "CTR" in df_gsc.colu
     else:
         st.success("No low-CTR opportunities found with current filters.")
 else:
-    st.info("Add `gsc_blog_queries.csv` to `data/input/` for keyword intelligence.")
+    st.info("Add `gsc_blog_queries.parquet` to `data/input/` for keyword intelligence.")
 
 st.markdown("---")
 

@@ -19,13 +19,13 @@ div[data-testid="metric-container"] label { color:#94a3b8!important; font-size:1
 div[data-testid="metric-container"] [data-testid="stMetricValue"] { color:#f1f5f9!important; font-size:24px!important; font-weight:700!important; }
 </style>""", unsafe_allow_html=True)
 
-DATA_DIR = Path("data/input")
+DATA_DIR = Path("data/processed")
 
 @st.cache_data
 def load_daily(fname):
     p = DATA_DIR / fname
     if not p.exists(): return pd.DataFrame()
-    df = pd.read_csv(p, encoding="utf-8-sig")
+    df = pd.read_parquet(p)
     df.columns = [c.strip() for c in df.columns]
     if "Views" in df.columns:
         df["Views"] = pd.to_numeric(df["Views"].astype(str).str.replace(",","",regex=False), errors="coerce").fillna(0)
@@ -39,8 +39,8 @@ def agg_to_page(df, path_col="Page path and screen class"):
     a = df.groupby(path_col).agg(Views=("Views","sum"), AU=("Active users","max")).reset_index()
     return a[~a[path_col].isin(bad)]
 
-blog_raw   = load_daily("01_Blog_GA4.csv")
-course_raw = load_daily("02_Course_GA4.csv")
+blog_raw   = load_daily("01_Blog_GA4.parquet")
+course_raw = load_daily("02_Course_GA4.parquet")
 
 blog_agg   = agg_to_page(blog_raw)   if not blog_raw.empty   else pd.DataFrame()
 course_agg_p = agg_to_page(course_raw) if not course_raw.empty else pd.DataFrame()
@@ -88,7 +88,7 @@ if frames:
                       xaxis=dict(gridcolor="#1e293b"), yaxis=dict(gridcolor="#1e293b"))
     st.plotly_chart(fig, width="stretch")
 else:
-    st.info("No CSV data found in `data/input/`. Add `01_Blog_GA4.csv` and `02_Course_GA4.csv`.")
+    st.info("No CSV data found in `data/input/`. Add `01_Blog_GA4.parquet` and `02_Course_GA4.parquet`.")
 
 st.markdown("---")
 

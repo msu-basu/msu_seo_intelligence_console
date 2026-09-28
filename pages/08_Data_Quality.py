@@ -21,4 +21,4 @@ if datasets:
     status_df = pd.DataFrame(status_list)
     st.dataframe(status_df, width="stretch")
 else:
-    st.error("No CSV files found in `data/input/`. Please check file placement.")
+    st.error("No CSV files found in `data/processed/`. Please check file placement.")

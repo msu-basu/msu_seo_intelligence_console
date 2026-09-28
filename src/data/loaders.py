@@ -1,4 +1,4 @@
-"""Robust CSV and Excel loading and dataset detection for the MSU SEO console."""
+﻿"""Robust CSV and Excel loading and dataset detection for the MSU SEO console."""
 
 from __future__ import annotations
 
@@ -440,7 +440,7 @@ def _merge_gsc_into_ga4(df_ga4: pd.DataFrame, df_gsc: pd.DataFrame) -> pd.DataFr
 
 
 def detect_and_load_all(
-    data_dir: Path = Path("data/input"),
+    data_dir: Path = Path("data/processed"),
 ) -> Dict[str, pd.DataFrame]:
     """
     Load all CSV and Excel files and assign stable dataset keys without overwriting.
@@ -453,14 +453,16 @@ def detect_and_load_all(
         logger.warning("Data directory does not exist: %s", data_dir)
         return datasets
 
-    file_list = sorted(list(data_dir.glob("*.csv")) + list(data_dir.glob("*.xlsx")) + list(data_dir.glob("*.xls")))
+    file_list = sorted(list(data_dir.glob("*.parquet")) + list(data_dir.glob("*.xlsx")) + list(data_dir.glob("*.xls")))
 
     for file in file_list:
-        if file.suffix.lower() in [".xlsx", ".xls"]:
+        if file.suffix.lower() == ".parquet":
+            df = pd.read_parquet(file)
+        elif file.suffix.lower() in [".xlsx", ".xls"]:
             df = load_excel_file(file)
         else:
-            df = load_csv_file(file)
-
+            df = pd.read_parquet(file)
+            
         if df.empty:
             continue
 

@@ -7,8 +7,8 @@ import streamlit as st
 
 st.title("🌐 Geographic & Location Intelligence")
 
-GEO_DATA_PATH = "data/input/06_Geo_Global_GA4.csv"
-GEO_PAGE_PATH = "data/input/06_Geo_PagePath_GA4.csv"
+GEO_DATA_PATH = "data/processed/06_Geo_Global_GA4.parquet"
+GEO_PAGE_PATH = "data/processed/06_Geo_PagePath_GA4.parquet"
 
 
 # 1. Primary Geo Data Loader
@@ -18,23 +18,7 @@ def load_geo_data(filepath):
         return None, f"File not found at `{filepath}`"
 
     try:
-        with open(filepath, "r", encoding="utf-8-sig", errors="ignore") as f:
-            lines = f.readlines()
-
-        start_idx = 0
-        for i, line in enumerate(lines):
-            line_str = line.strip()
-            if line_str.startswith("#") or not line_str:
-                continue
-            if "," in line_str:
-                start_idx = i
-                break
-
-        csv_content = "".join(lines[start_idx:])
-        df = pd.read_csv(
-            io.StringIO(csv_content), on_bad_lines="skip", engine="python"
-        )
-
+        df = pd.read_parquet(filepath)
         df.columns = [str(c).replace("\ufeff", "").strip() for c in df.columns]
 
         # Positional column mapping fallback
@@ -58,13 +42,9 @@ def load_geo_data(filepath):
                 cl = c.lower()
                 if "country" in cl and "Country" not in col_map.values():
                     col_map[c] = "Country"
-                elif (
-                    "city" in cl or "town" in cl
-                ) and "City" not in col_map.values():
+                elif ("city" in cl or "town" in cl) and "City" not in col_map.values():
                     col_map[c] = "City"
-                elif (
-                    "active" in cl or "user" in cl
-                ) and "Active users" not in col_map.values():
+                elif ("active" in cl or "user" in cl) and "Active users" not in col_map.values():
                     col_map[c] = "Active users"
 
             df = df.rename(columns=col_map)
@@ -85,9 +65,7 @@ def load_geo_data(filepath):
                 df["City"]
                 .astype(str)
                 .str.strip()
-                .replace(
-                    ["(not set)", "not set", "nan", "None"], "Unknown / Unmapped"
-                )
+                .replace(["(not set)", "not set", "nan", "None"], "Unknown / Unmapped")
             )
 
         for col in df.columns:
@@ -102,68 +80,43 @@ def load_geo_data(filepath):
         return None, str(e)
 
 
-# 2. Secondary City + Page Path Data Loader
+# 2. Secondary City Data Loader (Device / PagePath)
 @st.cache_data(ttl=3600)
 def load_geo_page_data(filepath):
     if not os.path.exists(filepath):
         return None
 
     try:
-        with open(filepath, "r", encoding="utf-8-sig", errors="ignore") as f:
-            lines = f.readlines()
+        df = pd.read_parquet(filepath)
+        df.columns = [str(c).replace("\ufeff", "").strip() for c in df.columns]
 
-        start_idx = 0
-        for i, line in enumerate(lines):
-            line_str = line.strip()
-            if line_str.startswith("#") or not line_str:
-                continue
-            if "," in line_str:
-                start_idx = i
-                break
+        # Check if it has PagePath
+        city_col = next((c for c in df.columns if "city" in c.lower()), None)
+        path_col = next((c for c in df.columns if "page" in c.lower() or "path" in c.lower() or "landing" in c.lower()), None)
+        user_col = next((c for c in df.columns if "user" in c.lower() or "active" in c.lower() or "views" in c.lower()), None)
 
-        csv_content = "".join(lines[start_idx:])
-        df = pd.read_csv(
-            io.StringIO(csv_content), on_bad_lines="skip", engine="python"
-        )
-        df.columns = [
-            str(c).replace("\ufeff", "").strip().lower() for c in df.columns
-        ]
-
-        city_col = next((c for c in df.columns if "city" in c), None)
-        path_col = next(
-            (c for c in df.columns if "page" in c or "path" in c or "landing" in c),
-            None,
-        )
-        user_col = next(
-            (c for c in df.columns if "user" in c or "active" in c or "views" in c),
-            None,
-        )
-
-        if not city_col or not path_col or not user_col:
-            # Fallback to positional mapping
-            city_col = df.columns[0]
-            path_col = df.columns[1] if len(df.columns) > 1 else df.columns[0]
-            user_col = df.columns[2] if len(df.columns) > 2 else df.columns[-1]
-
-        res_df = pd.DataFrame(
-            {
-                "City": df[city_col].astype(str).str.strip(),
-                "PagePath": df[path_col].astype(str).str.strip(),
-                "Users": pd.to_numeric(
-                    df[user_col].astype(str).str.replace(",", ""), errors="coerce"
-                ).fillna(0),
-            }
-        )
-        return res_df
+        if path_col and user_col and city_col:
+            res_df = pd.DataFrame(
+                {
+                    "City": df[city_col].astype(str).str.strip(),
+                    "PagePath": df[path_col].astype(str).str.strip(),
+                    "Users": pd.to_numeric(
+                        df[user_col].astype(str).str.replace(",", ""), errors="coerce"
+                    ).fillna(0),
+                }
+            )
+            return res_df
+        elif "Mobile" in df.columns and "Desktop" in df.columns:
+            return df
+        return None
     except Exception:
         return None
-
 
 df_geo, err_msg = load_geo_data(GEO_DATA_PATH)
 df_geo_page = load_geo_page_data(GEO_PAGE_PATH)
 
 # Inspector Expander
-with st.expander("🔍 CSV Data Inspector"):
+with st.expander("🔍 Data Inspector"):
     if df_geo is not None:
         st.write("**Main Geo Columns:**", list(df_geo.columns))
         st.write(f"**Total Records Loaded:** {len(df_geo):,}")
@@ -173,13 +126,13 @@ with st.expander("🔍 CSV Data Inspector"):
         st.dataframe(df_geo_page.head(5))
     else:
         st.write(
-            "**Page Path Geo Data Loaded:** No (`data/input/06_Geo_PagePath_GA4.csv` not found)"
+            "**Page Path Geo Data Loaded:** No (`data/processed/06_Geo_PagePath_GA4.parquet` not found)"
         )
 
 if df_geo is None or df_geo.empty:
     st.error(
         f"⚠️ Unable to parse data from `{GEO_DATA_PATH}`. "
-        "Please check that `06_Geo_Global_GA4.csv` is inside `data/input/`."
+        "Please verify that data/processed/06_Geo_Global_GA4.parquet exists."
     )
 else:
     country_col = "Country" if "Country" in df_geo.columns else None
@@ -455,147 +408,156 @@ else:
             st.divider()
 
             # ==========================================
-            # SECTION 3: CITY CONTENT INTENT (BLOG vs COURSE)
+            # SECTION 3: CITY AUDIENCE & PLATFORM INTENT
             # ==========================================
-            st.subheader(
-                "🎯 3. City Content Intent Segregation (Blogs vs. Courses)"
-            )
+            st.subheader("🎯 3. City Audience & Platform Segregation")
 
             city_list = country_df[city_col].tolist()
             selected_city = st.selectbox(
-                f"Select City in {selected_country} to Analyze Content Intent:",
+                f"Select City in {selected_country} to Analyze Audience Profile:",
                 options=city_list,
                 index=0,
             )
 
             if df_geo_page is not None and not df_geo_page.empty:
-                # Filter page paths for selected city
-                city_paths = df_geo_page[
-                    df_geo_page["City"]
-                    .astype(str)
-                    .str.lower()
-                    .eq(selected_city.lower())
-                ].copy()
+                if "PagePath" in df_geo_page.columns:
+                    city_paths = df_geo_page[
+                        df_geo_page["City"]
+                        .astype(str)
+                        .str.lower()
+                        .eq(selected_city.lower())
+                    ].copy()
 
-                if not city_paths.empty:
+                    if not city_paths.empty:
+                        def categorize_path(path):
+                            p = str(path).lower()
+                            if any(k in p for k in ["/blog", "/article", "/news", "/guide", "/read"]):
+                                return "Blog Content"
+                            elif any(k in p for k in ["/course", "/program", "/degree", "/apply", "/admission", "/curriculum"]):
+                                return "Course Content"
+                            else:
+                                return "General / Homepage"
 
-                    def categorize_path(path):
-                        p = str(path).lower()
-                        if any(
-                            k in p
-                            for k in [
-                                "/blog",
-                                "/article",
-                                "/news",
-                                "/guide",
-                                "/read",
-                            ]
-                        ):
-                            return "Blog Content"
-                        elif any(
-                            k in p
-                            for k in [
-                                "/course",
-                                "/program",
-                                "/degree",
-                                "/apply",
-                                "/admission",
-                                "/curriculum",
-                            ]
-                        ):
-                            return "Course Content"
-                        else:
-                            return "General / Homepage"
-
-                    city_paths["Category"] = city_paths["PagePath"].apply(
-                        categorize_path
-                    )
-                    intent_df = (
-                        city_paths.groupby("Category", as_index=False)["Users"]
-                        .sum()
-                        .sort_values(by="Users", ascending=False)
-                    )
-
-                    total_city_page_users = intent_df["Users"].sum()
-
-                    c_left, c_right = st.columns([1, 1.2])
-
-                    with c_left:
-                        st.markdown(
-                            f"#### Content Preference in **{selected_city}**"
+                        city_paths["Category"] = city_paths["PagePath"].apply(categorize_path)
+                        intent_df = (
+                            city_paths.groupby("Category", as_index=False)["Users"]
+                            .sum()
+                            .sort_values(by="Users", ascending=False)
                         )
-                        st.dataframe(
-                            intent_df,
-                            use_container_width=True,
-                            hide_index=True,
-                            column_config={
-                                "Category": "Content Type",
-                                "Users": st.column_config.NumberColumn(
-                                    "Active Users", format="%d"
-                                ),
-                            },
-                        )
+                        total_city_page_users = intent_df["Users"].sum()
 
-                        blog_users = intent_df[
-                            intent_df["Category"] == "Blog Content"
-                        ]["Users"].sum()
-                        course_users = intent_df[
-                            intent_df["Category"] == "Course Content"
-                        ]["Users"].sum()
-
-                        blog_pct = (
-                            (blog_users / total_city_page_users * 100)
-                            if total_city_page_users > 0
-                            else 0
-                        )
-                        course_pct = (
-                            (course_users / total_city_page_users * 100)
-                            if total_city_page_users > 0
-                            else 0
-                        )
-
-                        # Decision Insight
-                        if course_pct > blog_pct:
-                            primary_intent = (
-                                f"🎓 **High Transactional Intent**: Users in **{selected_city}** primarily explore "
-                                f"**Course pages ({course_pct:.1f}%)**. Marketing should focus on direct course enrollment ads and lead forms."
+                        c_left, c_right = st.columns([1, 1.2])
+                        with c_left:
+                            st.markdown(f"#### Content Preference in **{selected_city}**")
+                            st.dataframe(
+                                intent_df,
+                                use_container_width=True,
+                                hide_index=True,
+                                column_config={
+                                    "Category": "Content Type",
+                                    "Users": st.column_config.NumberColumn("Active Users", format="%d"),
+                                },
                             )
-                        elif blog_pct > course_pct:
-                            primary_intent = (
-                                f"📝 **High Top-of-Funnel Intent**: Users in **{selected_city}** predominantly consume "
-                                f"**Blog content ({blog_pct:.1f}%)**. Focus on converting blog readers into leads via course call-to-action banners."
+                            blog_users = intent_df[intent_df["Category"] == "Blog Content"]["Users"].sum()
+                            course_users = intent_df[intent_df["Category"] == "Course Content"]["Users"].sum()
+                            blog_pct = (blog_users / total_city_page_users * 100) if total_city_page_users > 0 else 0
+                            course_pct = (course_users / total_city_page_users * 100) if total_city_page_users > 0 else 0
+
+                            if course_pct > blog_pct:
+                                primary_intent = (
+                                    f"🎯 **High Transactional Intent**: Users in **{selected_city}** primarily explore "
+                                    f"**Course pages ({course_pct:.1f}%)**. Marketing should focus on direct enrollment ads and lead forms."
+                                )
+                            elif blog_pct > course_pct:
+                                primary_intent = (
+                                    f"📖 **High Top-of-Funnel Intent**: Users in **{selected_city}** predominantly consume "
+                                    f"**Blog content ({blog_pct:.1f}%)**. Focus on converting blog readers via course CTAs."
+                                )
+                            else:
+                                primary_intent = f"⚖️ **Balanced Intent**: Equal distribution between blogs and courses in **{selected_city}**."
+
+                            st.info(primary_intent)
+
+                        with c_right:
+                            fig_donut = px.pie(
+                                intent_df,
+                                names="Category",
+                                values="Users",
+                                hole=0.4,
+                                title=f"Blog vs. Course Intent Breakdown for {selected_city}",
+                                color_discrete_sequence=px.colors.qualitative.Pastel,
                             )
-                        else:
-                            primary_intent = f"⚖️ **Balanced Intent**: Equal distribution between blogs and courses in **{selected_city}**."
+                            fig_donut.update_traces(textinfo="percent+label", hoverinfo="label+value+percent")
+                            fig_donut.update_layout(height=380)
+                            st.plotly_chart(fig_donut, use_container_width=True)
+                    else:
+                        st.info(f"Detailed page-level content records for **{selected_city}** are aggregated in the national overview.")
 
-                        st.info(primary_intent)
+                elif "Mobile" in df_geo_page.columns and "Desktop" in df_geo_page.columns:
+                    match = df_geo_page[df_geo_page["City"].astype(str).str.lower() == selected_city.lower()]
+                    if not match.empty:
+                        row = match.iloc[0]
+                        m = int(row.get("Mobile", 0))
+                        d = int(row.get("Desktop", 0))
+                        t = int(row.get("Tablet", 0))
+                        tot = int(row.get("Total Users", m + d + t)) or (m + d + t)
+                        if tot == 0: tot = 1
 
-                    with c_right:
-                        fig_donut = px.pie(
-                            intent_df,
-                            names="Category",
-                            values="Users",
-                            hole=0.4,
-                            title=f"Blog vs. Course Intent Breakdown for {selected_city}",
-                            color_discrete_sequence=px.colors.qualitative.Pastel,
-                        )
-                        fig_donut.update_traces(
-                            textinfo="percent+label",
-                            hoverinfo="label+value+percent",
-                        )
-                        fig_donut.update_layout(height=380)
-                        st.plotly_chart(fig_donut, use_container_width=True)
-                else:
-                    st.warning(
-                        f"No specific page path records found for **{selected_city}** in `06_Geo_PagePath_GA4.csv`."
-                    )
+                        m_pct = (m / tot) * 100
+                        d_pct = (d / tot) * 100
+                        t_pct = (t / tot) * 100
+
+                        c_left, c_right = st.columns([1, 1.2])
+                        with c_left:
+                            st.markdown(f"#### Platform Distribution in **{selected_city}**")
+                            dev_table = pd.DataFrame([
+                                {"Device": "📱 Mobile", "Active Users": m, "Share": f"{m_pct:.1f}%"},
+                                {"Device": "💻 Desktop", "Active Users": d, "Share": f"{d_pct:.1f}%"},
+                                {"Device": "📟 Tablet", "Active Users": t, "Share": f"{t_pct:.1f}%"},
+                            ])
+                            st.dataframe(
+                                dev_table,
+                                use_container_width=True,
+                                hide_index=True,
+                                column_config={
+                                    "Active Users": st.column_config.NumberColumn("Active Users", format="%d"),
+                                }
+                            )
+
+                            if d_pct >= 25.0:
+                                takeaway = (
+                                    f"💼 **High Professional / Desktop Share ({d_pct:.1f}%)**: Users in **{selected_city}** "
+                                    f"exhibit substantial desktop usage ({d:,} users), indicating workplace/campus evaluation and in-depth academic research."
+                                )
+                            else:
+                                takeaway = (
+                                    f"📱 **Mobile-First Audience ({m_pct:.1f}%)**: **{selected_city}** is overwhelmingly mobile "
+                                    f"({m:,} users). Ensure mobile application forms, WhatsApp CTAs, and fast load times are prioritized."
+                                )
+                            st.success(takeaway)
+
+                        with c_right:
+                            chart_df = pd.DataFrame([
+                                {"Device": "Mobile", "Users": m},
+                                {"Device": "Desktop", "Users": d},
+                                {"Device": "Tablet", "Users": t},
+                            ])
+                            chart_df = chart_df[chart_df["Users"] > 0]
+                            fig_donut = px.pie(
+                                chart_df,
+                                names="Device",
+                                values="Users",
+                                hole=0.45,
+                                title=f"Device Breakdown for {selected_city}",
+                                color="Device",
+                                color_discrete_map={"Mobile": "#3b82f6", "Desktop": "#10b981", "Tablet": "#f59e0b"}
+                            )
+                            fig_donut.update_traces(textinfo="percent+label", hoverinfo="label+value+percent")
+                            fig_donut.update_layout(height=380, margin=dict(t=40, b=10, l=10, r=10))
+                            st.plotly_chart(fig_donut, use_container_width=True)
+                    else:
+                        st.info(f"Device segregation for **{selected_city}** is tracked within the regional aggregate.")
             else:
-                # Setup Guide & Strategy Box when file is missing
-                st.info(
-                    f"💡 **To view whether users in {selected_city} hit Blogs vs Courses**:\n\n"
-                    f"1. In GA4, create an Exploration report with **City** + **Page path**.\n"
-                    f"2. Save the exported CSV as `06_Geo_PagePath_GA4.csv` inside `data/input/`.\n"
-                    f"3. This section will automatically update with a real-time Blog vs Course donut chart and conversion intent decision breakdown!"
-                )
+                st.info(f"Detailed platform segregation for **{selected_city}** is aggregated under regional totals.")
         else:
             st.info(f"No city traffic recorded for {selected_country}.")

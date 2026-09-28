@@ -238,7 +238,7 @@ if not df_course.empty:
         st.plotly_chart(fig_trend, width="stretch")
     else:
         st.info(
-            "💡 Add a `Date` column (formatted as `YYYYMMDD` or `YYYY-MM-DD`) to `02_Course_GA4.csv` to enable date-wise trend lines."
+            "💡 Add a `Date` column (formatted as `YYYYMMDD` or `YYYY-MM-DD`) to `02_Course_GA4.parquet` to enable date-wise trend lines."
         )
 
         level_views = (
@@ -391,7 +391,7 @@ if not df_course.empty:
             st.plotly_chart(fig_dev, width="stretch")
         else:
             st.info(
-                "💡 Upload `04_Device_GA4.csv` to display Mobile vs. Desktop visitor splits."
+                "💡 Upload `04_Device_GA4.parquet` to display Mobile vs. Desktop visitor splits."
             )
 
     st.markdown("---")
@@ -453,7 +453,7 @@ if not df_course.empty:
             )
 
     if not geo_data_available and df_countries.empty:
-        st.info("💡 Upload `06_Geo_Global_GA4.csv` or `Countries.csv` to display India city-level search intelligence.")
+        st.info("💡 Upload `06_Geo_Global_GA4.parquet` or `Countries.parquet` to display India city-level search intelligence.")
 
     st.markdown("---")
 
@@ -499,7 +499,7 @@ if not df_course.empty:
         st.plotly_chart(fig_gsc, width="stretch")
     else:
         st.info(
-            "💡 Upload `gsc_queries.csv` into `data/input/` to view prospective student search terms."
+            "💡 Upload `gsc_queries.parquet` into `data/input/` to view prospective student search terms."
         )
 
     st.markdown("---")
@@ -684,5 +684,5 @@ if not df_course.empty:
 
 else:
     st.info(
-        "💡 Add `02_Course_GA4.csv` to `data/input/` to populate course intelligence."
+        "💡 Add `02_Course_GA4.parquet` to `data/input/` to populate course intelligence."
     )
