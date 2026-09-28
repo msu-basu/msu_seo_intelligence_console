@@ -1,4 +1,4 @@
-import re
+﻿import re
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -13,7 +13,6 @@ from src.data.normalizers import (
     parse_numeric_series,
 )
 
-st.set_page_config(page_title="Course Intelligence", layout="wide")
 st.title("🎓 Academic Course Intelligence & Demand Analytics")
 st.caption(
     "Granular tracking across ~42–100 individual course URLs, degree level categorizations, "

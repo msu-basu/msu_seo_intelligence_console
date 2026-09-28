@@ -1,8 +1,7 @@
-import streamlit as st
+﻿import streamlit as st
 from src.data.loaders import detect_and_load_all
 import pandas as pd
 
-st.set_page_config(page_title="Data Quality", layout="wide")
 st.title("🛡️ Data Quality & Ingestion Status")
 
 datasets = detect_and_load_all()

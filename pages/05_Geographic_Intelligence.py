@@ -1,13 +1,9 @@
-import io
+﻿import io
 import os
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-
-st.set_page_config(
-    page_title="Geographic Intelligence", layout="wide", page_icon="🌐"
-)
 
 st.title("🌐 Geographic & Location Intelligence")
 

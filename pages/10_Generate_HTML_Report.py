@@ -1,12 +1,6 @@
-import os
+﻿import os
 import pandas as pd
 import streamlit as st
-
-st.set_page_config(
-    page_title="HTML Report Generator - MSU Analytics",
-    layout="wide",
-    page_icon="📄",
-)
 
 st.title("📄 Standalone HTML Report Generator")
 st.caption(

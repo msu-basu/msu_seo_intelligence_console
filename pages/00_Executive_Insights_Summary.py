@@ -1,109 +1,148 @@
+﻿import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-from src.data.loaders import detect_and_load_all
+from pathlib import Path
 
-st.set_page_config(page_title="Executive Insights Summary", layout="wide")
-st.title("📌 Executive Analytics & SEO Insights Summary")
-st.caption(
-    "Single-page command center aggregating Blog performance, Academic demand, Search Console visibility, and SEO action items."
-)
-
-datasets = detect_and_load_all()
-
-df_blog = datasets.get("blog", pd.DataFrame())
-df_course = datasets.get("course", pd.DataFrame())
-df_gsc = datasets.get("gsc_queries", pd.DataFrame())
-df_device = datasets.get("device", pd.DataFrame())
-
-# --- DATA CLEANING: Clean numeric columns for GSC to prevent comparison errors ---
-if not df_gsc.empty:
-    for col in ["Impressions", "Clicks", "CTR", "Position"]:
-        if col in df_gsc.columns:
-            df_gsc[col] = (
-                df_gsc[col]
-                .astype(str)
-                .str.replace("%", "", regex=False)
-                .str.replace(",", "", regex=False)
-                .str.strip()
-            )
-            df_gsc[col] = pd.to_numeric(df_gsc[col], errors="coerce").fillna(0)
-
-
-# Helper metric calculators
-def safe_sum(df, cols):
-    if df.empty:
-        return 0
-    for c in cols:
-        if c in df.columns:
-            return (
-                pd.to_numeric(
-                    df[c].astype(str).str.replace(",", "", regex=False),
-                    errors="coerce",
-                )
-                .fillna(0)
-                .sum()
-            )
-    return 0
-
-
-blog_views = safe_sum(df_blog, ["Views", "Event count"])
-course_views = safe_sum(df_course, ["Views", "Event count"])
-gsc_clicks = safe_sum(df_gsc, ["Clicks"])
-gsc_impressions = safe_sum(df_gsc, ["Impressions"])
-
-# --- 1. TOP METRICS HEADER ---
-m1, m2, m3, m4 = st.columns(4)
-m1.metric("Blog Article Views", f"{int(blog_views):,}")
-m2.metric("Course Catalog Views", f"{int(course_views):,}")
-m3.metric("Google Search Clicks", f"{int(gsc_clicks):,}")
-m4.metric("Search Impressions", f"{int(gsc_impressions):,}")
-
-st.markdown("---")
-
-# --- 2. EXECUTIVE TAKEAWAYS & ACTION ITEMS ---
-st.subheader("💡 Core Analytical Takeaways for SEO & Marketing Teams")
-
-col_a, col_b = st.columns(2)
-
-with col_a:
-    st.markdown("#### 📝 Blog Content Insights")
-    st.write(f"- **Total Blog Portfolio:** ~320 articles monitored.")
-    st.write(
-        f"- **Top Driving Category:** Career & Placement Guides generate over 45% of organic readership."
-    )
-    if not df_gsc.empty and "CTR" in df_gsc.columns:
-        low_ctr_cnt = len(
-            df_gsc[(df_gsc["Impressions"] > 500) & (df_gsc["CTR"] < 2.0)]
-        )
-        st.write(
-            f"- **Overlooked Content Opportunity:** Found **{low_ctr_cnt}** blog topics with high impressions but low CTR. Updating titles will instantly capture more clicks."
-        )
-    else:
-        st.write(
-            "- **Action Item:** Focus on optimizing high-impression blog articles sitting on page 2 of Google."
-        )
-
-with col_b:
-    st.markdown("#### 🎓 Academic Course Insights")
-    st.write(f"- **Total Course Catalog:** ~42-100 programs categorized.")
-    st.write(
-        f"- **Degree Distribution:** Undergraduate programs drive the largest share of prospective applicant interest, followed by Postgraduate degrees."
-    )
-    st.write(
-        f"- **Conversion Bottleneck:** High-demand technology and allied health programs require immediate lead CTA enhancements."
-    )
-
-st.markdown("---")
-
-# --- 3. SEO TEAM DIRECTIVE CHECKLIST ---
-st.subheader("🎯 Priority Action Items for the SEO Team")
+st.title("📋 Executive Analytics & SEO Insights Summary")
+st.caption("Single-page command centre aggregating Blog, Course, Search Console and Device data.")
 
 st.markdown("""
-| Priority | Channel | Analytics Insight | Required SEO Action |
-| :--- | :--- | :--- | :--- |
-| **P1 - High Impact** | **Blog** | Articles with >1,000 Impressions but <1.5% CTR | Rewrite Page Titles and Meta Descriptions to improve click-through rate. |
-| **P1 - High Impact** | **Courses** | Top 5 Course pages with high views but low conversions | Embed prominent WhatsApp inquiry buttons and downloadable PDF brochures. |
-| **P2 - Medium Impact**| **SEO** | Keywords positioned between 10 and 20 on Google | Add internal links from top-performing blog posts to these course pages. |
-| **P3 - Optimization** | **Technical**| Over 70% of traffic originates from Mobile devices | Optimize mobile site speed, layout rendering, and form simplicity. |
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+html, body, [class*="css"] { font-family: "Inter", sans-serif; }
+div[data-testid="metric-container"] {
+    background: linear-gradient(135deg,#1e293b,#0f172a);
+    border:1px solid #334155; border-radius:12px; padding:16px 20px;
+}
+div[data-testid="metric-container"] label { color:#94a3b8!important; font-size:11px!important; text-transform:uppercase; }
+div[data-testid="metric-container"] [data-testid="stMetricValue"] { color:#f1f5f9!important; font-size:24px!important; font-weight:700!important; }
+</style>""", unsafe_allow_html=True)
+
+DATA_DIR = Path("data/input")
+
+@st.cache_data
+def load_agg_blog():
+    p = DATA_DIR/"01_Blog_GA4.csv"
+    if not p.exists(): return pd.DataFrame()
+    df = pd.read_csv(p, encoding="utf-8-sig")
+    df.columns = [c.strip() for c in df.columns]
+    bad = {"/blog","/blog/","/","(not set)",""}
+    agg = df.groupby("Page path and screen class").agg(
+        Views=("Views","sum"), AU=("Active users","max"),
+        Events=("Event count","sum"), KE=("Key events","sum")
+    ).reset_index()
+    agg = agg[~agg["Page path and screen class"].isin(bad)]
+    return agg
+
+@st.cache_data
+def load_agg_course():
+    p = DATA_DIR/"02_Course_GA4.csv"
+    if not p.exists(): return pd.DataFrame()
+    df = pd.read_csv(p, encoding="utf-8-sig")
+    df.columns = [c.strip() for c in df.columns]
+    bad = {"/","/courses","/courses/","(not set)",""}
+    agg = df.groupby("Page path and screen class").agg(
+        Views=("Views","sum"), AU=("Active users","max"),
+        Events=("Event count","sum")
+    ).reset_index()
+    agg = agg[~agg["Page path and screen class"].isin(bad)]
+    import re
+    agg = agg[agg["Page path and screen class"].str.contains(r"/course",case=False,na=False)]
+    return agg
+
+@st.cache_data
+def load_gsc_queries():
+    for fname in ["gsc_blog_queries.csv","gsc_course_queries.csv"]:
+        p = DATA_DIR/fname
+        if p.exists():
+            df = pd.read_csv(p, encoding="utf-8-sig")
+            df.columns = [c.strip() for c in df.columns]
+            for col in ["Clicks","Impressions","Position"]:
+                if col in df.columns:
+                    df[col] = pd.to_numeric(df[col].astype(str).str.replace(",","",regex=False), errors="coerce").fillna(0)
+            if "CTR" in df.columns:
+                df["CTR"] = pd.to_numeric(df["CTR"].astype(str).str.replace("%","",regex=False), errors="coerce").fillna(0)
+            return df
+    return pd.DataFrame()
+
+blog_agg   = load_agg_blog()
+course_agg = load_agg_course()
+df_gsc     = load_gsc_queries()
+
+blog_views    = int(blog_agg["Views"].sum())   if not blog_agg.empty   else 0
+course_views  = int(course_agg["Views"].sum()) if not course_agg.empty else 0
+blog_sessions = int(blog_views / 1.18)
+gsc_clicks    = int(df_gsc["Clicks"].sum())      if not df_gsc.empty and "Clicks" in df_gsc.columns else 0
+gsc_imp       = int(df_gsc["Impressions"].sum())  if not df_gsc.empty and "Impressions" in df_gsc.columns else 0
+n_articles    = len(blog_agg)
+n_courses     = len(course_agg)
+
+# ── KPIs ────────────────────────────────────────────────────────────────────
+st.markdown("### Platform-Wide KPIs")
+k1,k2,k3,k4,k5,k6 = st.columns(6)
+k1.metric("Blog Articles",          f"{n_articles:,}")
+k2.metric("Blog Views",             f"{blog_views:,}")
+k3.metric("Est. Blog Sessions",     f"{blog_sessions:,}", help="Views / 1.18")
+k4.metric("Course Pages",           f"{n_courses:,}")
+k5.metric("Organic Search Clicks",  f"{gsc_clicks:,}")
+k6.metric("Search Impressions",     f"{gsc_imp:,}")
+
+st.markdown("---")
+
+# ── Category Breakdown ───────────────────────────────────────────────────────
+st.markdown("### Blog Category Performance")
+
+import re as _re
+def _cat(path):
+    p = str(path).lower()
+    if any(k in p for k in ["career","jobs","salary","scope","placement"]): return "Career & Placement"
+    if any(k in p for k in ["result","exam","cbse","12th","10th","cutoff"]):  return "Exams & Results"
+    if any(k in p for k in ["skills","courses","learn","how-to","paramedical"]): return "Skills & Courses"
+    return "General Campus"
+
+if not blog_agg.empty:
+    blog_agg["Category"] = blog_agg["Page path and screen class"].apply(_cat)
+    cat_s = blog_agg.groupby("Category")["Views"].sum().reset_index().sort_values("Views", ascending=False)
+    top_cat = cat_s.iloc[0]
+    top_pct = top_cat["Views"] / cat_s["Views"].sum() * 100
+
+    cc1, cc2 = st.columns([1,2])
+    with cc1:
+        fig_pie = px.pie(cat_s, values="Views", names="Category", hole=0.45,
+                         color_discrete_sequence=px.colors.qualitative.Bold)
+        fig_pie.update_traces(textinfo="percent+label")
+        fig_pie.update_layout(showlegend=False, paper_bgcolor="rgba(0,0,0,0)",
+                              font_color="#f1f5f9", height=300, margin=dict(t=10,b=10,l=10,r=10))
+        st.plotly_chart(fig_pie, width="stretch")
+    with cc2:
+        st.markdown(f"""
+**Key Insights (from your data):**
+- **Total Blog Articles Tracked:** {n_articles:,} unique pages
+- **Top Category:** {top_cat["Category"]} — **{top_pct:.1f}%** of total views ({int(top_cat["Views"]):,} views)
+- **Search Visibility:** {gsc_imp:,} impressions, {gsc_clicks:,} organic clicks
+- **Est. Sessions:** {blog_sessions:,} (derived from Views ÷ 1.18)
+""")
+        st.dataframe(cat_s.rename(columns={"Views":"Total Views"}), hide_index=True, width="stretch")
+
+st.markdown("---")
+
+# ── SEO Action Table ─────────────────────────────────────────────────────────
+st.markdown("### Priority Action Items for the SEO Team")
+
+low_ctr_cnt = 0
+if not df_gsc.empty and "CTR" in df_gsc.columns and "Impressions" in df_gsc.columns:
+    low_ctr_cnt = len(df_gsc[(df_gsc["Impressions"]>500) & (df_gsc["CTR"]<2.0)])
+
+p2_cnt = 0
+if not df_gsc.empty and "Position" in df_gsc.columns:
+    p2_cnt = len(df_gsc[(df_gsc["Position"]>=10) & (df_gsc["Position"]<=20)])
+
+st.markdown(f"""
+| Priority | Channel | Data-Driven Finding | Required Action |
+|---|---|---|---|
+| **P1 High** | Blog | **{low_ctr_cnt}** queries with >500 impressions but <2% CTR | Rewrite page titles & meta descriptions |
+| **P1 High** | Courses | Top course pages with high views, zero lead events | Embed WhatsApp inquiry CTAs + PDF brochures |
+| **P2 Medium** | SEO | **{p2_cnt}** keywords on positions 10–20 (page 2) | Add internal links from top blog posts |
+| **P3 Optimise** | Technical | Check device split on Page 04 | Optimise mobile speed & form UX |
 """)

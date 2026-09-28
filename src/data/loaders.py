@@ -1,4 +1,4 @@
-"""Robust CSV loading and dataset detection for the MSU SEO console."""
+"""Robust CSV and Excel loading and dataset detection for the MSU SEO console."""
 
 from __future__ import annotations
 
@@ -60,14 +60,16 @@ FILENAME_DATASET_RULES = (
 
 
 def clean_url_to_path(url_val: object) -> str:
-    """Convert full GSC URLs to lowercase relative pagePath for 100% merge accuracy."""
+    """Convert full GSC or GA4 URLs to lowercase relative pagePath for 100% merge accuracy."""
     if not isinstance(url_val, str) or not url_val.strip():
         return ""
     url_str = url_val.strip().lower()
-    if url_str.startswith("http"):
+    
+    if url_str.startswith("http://") or url_str.startswith("https://"):
         path = urlparse(url_str).path
     else:
-        path = url_str
+        path = url_str.split("?")[0].split("#")[0]
+        
     path = path.rstrip("/")
     return path if path else "/"
 
@@ -261,6 +263,30 @@ def load_csv_file(filepath: Union[str, Path]) -> pd.DataFrame:
     return df
 
 
+def load_excel_file(filepath: Union[str, Path]) -> pd.DataFrame:
+    """Load Excel (.xlsx, .xls) files by reading sheet names and combining or returning the primary sheet."""
+    path = Path(filepath)
+    if not path.exists():
+        logger.warning("File not found: %s", path)
+        return pd.DataFrame()
+
+    try:
+        xls = pd.ExcelFile(path)
+        sheet_names = xls.sheet_names
+        if not sheet_names:
+            return pd.DataFrame()
+        
+        df = pd.read_excel(xls, sheet_name=sheet_names[0], na_values=list(CUSTOM_NA_VALUES))
+        if df.empty:
+            return df
+        df.columns = [str(col).replace("\ufeff", "").strip() for col in df.columns]
+        df.attrs["source_file"] = path.name
+        return df
+    except Exception as exc:
+        logger.error("Failed parsing Excel file %s: %s", path, exc)
+        return pd.DataFrame()
+
+
 def _normalized_columns(df: pd.DataFrame) -> list[str]:
     return [
         str(column).replace("\ufeff", "").strip().lower()
@@ -299,6 +325,8 @@ def _detect_dataset_type(file: Path, df: pd.DataFrame) -> str | None:
         return "course_performance"
 
     if any("query" in c for c in cols) and _has_any_column(cols, ("clicks", "impressions")):
+        if "blog" in filename:
+            return "blog_gsc_queries"
         return "course_gsc_queries"
 
     if "country" in cols or "city" in cols:
@@ -326,7 +354,7 @@ def _merge_gsc_into_ga4(df_ga4: pd.DataFrame, df_gsc: pd.DataFrame) -> pd.DataFr
     # Detect GA4 page path column
     ga4_page_col = None
     for col in df_ga4.columns:
-        if any(k in str(col).lower() for k in ["path", "url", "page"]):
+        if any(k in str(col).lower() for k in ["path", "url", "page", "landing"]):
             ga4_page_col = col
             break
 
@@ -415,8 +443,8 @@ def detect_and_load_all(
     data_dir: Path = Path("data/input"),
 ) -> Dict[str, pd.DataFrame]:
     """
-    Load all CSVs and assign stable dataset keys without overwriting.
-    Automatically merges GSC Pages data into Course and Blog datasets.
+    Load all CSV and Excel files and assign stable dataset keys without overwriting.
+    Automatically merges GSC Pages data into Course and Blog datasets and populates aliases.
     """
     data_dir = Path(data_dir)
     datasets: Dict[str, pd.DataFrame] = {}
@@ -425,21 +453,27 @@ def detect_and_load_all(
         logger.warning("Data directory does not exist: %s", data_dir)
         return datasets
 
-    for file in sorted(data_dir.glob("*.csv")):
-        df = load_csv_file(file)
+    file_list = sorted(list(data_dir.glob("*.csv")) + list(data_dir.glob("*.xlsx")) + list(data_dir.glob("*.xls")))
+
+    for file in file_list:
+        if file.suffix.lower() in [".xlsx", ".xls"]:
+            df = load_excel_file(file)
+        else:
+            df = load_csv_file(file)
+
         if df.empty:
             continue
 
         dataset_type = _detect_dataset_type(file, df)
         if not dataset_type:
-            logger.info("Skipping unrecognized CSV: %s", file.name)
+            logger.info("Skipping unrecognized dataset file: %s", file.name)
             continue
 
         if dataset_type in datasets:
             existing = datasets[dataset_type]
             existing_source = existing.attrs.get("source_file", "unknown")
             logger.warning(
-                "Multiple CSVs detected for dataset '%s'. Keeping %s and "
+                "Multiple files detected for dataset '%s'. Keeping %s and "
                 "skipping %s.",
                 dataset_type,
                 existing_source,
@@ -465,9 +499,21 @@ def detect_and_load_all(
     if "blog" in datasets and "blog_gsc_pages" in datasets:
         datasets["blog"] = _merge_gsc_into_ga4(datasets["blog"], datasets["blog_gsc_pages"])
 
-    # Alias assignments so older Streamlit page scripts find expected keys seamlessly
-    if "gsc_queries" not in datasets and "course_gsc_queries" in datasets:
-        datasets["gsc_queries"] = datasets["course_gsc_queries"]
+    # Create bidirectional aliases for seamless referencing
+    alias_mappings = [
+        ("gsc_blog_pages", "blog_gsc_pages"),
+        ("blog_gsc_pages", "gsc_blog_pages"),
+        ("gsc_blog_queries", "blog_gsc_queries"),
+        ("blog_gsc_queries", "gsc_blog_queries"),
+        ("gsc_queries", "course_gsc_queries"),
+        ("course_gsc_queries", "gsc_queries"),
+        ("gsc_course_pages", "course_gsc_pages"),
+        ("course_gsc_pages", "gsc_course_pages"),
+    ]
+
+    for target_key, source_key in alias_mappings:
+        if target_key not in datasets and source_key in datasets:
+            datasets[target_key] = datasets[source_key]
 
     if "geo" not in datasets:
         if "geo_pagepath" in datasets:

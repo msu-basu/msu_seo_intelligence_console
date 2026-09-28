@@ -1,0 +1,138 @@
+﻿import streamlit as st
+from pathlib import Path
+
+st.set_page_config(
+    page_title="MSU SEO Intelligence Console",
+    page_icon="favicon",
+    layout="wide",
+)
+
+# ── Custom CSS ──────────────────────────────────────────────────────────────
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+html, body, [class*="css"] { font-family: "Inter", sans-serif; }
+
+.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 48px 40px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+.hero h1 { font-size: 42px; font-weight: 800; color: #f1f5f9; margin: 0 0 8px 0; }
+.hero p  { font-size: 18px; color: #94a3b8; margin: 0; }
+.hero .badge {
+    display: inline-block;
+    background: #1d4ed8;
+    color: #bfdbfe;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nav-card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+}
+.nav-card:hover { border-color: #38bdf8; }
+.nav-card h3 { color: #f1f5f9; font-size: 16px; margin: 0 0 4px 0; }
+.nav-card p  { color: #64748b; font-size: 13px; margin: 0; }
+
+.stat-box {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+.stat-box .val { font-size: 28px; font-weight: 700; color: #38bdf8; }
+.stat-box .lbl { font-size: 12px; color: #64748b; text-transform: uppercase; margin-top: 4px; }
+</style>
+""", unsafe_allow_html=True)
+
+# ── Hero ─────────────────────────────────────────────────────────────────────
+st.markdown("""
+<div class="hero">
+    <div class="badge">MSU Analytics</div>
+    <h1>SEO Intelligence Console</h1>
+    <p>GA4 + Google Search Console — Blog & Course Performance Intelligence</p>
+</div>
+""", unsafe_allow_html=True)
+
+# ── Quick Stats ───────────────────────────────────────────────────────────────
+from pathlib import Path
+import pandas as pd, numpy as np
+
+@st.cache_data
+def quick_stats():
+    p = Path("data/input/01_Blog_GA4.csv")
+    if not p.exists():
+        return None
+    df = pd.read_csv(p, encoding="utf-8-sig")
+    agg = df.groupby("Page path and screen class").agg(
+        Views=("Views","sum"),
+        AU=("Active users","max")
+    ).reset_index()
+    agg = agg[~agg["Page path and screen class"].isin(["/blog","/blog/","/","(not set)",""])]
+    sessions = int((agg["Views"].sum() / 1.18))
+    return {
+        "articles": len(agg),
+        "views": int(agg["Views"].sum()),
+        "sessions": sessions,
+        "leads": int(sessions * 0.20 * 0.12),
+    }
+
+stats = quick_stats()
+if stats:
+    s1, s2, s3, s4 = st.columns(4)
+    s1.markdown(f'<div class="stat-box"><div class="val">{stats["articles"]:,}</div><div class="lbl">Blog Articles</div></div>', unsafe_allow_html=True)
+    s2.markdown(f'<div class="stat-box"><div class="val">{stats["views"]:,}</div><div class="lbl">Total Views</div></div>', unsafe_allow_html=True)
+    s3.markdown(f'<div class="stat-box"><div class="val">{stats["sessions"]:,}</div><div class="lbl">Est. Sessions</div></div>', unsafe_allow_html=True)
+    s4.markdown(f'<div class="stat-box"><div class="val">{stats["leads"]:,}</div><div class="lbl">Est. Leads</div></div>', unsafe_allow_html=True)
+
+st.markdown("---")
+
+# ── Navigation Cards ──────────────────────────────────────────────────────────
+st.markdown("### Navigate to a Report")
+st.caption("Use the **sidebar** to switch pages, or click the links below.")
+
+pages = [
+    ("00_Executive_Insights_Summary", "00", "Executive Insights Summary",      "Top-level KPI summary across all data sources"),
+    ("01_Executive_Dashboard",        "01", "Executive Dashboard",             "High-level overview charts and traffic trends"),
+    ("02_Blog_Intelligence",          "02", "Blog Intelligence (FIXED)",       "Grain-correct GA4 blog analytics — CTR, CVR, 4-quadrant matrix"),
+    ("03_Course_Intelligence",        "03", "Course Intelligence",             "Course landing page performance, session share, program levels"),
+    ("04_Device_Analysis",            "04", "Device Analysis",                 "Mobile vs Desktop vs Tablet breakdown"),
+    ("05_Geographic_Intelligence",    "05", "Geographic Intelligence",         "City and country-level traffic from GA4 & GSC"),
+    ("06_Daily_Traffic_Report",       "06", "Daily Traffic Report",            "Day-by-day views and active users trends"),
+    ("07_SEO_Opportunities",          "07", "SEO Opportunities",               "GSC keyword gap analysis and quick-win opportunities"),
+    ("08_Data_Quality",               "08", "Data Quality",                    "Source file validation and row-count checks"),
+    ("09_Data_Export_Console",        "09", "Data Export Console",             "Download filtered datasets as CSV"),
+    ("10_Generate_HTML_Report",       "10", "Generate HTML Report",            "Export a full HTML analytics report"),
+]
+
+cols = st.columns(2)
+for i, (slug, num, title, desc) in enumerate(pages):
+    with cols[i % 2]:
+        st.markdown(
+            f'<div class="nav-card">'
+            f'<h3>{num} · {title}</h3>'
+            f'<p>{desc}</p>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+
+st.markdown("---")
+st.caption(
+    "Data sources: `data/input/01_Blog_GA4.csv` (195,640 daily rows → 521 articles) "
+    "· `gsc_blog_queries.csv` (1,000 queries) · `gsc_blog_pages.csv` (1,000 pages)"
+)

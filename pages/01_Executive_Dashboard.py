@@ -1,142 +1,119 @@
-import os
+﻿import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from pathlib import Path
 
-st.set_page_config(
-    page_title="Executive Dashboard - MSU Analytics",
-    layout="wide",
-    page_icon="📈",
-)
+st.title("📈 Executive Dashboard")
+st.caption("Multi-channel traffic overview — aggregated from GA4 daily exports.")
 
-st.title("📈 Executive Insights Dashboard")
-st.markdown(
-    "High-level overview of traffic performance, engagement, and platform growth."
-)
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+html, body, [class*="css"] { font-family:"Inter",sans-serif; }
+div[data-testid="metric-container"] {
+    background:linear-gradient(135deg,#1e293b,#0f172a);
+    border:1px solid #334155; border-radius:12px; padding:16px 20px;
+}
+div[data-testid="metric-container"] label { color:#94a3b8!important; font-size:11px!important; text-transform:uppercase; }
+div[data-testid="metric-container"] [data-testid="stMetricValue"] { color:#f1f5f9!important; font-size:24px!important; font-weight:700!important; }
+</style>""", unsafe_allow_html=True)
 
+DATA_DIR = Path("data/input")
 
-# --- DATA LOADING HELPERS ---
-@st.cache_data(ttl=3600)
-def load_data(file_path):
-    if os.path.exists(file_path):
-        df = pd.read_csv(file_path)
-        if "Date" in df.columns:
-            df["Date"] = pd.to_datetime(df["Date"])
-        return df
-    return pd.DataFrame()
+@st.cache_data
+def load_daily(fname):
+    p = DATA_DIR / fname
+    if not p.exists(): return pd.DataFrame()
+    df = pd.read_csv(p, encoding="utf-8-sig")
+    df.columns = [c.strip() for c in df.columns]
+    if "Views" in df.columns:
+        df["Views"] = pd.to_numeric(df["Views"].astype(str).str.replace(",","",regex=False), errors="coerce").fillna(0)
+    if "Date" in df.columns:
+        df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+    return df
 
+@st.cache_data
+def agg_to_page(df, path_col="Page path and screen class"):
+    bad = {"/blog","/blog/","/courses","/courses/","/","(not set)",""}
+    a = df.groupby(path_col).agg(Views=("Views","sum"), AU=("Active users","max")).reset_index()
+    return a[~a[path_col].isin(bad)]
 
-blog_df = load_data("data/input/01_Blog_GA4.csv")
-course_df = load_data("data/input/02_Course_GA4.csv")
+blog_raw   = load_daily("01_Blog_GA4.csv")
+course_raw = load_daily("02_Course_GA4.csv")
 
-# --- EXECUTIVE METRICS ROW ---
-total_blog_views = (
-    int(blog_df["Views"].sum())
-    if not blog_df.empty and "Views" in blog_df.columns
-    else 0
-)
-total_course_views = (
-    int(course_df["Views"].sum())
-    if not course_df.empty and "Views" in course_df.columns
-    else 0
-)
-total_combined_views = total_blog_views + total_course_views
+blog_agg   = agg_to_page(blog_raw)   if not blog_raw.empty   else pd.DataFrame()
+course_agg_p = agg_to_page(course_raw) if not course_raw.empty else pd.DataFrame()
+if not course_agg_p.empty:
+    course_agg_p = course_agg_p[course_agg_p["Page path and screen class"].str.contains(r"/course",case=False,na=False)]
 
-m1, m2, m3, m4 = st.columns(4)
-m1.metric("Total Platform Views", f"{total_combined_views:,}")
-m2.metric("Course Views", f"{total_course_views:,}")
-m3.metric("Blog Views", f"{total_blog_views:,}")
-m4.metric("Active Assets Tracked", f"{len(course_df) + len(blog_df):,}")
+blog_views   = int(blog_agg["Views"].sum())     if not blog_agg.empty   else 0
+course_views = int(course_agg_p["Views"].sum()) if not course_agg_p.empty else 0
+blog_articles = len(blog_agg)
+course_pages  = len(course_agg_p)
+combined_views = blog_views + course_views
 
-st.divider()
+# ── KPIs ──────────────────────────────────────────────────────────────────────
+m1,m2,m3,m4 = st.columns(4)
+m1.metric("Total Platform Views",  f"{combined_views:,}", help="Blog + Course — aggregated to page grain")
+m2.metric("Blog Views",            f"{blog_views:,}")
+m3.metric("Course Views",          f"{course_views:,}")
+m4.metric("Unique Pages Tracked",  f"{blog_articles + course_pages:,}", help="Articles + course pages (not raw rows)")
 
-# --- OVERVIEW TREND CHART ---
-st.subheader("📊 Multi-Channel Traffic Comparison")
+st.markdown("---")
 
-if not course_df.empty or not blog_df.empty:
-    course_daily = (
-        course_df.groupby("Date")["Views"].sum().reset_index()
-        if not course_df.empty
-        else pd.DataFrame()
-    )
-    blog_daily = (
-        blog_df.groupby("Date")["Views"].sum().reset_index()
-        if not blog_df.empty
-        else pd.DataFrame()
-    )
+# ── Daily Trend ───────────────────────────────────────────────────────────────
+st.markdown("### Daily Views Time-Series Trend")
 
-    if not course_daily.empty:
-        course_daily["Category"] = "Courses"
-    if not blog_daily.empty:
-        blog_daily["Category"] = "Blogs"
+frames = []
+if not blog_raw.empty and "Date" in blog_raw.columns:
+    bd = blog_raw.groupby("Date")["Views"].sum().reset_index()
+    bd["Channel"] = "Blog"
+    frames.append(bd)
+if not course_raw.empty and "Date" in course_raw.columns:
+    cd = course_raw.groupby("Date")["Views"].sum().reset_index()
+    cd["Channel"] = "Courses"
+    frames.append(cd)
 
-    combined_daily = pd.concat([course_daily, blog_daily], ignore_index=True)
-
-    if not combined_daily.empty and "Date" in combined_daily.columns:
-        fig = px.line(
-            combined_daily,
-            x="Date",
-            y="Views",
-            color="Category",
-            title="Daily Views Time-Series Trend",
-            color_discrete_map={
-                "Courses": "#0066cc",
-                "Blogs": "#00a86b",
-            },
-        )
-        fig.update_layout(
-            hovermode="x unified", margin=dict(l=20, r=20, t=40, b=20)
-        )
-        st.plotly_chart(fig, use_container_width=True)
+if frames:
+    combined = pd.concat(frames, ignore_index=True)
+    fig = px.line(combined, x="Date", y="Views", color="Channel",
+                  color_discrete_map={"Blog":"#38bdf8","Courses":"#a78bfa"},
+                  labels={"Views":"Daily Views","Date":""},
+                  template="plotly_dark")
+    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#0f172a",
+                      font_color="#f1f5f9", hovermode="x unified",
+                      legend=dict(orientation="h",y=1.02), height=380,
+                      margin=dict(l=20,r=20,t=20,b=20),
+                      xaxis=dict(gridcolor="#1e293b"), yaxis=dict(gridcolor="#1e293b"))
+    st.plotly_chart(fig, width="stretch")
 else:
-    st.info("Upload or process CSV data files to display time-series trends.")
+    st.info("No CSV data found in `data/input/`. Add `01_Blog_GA4.csv` and `02_Course_GA4.csv`.")
 
-st.divider()
+st.markdown("---")
 
-# --- CLEAN INTEGRATED TRAFFIC SNAPSHOT (NO HARDCODED DATES) ---
-st.subheader("🌐 Latest Server Traffic Snapshot")
+# ── Top Pages by Total Views ───────────────────────────────────────────────────
+st.markdown("### Top 10 Pages by Total Views (Period)")
+col_b, col_c = st.columns(2)
 
-c1, c2, c3, c4, c5 = st.columns(5)
-c1.metric("Total Requests", "3,570")
-c2.metric("Page Views", "3,570")
-c3.metric("Unique IPs", "1,276")
-c4.metric("Bot Requests", "0")
-c5.metric("Error Count", "0")
+with col_b:
+    st.caption("Blog Articles")
+    if not blog_agg.empty:
+        top_b = blog_agg.nlargest(10,"Views")[["Page path and screen class","Views","AU"]].rename(
+            columns={"Page path and screen class":"Page","AU":"Active Users"})
+        st.dataframe(top_b, hide_index=True, width="stretch",
+                     column_config={"Views":st.column_config.NumberColumn(format="%d"),
+                                    "Active Users":st.column_config.NumberColumn(format="%d")})
+    else:
+        st.info("No blog data found.")
 
-col_left, col_right = st.columns(2)
-
-with col_left:
-    st.markdown("#### Top Requested Pages")
-    df_pages = pd.DataFrame(
-        [
-            {"Page Path": "/", "Views": 1},
-            {"Page Path": "/robots.txt", "Views": 1},
-            {"Page Path": "/our-faculty", "Views": 1},
-            {
-                "Page Path": (
-                    "/course/btech-in-cloud-computing-and-cyber-security"
-                ),
-                "Views": 1,
-            },
-            {
-                "Page Path": (
-                    "/blog/why-skill-based-education-is-important-in-this-era"
-                ),
-                "Views": 1,
-            },
-        ]
-    )
-    st.dataframe(df_pages, use_container_width=True, hide_index=True)
-
-with col_right:
-    st.markdown("#### Top External Referrers")
-    df_ref = pd.DataFrame(
-        [
-            {"Referrer URL": "https://www.google.com/", "Visits": 405},
-            {"Referrer URL": "https://international.msu.edu.in/", "Visits": 19},
-            {"Referrer URL": "https://msu.edu.in/grievance-redressal", "Visits": 16},
-            {"Referrer URL": "https://www.msu.edu.in/", "Visits": 15},
-            {"Referrer URL": "https://www.msu.edu.in/wise", "Visits": 11},
-        ]
-    )
-    st.dataframe(df_ref, use_container_width=True, hide_index=True)
+with col_c:
+    st.caption("Course Pages")
+    if not course_agg_p.empty:
+        top_c = course_agg_p.nlargest(10,"Views")[["Page path and screen class","Views","AU"]].rename(
+            columns={"Page path and screen class":"Page","AU":"Active Users"})
+        st.dataframe(top_c, hide_index=True, width="stretch",
+                     column_config={"Views":st.column_config.NumberColumn(format="%d"),
+                                    "Active Users":st.column_config.NumberColumn(format="%d")})
+    else:
+        st.info("No course data found.")

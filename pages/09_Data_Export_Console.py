@@ -1,9 +1,8 @@
-import io
+﻿import io
 import streamlit as st
 import pandas as pd
 from src.data.loaders import detect_and_load_all
 
-st.set_page_config(page_title="Data Export Console", layout="wide")
 st.title("📥 Data Export & Download Console")
 st.caption("Inspect, filter, and export cleaned GA4 analytics and SEO datasets in CSV or Excel format.")
 

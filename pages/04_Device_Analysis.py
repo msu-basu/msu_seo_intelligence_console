@@ -1,9 +1,8 @@
-import streamlit as st
+﻿import streamlit as st
 from src.data.loaders import detect_and_load_all
 from src.ui.tables import render_table_with_download
 from src.ui.charts import plot_pie_chart
 
-st.set_page_config(page_title="Device Analysis", layout="wide")
 st.title("📱 Device & Usability Analysis")
 
 datasets = detect_and_load_all()
