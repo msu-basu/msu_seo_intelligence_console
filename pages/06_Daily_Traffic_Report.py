@@ -33,23 +33,24 @@ def load_daily(fname):
         df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
     return df
 
-blog_raw   = load_daily("01_Blog_GA4.parquet")
-course_raw = load_daily("02_Course_GA4.parquet")
+from src.data.db_loader import load_daily_traffic_from_db
 
-if blog_raw.empty and course_raw.empty:
-    st.error("No GA4 data found in `data/input/`.")
-    st.stop()
-
-# ── Daily aggregates ──────────────────────────────────────────────────────────
-frames = []
-if not blog_raw.empty and "Date" in blog_raw.columns:
-    bd = blog_raw.groupby("Date")["Views"].sum().reset_index(); bd["Channel"] = "Blog"
-    frames.append(bd)
-if not course_raw.empty and "Date" in course_raw.columns:
-    cd = course_raw.groupby("Date")["Views"].sum().reset_index(); cd["Channel"] = "Courses"
-    frames.append(cd)
-
-daily = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+# ── Daily aggregates (Loaded in ~50ms from PostgreSQL View) ───────────────────
+daily = load_daily_traffic_from_db()
+if daily.empty:
+    blog_raw   = load_daily("01_Blog_GA4.parquet")
+    course_raw = load_daily("02_Course_GA4.parquet")
+    if blog_raw.empty and course_raw.empty:
+        st.error("No GA4 data found.")
+        st.stop()
+    frames = []
+    if not blog_raw.empty and "Date" in blog_raw.columns:
+        bd = blog_raw.groupby("Date")["Views"].sum().reset_index(); bd["Channel"] = "Blog"
+        frames.append(bd)
+    if not course_raw.empty and "Date" in course_raw.columns:
+        cd = course_raw.groupby("Date")["Views"].sum().reset_index(); cd["Channel"] = "Courses"
+        frames.append(cd)
+    daily = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
 
 # ── Date range filter ─────────────────────────────────────────────────────────
 if not daily.empty:

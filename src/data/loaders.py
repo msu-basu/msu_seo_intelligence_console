@@ -439,6 +439,10 @@ def _merge_gsc_into_ga4(df_ga4: pd.DataFrame, df_gsc: pd.DataFrame) -> pd.DataFr
     return merged
 
 
+import streamlit as st
+
+
+@st.cache_data(ttl=3600, show_spinner="Loading MSU Intelligence Data...")
 def detect_and_load_all(
     data_dir: Path = Path("data/processed"),
 ) -> Dict[str, pd.DataFrame]:

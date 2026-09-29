@@ -1,4 +1,4 @@
-﻿import io
+import io
 import streamlit as st
 import pandas as pd
 from src.data.loaders import detect_and_load_all

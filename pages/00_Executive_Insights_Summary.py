@@ -19,12 +19,15 @@ div[data-testid="metric-container"] label { color:#94a3b8!important; font-size:1
 div[data-testid="metric-container"] [data-testid="stMetricValue"] { color:#f1f5f9!important; font-size:24px!important; font-weight:700!important; }
 </style>""", unsafe_allow_html=True)
 
-from src.data.db_loader import load_file_or_db
+from src.data.db_loader import load_file_or_db, load_page_summary_from_db
 
 DATA_DIR = Path("data/processed")
 
 @st.cache_data
 def load_agg_blog():
+    df_view = load_page_summary_from_db("blog")
+    if not df_view.empty:
+        return df_view
     df = load_file_or_db("01_Blog_GA4.parquet")
     if df.empty: return pd.DataFrame()
     df.columns = [c.strip() for c in df.columns]
@@ -38,6 +41,9 @@ def load_agg_blog():
 
 @st.cache_data
 def load_agg_course():
+    df_view = load_page_summary_from_db("course")
+    if not df_view.empty:
+        return df_view
     df = load_file_or_db("02_Course_GA4.parquet")
     if df.empty: return pd.DataFrame()
     df.columns = [c.strip() for c in df.columns]

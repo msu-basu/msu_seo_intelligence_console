@@ -1,4 +1,4 @@
-﻿import streamlit as st
+import streamlit as st
 from src.data.loaders import detect_and_load_all
 from src.ui.tables import render_table_with_download
 from src.ui.charts import plot_pie_chart

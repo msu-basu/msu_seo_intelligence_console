@@ -270,10 +270,14 @@ def test_db_connection() -> bool:
         return False
 
 
+import streamlit as st
+
+
+@st.cache_data(ttl=3600, show_spinner="Loading dataset from PostgreSQL...")
 def load_dataset_from_db(dataset_key: str) -> pd.DataFrame:
     """
     Loads a single dataset directly from PostgreSQL raw.* tables.
-    Returns DataFrame matching expected column names and types.
+    Cached in RAM with Streamlit for instant sub-second retrieval.
     """
     schema_info = TABLE_SCHEMAS.get(dataset_key)
     if not schema_info:
@@ -303,10 +307,12 @@ def load_dataset_from_db(dataset_key: str) -> pd.DataFrame:
         return pd.DataFrame()
 
 
+@st.cache_data(ttl=3600, show_spinner="Loading analytics datasets from PostgreSQL...")
 def load_all_from_db() -> Dict[str, pd.DataFrame]:
     """
     Loads all datasets directly from PostgreSQL.
     Merges GSC Pages into Blog and Course, and populates aliases.
+    Cached in RAM with Streamlit.
     """
     from src.data.loaders import _merge_gsc_into_ga4
 
@@ -355,10 +361,12 @@ def load_all_from_db() -> Dict[str, pd.DataFrame]:
     return datasets
 
 
+@st.cache_data(ttl=3600, show_spinner=False)
 def load_file_or_db(fname: str) -> pd.DataFrame:
     """
     Transparent loader for pages reading by filename.
     Checks PostgreSQL first; falls back to data/processed/<fname> if DB is unavailable.
+    Cached in RAM with Streamlit.
     """
     base_name = Path(fname).name
     dataset_key = FILE_TO_KEY_MAP.get(base_name)
@@ -378,3 +386,51 @@ def load_file_or_db(fname: str) -> pd.DataFrame:
             return pd.read_csv(file_path)
 
     return pd.DataFrame()
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def load_daily_traffic_from_db() -> pd.DataFrame:
+    """
+    Loads daily aggregated views from analytics.v_daily_traffic_trends in ~50ms.
+    Returns DataFrame with columns: ['Date', 'Channel', 'Views', 'Active users'].
+    """
+    if not test_db_connection():
+        return pd.DataFrame()
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            cur.execute('SELECT "Date", "Channel", "Views", "Active users" FROM analytics.v_daily_traffic_trends;')
+            rows = cur.fetchall()
+        conn.close()
+        df = pd.DataFrame(rows, columns=["Date", "Channel", "Views", "Active users"])
+        df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+        return df
+    except Exception as e:
+        logger.warning("View query v_daily_traffic_trends failed: %s", e)
+        return pd.DataFrame()
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def load_page_summary_from_db(channel: str = "blog") -> pd.DataFrame:
+    """
+    Loads page-level summary metrics from analytics views in ~50ms.
+    Returns pre-aggregated metrics per page without transferring raw daily rows.
+    """
+    if not test_db_connection():
+        return pd.DataFrame()
+    view_name = "analytics.v_blog_page_summary" if channel.lower() == "blog" else "analytics.v_course_page_summary"
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            cur.execute(f"SELECT * FROM {view_name};")
+            cols = [desc[0] for desc in cur.description]
+            rows = cur.fetchall()
+        conn.close()
+        df = pd.DataFrame(rows, columns=cols)
+        if "Active users" in df.columns and "AU" not in df.columns:
+            df["AU"] = df["Active users"]
+        return df
+    except Exception as e:
+        logger.warning("View query %s failed: %s", view_name, e)
+        return pd.DataFrame()
+

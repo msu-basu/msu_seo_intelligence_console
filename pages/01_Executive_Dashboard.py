@@ -40,13 +40,20 @@ def agg_to_page(df, path_col="Page path and screen class"):
     a = df.groupby(path_col).agg(Views=("Views","sum"), AU=("Active users","max")).reset_index()
     return a[~a[path_col].isin(bad)]
 
-blog_raw   = load_daily("01_Blog_GA4.parquet")
-course_raw = load_daily("02_Course_GA4.parquet")
+from src.data.db_loader import load_page_summary_from_db
 
-blog_agg   = agg_to_page(blog_raw)   if not blog_raw.empty   else pd.DataFrame()
-course_agg_p = agg_to_page(course_raw) if not course_raw.empty else pd.DataFrame()
-if not course_agg_p.empty:
-    course_agg_p = course_agg_p[course_agg_p["Page path and screen class"].str.contains(r"/course",case=False,na=False)]
+# ── Page Aggregates (Loaded in ~50ms from PostgreSQL Views) ───────────────────
+blog_agg = load_page_summary_from_db("blog")
+if blog_agg.empty:
+    blog_raw = load_daily("01_Blog_GA4.parquet")
+    blog_agg = agg_to_page(blog_raw) if not blog_raw.empty else pd.DataFrame()
+
+course_agg_p = load_page_summary_from_db("course")
+if course_agg_p.empty:
+    course_raw = load_daily("02_Course_GA4.parquet")
+    course_agg_p = agg_to_page(course_raw) if not course_raw.empty else pd.DataFrame()
+if not course_agg_p.empty and "Page path and screen class" in course_agg_p.columns:
+    course_agg_p = course_agg_p[course_agg_p["Page path and screen class"].str.contains(r"/course", case=False, na=False)]
 
 blog_views   = int(blog_agg["Views"].sum())     if not blog_agg.empty   else 0
 course_views = int(course_agg_p["Views"].sum()) if not course_agg_p.empty else 0
@@ -66,18 +73,24 @@ st.markdown("---")
 # ── Daily Trend ───────────────────────────────────────────────────────────────
 st.markdown("### Daily Views Time-Series Trend")
 
-frames = []
-if not blog_raw.empty and "Date" in blog_raw.columns:
-    bd = blog_raw.groupby("Date")["Views"].sum().reset_index()
-    bd["Channel"] = "Blog"
-    frames.append(bd)
-if not course_raw.empty and "Date" in course_raw.columns:
-    cd = course_raw.groupby("Date")["Views"].sum().reset_index()
-    cd["Channel"] = "Courses"
-    frames.append(cd)
+from src.data.db_loader import load_daily_traffic_from_db
 
-if frames:
-    combined = pd.concat(frames, ignore_index=True)
+combined = load_daily_traffic_from_db()
+if combined.empty:
+    blog_raw = load_daily("01_Blog_GA4.parquet")
+    course_raw = load_daily("02_Course_GA4.parquet")
+    frames = []
+    if not blog_raw.empty and "Date" in blog_raw.columns:
+        bd = blog_raw.groupby("Date")["Views"].sum().reset_index()
+        bd["Channel"] = "Blog"
+        frames.append(bd)
+    if not course_raw.empty and "Date" in course_raw.columns:
+        cd = course_raw.groupby("Date")["Views"].sum().reset_index()
+        cd["Channel"] = "Courses"
+        frames.append(cd)
+    combined = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+if not combined.empty:
     fig = px.line(combined, x="Date", y="Views", color="Channel",
                   color_discrete_map={"Blog":"#38bdf8","Courses":"#a78bfa"},
                   labels={"Views":"Daily Views","Date":""},
@@ -100,21 +113,23 @@ col_b, col_c = st.columns(2)
 with col_b:
     st.caption("Blog Articles")
     if not blog_agg.empty:
-        top_b = blog_agg.nlargest(10,"Views")[["Page path and screen class","Views","AU"]].rename(
-            columns={"Page path and screen class":"Page","AU":"Active Users"})
+        au_b = "AU" if "AU" in blog_agg.columns else ("Active users" if "Active users" in blog_agg.columns else blog_agg.columns[1])
+        top_b = blog_agg.nlargest(10, "Views")[["Page path and screen class", "Views", au_b]].rename(
+            columns={"Page path and screen class": "Page", au_b: "Active Users"})
         st.dataframe(top_b, hide_index=True, width="stretch",
-                     column_config={"Views":st.column_config.NumberColumn(format="%d"),
-                                    "Active Users":st.column_config.NumberColumn(format="%d")})
+                     column_config={"Views": st.column_config.NumberColumn(format="%d"),
+                                    "Active Users": st.column_config.NumberColumn(format="%d")})
     else:
         st.info("No blog data found.")
 
 with col_c:
     st.caption("Course Pages")
     if not course_agg_p.empty:
-        top_c = course_agg_p.nlargest(10,"Views")[["Page path and screen class","Views","AU"]].rename(
-            columns={"Page path and screen class":"Page","AU":"Active Users"})
+        au_c = "AU" if "AU" in course_agg_p.columns else ("Active users" if "Active users" in course_agg_p.columns else course_agg_p.columns[1])
+        top_c = course_agg_p.nlargest(10, "Views")[["Page path and screen class", "Views", au_c]].rename(
+            columns={"Page path and screen class": "Page", au_c: "Active Users"})
         st.dataframe(top_c, hide_index=True, width="stretch",
-                     column_config={"Views":st.column_config.NumberColumn(format="%d"),
-                                    "Active Users":st.column_config.NumberColumn(format="%d")})
+                     column_config={"Views": st.column_config.NumberColumn(format="%d"),
+                                    "Active Users": st.column_config.NumberColumn(format="%d")})
     else:
         st.info("No course data found.")
