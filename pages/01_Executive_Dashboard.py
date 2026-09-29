@@ -1,4 +1,4 @@
-﻿import numpy as np
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -19,13 +19,14 @@ div[data-testid="metric-container"] label { color:#94a3b8!important; font-size:1
 div[data-testid="metric-container"] [data-testid="stMetricValue"] { color:#f1f5f9!important; font-size:24px!important; font-weight:700!important; }
 </style>""", unsafe_allow_html=True)
 
+from src.data.db_loader import load_file_or_db
+
 DATA_DIR = Path("data/processed")
 
 @st.cache_data
 def load_daily(fname):
-    p = DATA_DIR / fname
-    if not p.exists(): return pd.DataFrame()
-    df = pd.read_parquet(p)
+    df = load_file_or_db(fname)
+    if df.empty: return pd.DataFrame()
     df.columns = [c.strip() for c in df.columns]
     if "Views" in df.columns:
         df["Views"] = pd.to_numeric(df["Views"].astype(str).str.replace(",","",regex=False), errors="coerce").fillna(0)

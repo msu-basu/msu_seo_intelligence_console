@@ -1,4 +1,4 @@
-﻿"""Robust CSV and Excel loading and dataset detection for the MSU SEO console."""
+"""Robust CSV and Excel loading and dataset detection for the MSU SEO console."""
 
 from __future__ import annotations
 
@@ -443,9 +443,23 @@ def detect_and_load_all(
     data_dir: Path = Path("data/processed"),
 ) -> Dict[str, pd.DataFrame]:
     """
-    Load all CSV and Excel files and assign stable dataset keys without overwriting.
-    Automatically merges GSC Pages data into Course and Blog datasets and populates aliases.
+    Load all analytics datasets.
+    Checks PostgreSQL database first (Pure Database Mode),
+    and gracefully falls back to local files if database is unavailable.
     """
+    import os
+    use_db = os.getenv("USE_DATABASE", "true").lower() in ("true", "1", "yes")
+    if use_db:
+        try:
+            from src.data.db_loader import load_all_from_db, test_db_connection
+            if test_db_connection():
+                db_datasets = load_all_from_db()
+                if db_datasets:
+                    logger.info("Loaded %d datasets directly from PostgreSQL database (Pure DB Mode).", len(db_datasets))
+                    return db_datasets
+        except Exception as e:
+            logger.warning("Database direct load failed, falling back to files: %s", e)
+
     data_dir = Path(data_dir)
     datasets: Dict[str, pd.DataFrame] = {}
 

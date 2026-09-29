@@ -39,15 +39,16 @@ div[data-testid="metric-container"] [data-testid="stMetricValue"] {
 st.title("🌍 Regional & CTR Intelligence")
 st.caption("Traffic origin, engagement, and conversion performance across Indian cities (GA4) combined with organic CTR per page and region (GSC).")
 
+from src.data.db_loader import load_file_or_db
+
 DATA_DIR = Path("data/processed")
 
 # — LOADERS —
 @st.cache_data
 def load_geo_global() -> pd.DataFrame:
-    p = DATA_DIR / "06_Geo_Global_GA4.parquet"
-    if not p.exists():
+    df = load_file_or_db("06_Geo_Global_GA4.parquet")
+    if df.empty:
         return pd.DataFrame()
-    df = pd.read_parquet(p)
     df.columns = [c.strip() for c in df.columns]
     df = df[df.iloc[:, 0].astype(str).str.strip().ne("")].copy()
     
@@ -75,17 +76,13 @@ def load_geo_global() -> pd.DataFrame:
 
 @st.cache_data
 def load_city_devices() -> pd.DataFrame:
-    p = DATA_DIR / "06_Geo_PagePath_GA4.parquet"
-    if not p.exists():
-        return pd.DataFrame()
-    return pd.read_parquet(p)
+    return load_file_or_db("06_Geo_PagePath_GA4.parquet")
 
 @st.cache_data
 def load_gsc_countries(fname: str) -> pd.DataFrame:
-    p = DATA_DIR / fname
-    if not p.exists():
+    df = load_file_or_db(fname)
+    if df.empty:
         return pd.DataFrame()
-    df = pd.read_parquet(p)
     df.columns = [c.strip() for c in df.columns]
     for col in ["Clicks", "Impressions", "Position"]:
         if col in df.columns:
@@ -99,10 +96,9 @@ def load_gsc_countries(fname: str) -> pd.DataFrame:
 
 @st.cache_data
 def load_gsc_pages(fname: str) -> pd.DataFrame:
-    p = DATA_DIR / fname
-    if not p.exists():
+    df = load_file_or_db(fname)
+    if df.empty:
         return pd.DataFrame()
-    df = pd.read_parquet(p)
     df.columns = [c.strip() for c in df.columns]
     page_col = next((c for c in df.columns if "page" in c.lower() or "top" in c.lower()), df.columns[0])
     df.rename(columns={page_col: "Page"}, inplace=True)

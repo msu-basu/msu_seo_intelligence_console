@@ -58,6 +58,19 @@ class CDCEngine:
             print(f"[WARN] Could not retrieve max extracted date: {e}")
             return None
 
+    def get_max_parquet_date(self) -> Optional[date]:
+        """Queries local processed parquet files to find latest Date present."""
+        try:
+            blog_pq = self.project_root / "data" / "processed" / "01_Blog_GA4.parquet"
+            if blog_pq.exists():
+                df = pd.read_parquet(blog_pq, columns=["Date"])
+                s = pd.to_datetime(df["Date"], errors="coerce").dropna()
+                if not s.empty:
+                    return s.max().date()
+        except Exception as e:
+            print(f"[WARN] Could not retrieve max parquet date: {e}")
+        return None
+
     def log_pipeline_start(self, job_name: str, source: str, start_date: str, end_date: str) -> Optional[str]:
         """Logs start of run to control.pipeline_runs using production schema."""
         try:

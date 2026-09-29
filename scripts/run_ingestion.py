@@ -77,15 +77,19 @@ def main():
         end_d = end_date_obj.strftime("%Y-%m-%d")
         print(f"[*] Manual Lookback Window   : {start_d}  -->  {end_d}")
     else:
-        # Default: Auto-detect High-Watermark (Max date in DB)
+        # Default: Auto-detect High-Watermark (earliest of DB and Parquet to guarantee zero gaps)
         max_db_date = cdc.get_max_extracted_date() if not args.no_db else None
+        max_pq_date = cdc.get_max_parquet_date()
         end_date_obj = date.today()
         end_d = end_date_obj.strftime("%Y-%m-%d")
 
-        if max_db_date:
-            start_d = max_db_date.strftime("%Y-%m-%d")
-            print(f"[*] High-Watermark Detected  : Last ingested date in DB is {max_db_date}")
-            print(f"[*] Catch-Up Date Window     : {start_d}  -->  {end_d} (extracting fresh delta till today)")
+        dates_to_compare = [d for d in [max_db_date, max_pq_date] if d is not None]
+        if dates_to_compare:
+            # Start from the earliest high-watermark with a 2-day lookback buffer for GA4/GSC attribution lag
+            target_start = min(dates_to_compare) - timedelta(days=2)
+            start_d = target_start.strftime("%Y-%m-%d")
+            print(f"[*] High-Watermark Detected  : DB={max_db_date}, Parquet={max_pq_date}")
+            print(f"[*] Catch-Up Window (Buffer) : {start_d}  -->  {end_d} (continuous zero-gap sync)")
         else:
             start_date_obj = end_date_obj - timedelta(days=3)
             start_d = start_date_obj.strftime("%Y-%m-%d")

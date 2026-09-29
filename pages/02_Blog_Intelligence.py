@@ -1,4 +1,4 @@
-﻿"""
+"""
 02_Blog_Intelligence.py  — FIXED VERSION
 -----------------------------------------
 ROOT CAUSE (previous version):
@@ -110,29 +110,28 @@ def _pn(val) -> float:
 # =============================================================================
 # LOADERS
 # =============================================================================
+from src.data.db_loader import load_file_or_db
+
 @st.cache_data(show_spinner="Loading GA4 blog daily data...")
 def load_raw_blog() -> pd.DataFrame:
-    for p in [DATA_DIR/"01_Blog_GA4.parquet", DATA_DIR/"blog_ga4.parquet"]:
-        if p.exists():
-            df = pd.read_parquet(p)
-            df.columns = [c.strip() for c in df.columns]
-            return df
+    df = load_file_or_db("01_Blog_GA4.parquet")
+    if not df.empty:
+        df.columns = [c.strip() for c in df.columns]
+        return df
     return pd.DataFrame()
 
 @st.cache_data(show_spinner="Loading GSC pages...")
 def load_gsc_pages() -> pd.DataFrame:
-    p = DATA_DIR/"gsc_blog_pages.parquet"
-    if p.exists():
-        df = pd.read_parquet(p)
+    df = load_file_or_db("gsc_blog_pages.parquet")
+    if not df.empty:
         df.columns = [c.strip() for c in df.columns]
         return df
     return pd.DataFrame()
 
 @st.cache_data(show_spinner="Loading GSC queries...")
 def load_gsc_queries() -> pd.DataFrame:
-    p = DATA_DIR/"gsc_blog_queries.parquet"
-    if p.exists():
-        df = pd.read_parquet(p)
+    df = load_file_or_db("gsc_blog_queries.parquet")
+    if not df.empty:
         df.columns = [c.strip() for c in df.columns]
         return df
     return pd.DataFrame()

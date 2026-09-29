@@ -1,4 +1,4 @@
-﻿import numpy as np
+import numpy as np
 import pandas as pd
 import streamlit as st
 import plotly.express as px
@@ -13,13 +13,14 @@ st.markdown("""
 html, body, [class*="css"] { font-family:"Inter",sans-serif; }
 </style>""", unsafe_allow_html=True)
 
+from src.data.db_loader import load_file_or_db
+
 DATA_DIR = Path("data/processed")
 
 @st.cache_data
 def agg_blog():
-    p = DATA_DIR/"01_Blog_GA4.parquet"
-    if not p.exists(): return pd.DataFrame()
-    df = pd.read_parquet(p)
+    df = load_file_or_db("01_Blog_GA4.parquet")
+    if df.empty: return pd.DataFrame()
     df.columns = [c.strip() for c in df.columns]
     bad = {"/blog","/blog/","/","(not set)",""}
     for col in ["Views","Event count","Key events"]:
@@ -33,9 +34,8 @@ def agg_blog():
 
 @st.cache_data
 def load_gsc(fname):
-    p = DATA_DIR/fname
-    if not p.exists(): return pd.DataFrame()
-    df = pd.read_parquet(p)
+    df = load_file_or_db(fname)
+    if df.empty: return pd.DataFrame()
     df.columns = [c.strip() for c in df.columns]
     for col in ["Clicks","Impressions","Position"]:
         if col in df.columns:

@@ -1,4 +1,4 @@
-﻿import numpy as np
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -19,13 +19,14 @@ div[data-testid="metric-container"] label { color:#94a3b8!important; font-size:1
 div[data-testid="metric-container"] [data-testid="stMetricValue"] { color:#f1f5f9!important; font-size:24px!important; font-weight:700!important; }
 </style>""", unsafe_allow_html=True)
 
+from src.data.db_loader import load_file_or_db
+
 DATA_DIR = Path("data/processed")
 
 @st.cache_data
 def load_agg_blog():
-    p = DATA_DIR/"01_Blog_GA4.parquet"
-    if not p.exists(): return pd.DataFrame()
-    df = pd.read_parquet(p)
+    df = load_file_or_db("01_Blog_GA4.parquet")
+    if df.empty: return pd.DataFrame()
     df.columns = [c.strip() for c in df.columns]
     bad = {"/blog","/blog/","/","(not set)",""}
     agg = df.groupby("Page path and screen class").agg(
@@ -37,9 +38,8 @@ def load_agg_blog():
 
 @st.cache_data
 def load_agg_course():
-    p = DATA_DIR/"02_Course_GA4.parquet"
-    if not p.exists(): return pd.DataFrame()
-    df = pd.read_parquet(p)
+    df = load_file_or_db("02_Course_GA4.parquet")
+    if df.empty: return pd.DataFrame()
     df.columns = [c.strip() for c in df.columns]
     bad = {"/","/courses","/courses/","(not set)",""}
     agg = df.groupby("Page path and screen class").agg(
@@ -54,9 +54,8 @@ def load_agg_course():
 @st.cache_data
 def load_gsc_queries():
     for fname in ["gsc_blog_queries.parquet","gsc_course_queries.parquet"]:
-        p = DATA_DIR/fname
-        if p.exists():
-            df = pd.read_parquet(p)
+        df = load_file_or_db(fname)
+        if not df.empty:
             df.columns = [c.strip() for c in df.columns]
             for col in ["Clicks","Impressions","Position"]:
                 if col in df.columns:
