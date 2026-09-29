@@ -142,6 +142,9 @@ def main():
             cdc.stage_to_files(df_gsc_course, "staging_gsc_course_pages")
             cdc.stage_to_files(df_gsc_queries, "staging_gsc_queries")
 
+            # Synchronize Streamlit processed baseline Parquet files
+            cdc.sync_to_processed_parquet(df_ga4_blog, df_ga4_course)
+
         # Database Upsert
         if not args.no_db:
             print("\n[2] Executing CDC Upsert into PostgreSQL:")

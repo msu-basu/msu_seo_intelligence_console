@@ -266,3 +266,61 @@ class CDCEngine:
         except Exception:
             pass
         print(f"  [STAGING FILE] Saved {len(df):,} rows -> data/staging/{csv_path.name}")
+
+    def sync_to_processed_parquet(self, df_blog: pd.DataFrame, df_course: pd.DataFrame):
+        """
+        Merges newly ingested daily records into data/processed/*.parquet
+        so the Streamlit dashboard immediately displays the fresh dates and KPIs.
+        """
+        processed_dir = self.project_root / "data" / "processed"
+        if not processed_dir.exists():
+            return
+
+        # 1. Update 01_Blog_GA4.parquet
+        blog_pq = processed_dir / "01_Blog_GA4.parquet"
+        if blog_pq.exists() and not df_blog.empty:
+            df_old = pd.read_parquet(blog_pq)
+            df_old["Date"] = pd.to_datetime(df_old["Date"], errors="coerce")
+
+            df_new = pd.DataFrame()
+            df_new["Page path and screen class"] = df_blog["page_path"]
+            df_new["Views"] = df_blog["views"].astype(int)
+            df_new["Bounce rate"] = df_blog["bounce_rate"].astype(float)
+            df_new["Active users"] = df_blog["active_users"].astype(int)
+            df_new["Views per active user"] = (df_blog["views"] / df_blog["active_users"].replace(0, 1)).round(2)
+            df_new["Average engagement time per active user"] = df_blog["avg_engagement_time"].astype(float)
+            df_new["Event count"] = df_blog["event_count"].astype(int)
+            df_new["Key events"] = 0
+            df_new["Total revenue"] = 0
+            df_new["Date"] = pd.to_datetime(df_blog["report_date"], errors="coerce")
+
+            merged = pd.concat([df_old, df_new], ignore_index=True)
+            merged = merged.drop_duplicates(subset=["Page path and screen class", "Date"], keep="last")
+            merged.to_parquet(blog_pq, index=False)
+            new_max = merged["Date"].max().strftime("%Y-%m-%d")
+            print(f"  [STREAMLIT PARQUET SYNC] 01_Blog_GA4.parquet updated -> New Max Date: {new_max} ({len(merged):,} rows)")
+
+        # 2. Update 02_Course_GA4.parquet
+        course_pq = processed_dir / "02_Course_GA4.parquet"
+        if course_pq.exists() and not df_course.empty:
+            df_old = pd.read_parquet(course_pq)
+            df_old["Date"] = pd.to_datetime(df_old["Date"], errors="coerce")
+
+            df_new = pd.DataFrame()
+            df_new["Page path and screen class"] = df_course["page_path"]
+            df_new["Views"] = df_course["views"].astype(int)
+            df_new["Bounce rate"] = df_course["bounce_rate"].astype(float)
+            df_new["Active users"] = df_course["active_users"].astype(int)
+            df_new["Views per active user"] = (df_course["views"] / df_course["active_users"].replace(0, 1)).round(2)
+            df_new["Average engagement time per active user"] = df_course["avg_engagement_time"].astype(float)
+            df_new["Event count"] = df_course["event_count"].astype(int)
+            df_new["Key events"] = 0
+            df_new["Total revenue"] = 0
+            df_new["Date"] = pd.to_datetime(df_course["report_date"], errors="coerce")
+
+            merged = pd.concat([df_old, df_new], ignore_index=True)
+            merged = merged.drop_duplicates(subset=["Page path and screen class", "Date"], keep="last")
+            merged.to_parquet(course_pq, index=False)
+            new_max = merged["Date"].max().strftime("%Y-%m-%d")
+            print(f"  [STREAMLIT PARQUET SYNC] 02_Course_GA4.parquet updated -> New Max Date: {new_max} ({len(merged):,} rows)")
+
