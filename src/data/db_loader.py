@@ -13,7 +13,12 @@ from pathlib import Path
 from typing import Dict, Optional, Any
 import numpy as np
 import pandas as pd
-import psycopg
+try:
+    import psycopg
+    PSYCOPG_AVAILABLE = True
+except (ImportError, Exception):
+    psycopg = None
+    PSYCOPG_AVAILABLE = False
 from dotenv import load_dotenv
 
 from src.utils.logging import get_logger
@@ -250,6 +255,8 @@ FILE_TO_KEY_MAP = {
 
 def get_db_connection():
     """Establishes connection to PostgreSQL database."""
+    if not PSYCOPG_AVAILABLE or psycopg is None:
+        raise ImportError("psycopg library is not available or libpq is missing.")
     return psycopg.connect(
         host=DB_HOST,
         port=DB_PORT,
@@ -262,6 +269,8 @@ def get_db_connection():
 
 def test_db_connection() -> bool:
     """Tests if PostgreSQL is reachable."""
+    if not PSYCOPG_AVAILABLE or psycopg is None:
+        return False
     try:
         conn = get_db_connection()
         conn.close()
