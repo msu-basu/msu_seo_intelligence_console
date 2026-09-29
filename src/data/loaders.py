@@ -453,15 +453,17 @@ def detect_and_load_all(
         logger.warning("Data directory does not exist: %s", data_dir)
         return datasets
 
-    file_list = sorted(list(data_dir.glob("*.parquet")) + list(data_dir.glob("*.xlsx")) + list(data_dir.glob("*.xls")))
+    file_list = sorted(list(data_dir.glob("*.parquet")) + list(data_dir.glob("*.csv")) + list(data_dir.glob("*.xlsx")) + list(data_dir.glob("*.xls")))
 
     for file in file_list:
         if file.suffix.lower() == ".parquet":
             df = pd.read_parquet(file)
+        elif file.suffix.lower() == ".csv":
+            df = load_csv_file(file)
         elif file.suffix.lower() in [".xlsx", ".xls"]:
             df = load_excel_file(file)
         else:
-            df = pd.read_parquet(file)
+            df = load_csv_file(file)
             
         if df.empty:
             continue

@@ -8,3 +8,16 @@ __pycache__/
 
 data/processed/*
 !data/processed/.gitkeep
+# Security & Credentials
+credentials/
+*.json
+!package.json
+!tsconfig.json
+.env
+.env.local
+.streamlit/secrets.toml
+
+# Logs & Runtime Staging Data
+logs/
+data/staging/
+*.log
