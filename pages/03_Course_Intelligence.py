@@ -1,3 +1,14 @@
+"""
+03_Course_Intelligence.py
+-------------------------
+Academic Course Intelligence & Demand Analytics featuring:
+- Tab 1: Core Intelligence & Hierarchy (Degree share, Top 10, Treemap, Device, Geo, GSC queries, Directory)
+- Tab 2: Day-Wise & Month-Wise Demand Trends (Interactive date range, 7-day rolling average, multi-course comparison, MoM growth)
+- Tab 3: Top Performing Programs Leaderboard (Standout Champion, Volume leaders, Degree level winners, Peak surge leaders)
+- Tab 4: Demand Spikes & Outlier Registry (Statistical anomaly detection, timeline scatter, single-course drilldown, incident log)
+Optimized with Streamlit in-memory caching (@st.cache_data) for instantaneous sub-second chart rendering.
+"""
+
 import re
 import numpy as np
 import pandas as pd
@@ -12,13 +23,58 @@ from src.data.normalizers import (
     normalize_percent_series,
     parse_numeric_series,
 )
+from src.analytics.course_spikes import (
+    prepare_clean_daily_course_df,
+    get_day_wise_course_performance,
+    get_month_wise_course_performance,
+    get_top_performing_courses,
+    detect_course_outliers,
+)
+
+# =============================================================================
+# PAGE STYLES
+# =============================================================================
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+
+div[data-testid="metric-container"] {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+div[data-testid="metric-container"] label {
+    color: #94a3b8 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+div[data-testid="metric-container"] [data-testid="stMetricValue"] {
+    color: #f1f5f9 !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+}
+.section-header {
+    font-size: 18px; font-weight: 600; color: #38bdf8;
+    border-left: 4px solid #38bdf8; padding-left: 10px;
+    margin: 20px 0 12px 0;
+}
+</style>
+""", unsafe_allow_html=True)
 
 st.title("🎓 Academic Course Intelligence & Demand Analytics")
 st.caption(
-    "Granular tracking across ~42–100 individual course URLs, degree level categorizations, "
+    "Granular tracking across individual course URLs, degree level categorizations, "
     "daily time-series trends, device attribution, location intelligence, and Google search queries."
 )
 
+# =============================================================================
+# DATA INITIALIZATION
+# =============================================================================
 datasets = detect_and_load_all()
 df_course = datasets.get("course", pd.DataFrame())
 df_gsc = datasets.get("course_gsc_queries", datasets.get("gsc_queries", pd.DataFrame()))
@@ -26,129 +82,90 @@ df_device = datasets.get("device", pd.DataFrame())
 df_geo = datasets.get("geo", pd.DataFrame())
 df_countries = datasets.get("countries", pd.DataFrame())
 
-if not df_course.empty:
-    df = df_course.copy()
+if df_course.empty:
+    st.error("No course dataset detected in `data/processed/`. Expected `02_Course_GA4.parquet`.")
+    st.stop()
 
-    # Robust page-column detection. Prefer the actual GA4 course export field.
-    page_col = find_course_page_column(
-        df,
-        preferred=["Page path and screen class", "Page path", "URL", "Top pages"],
-    )
+df = df_course.copy()
 
-    # Keep only genuine course page paths; GA4 can include unrelated blog/assets rows.
-    df = df[df[page_col].apply(is_course_path)].copy()
+# Robust page-column detection
+page_col = find_course_page_column(
+    df,
+    preferred=["Page path and screen class", "Page path", "URL", "Top pages"],
+)
 
-    if df.empty:
-        st.warning(
-            "No genuine `/course/...` or `/courses/...` paths were found in the selected column."
-        )
-        st.stop()
+# Keep only genuine course page paths
+df = df[df[page_col].apply(is_course_path)].copy()
+if df.empty:
+    st.warning("No genuine `/course/...` or `/courses/...` paths were found.")
+    st.stop()
 
-    # Build the derived course dimensions expected throughout this page.
-    df["Course Title"] = df[page_col].apply(clean_course_name)
-    df["Degree Level"] = df[page_col].apply(categorize_program_level)
+# Derived course dimensions
+df["Course Title"] = df[page_col].apply(clean_course_name)
+df["Degree Level"] = df[page_col].apply(categorize_program_level)
+df["Course Title"] = df["Course Title"].fillna("Unknown Program").astype(str).replace({"": "Unknown Program", "nan": "Unknown Program"})
+df["Degree Level"] = df["Degree Level"].fillna("Other Certificate Programs").astype(str).replace({"": "Other Certificate Programs", "nan": "Other Certificate Programs"})
 
-    df["Course Title"] = (
-        df["Course Title"]
-        .fillna("Unknown Program")
-        .astype(str)
-        .replace({"": "Unknown Program", "nan": "Unknown Program"})
-    )
-    df["Degree Level"] = (
-        df["Degree Level"]
-        .fillna("Other Certificate Programs")
-        .astype(str)
-        .replace({"": "Other Certificate Programs", "nan": "Other Certificate Programs"})
-    )
+# Metric Column Mapping
+def first_column(exact_names=(), keyword_groups=()):
+    lowered = {str(c).strip().lower(): c for c in df.columns}
+    for name in exact_names:
+        found = lowered.get(name.lower())
+        if found is not None:
+            return found
+    for keywords in keyword_groups:
+        for column in df.columns:
+            name = str(column).strip().lower()
+            if all(keyword in name for keyword in keywords):
+                return column
+    return None
 
-    # Metric Column Mapping with exact-name priority.
-    def first_column(exact_names=(), keyword_groups=()):
-        lowered = {str(c).strip().lower(): c for c in df.columns}
-        for name in exact_names:
-            found = lowered.get(name.lower())
-            if found is not None:
-                return found
-        for keywords in keyword_groups:
-            for column in df.columns:
-                name = str(column).strip().lower()
-                if all(keyword in name for keyword in keywords):
-                    return column
-        return None
+views_col = first_column(exact_names=["Views", "Screen views", "Impressions"], keyword_groups=[("views",)])
+users_col = first_column(exact_names=["Active users", "Total users", "Users"], keyword_groups=[("active", "users"), ("users",)])
+sessions_col = first_column(exact_names=["Sessions", "Engaged sessions"], keyword_groups=[("sessions",)])
+clicks_col = first_column(exact_names=["Clicks", "Organic Clicks"], keyword_groups=[("click",)])
+events_col = first_column(exact_names=["Key events", "Conversions", "Event count", "Leads"], keyword_groups=[("key", "events"), ("event", "count"), ("conversion",), ("lead",)])
+rate_col = first_column(exact_names=["CTR", "Engagement rate"], keyword_groups=[("engagement", "rate"), ("ctr",)])
+date_col = first_column(exact_names=["Date"], keyword_groups=[("date",), ("nth", "day")])
 
-    views_col = first_column(
-        exact_names=["Views", "Screen views", "Impressions"],
-        keyword_groups=[("views",)],
-    )
-    users_col = first_column(
-        exact_names=["Active users", "Total users", "Users"],
-        keyword_groups=[("active", "users"), ("users",)],
-    )
-    sessions_col = first_column(
-        exact_names=["Sessions", "Engaged sessions"],
-        keyword_groups=[("sessions",)],
-    )
-    clicks_col = first_column(
-        exact_names=["Clicks", "Organic Clicks"],
-        keyword_groups=[("click",)],
-    )
-    events_col = first_column(
-        exact_names=["Key events", "Conversions", "Event count", "Leads"],
-        keyword_groups=[("key", "events"), ("event", "count"), ("conversion",), ("lead",)],
-    )
-    rate_col = first_column(
-        exact_names=["CTR", "Engagement rate"],
-        keyword_groups=[("engagement", "rate"), ("ctr",)],
-    )
-    date_col = first_column(
-        exact_names=["Date"],
-        keyword_groups=[("date",), ("nth", "day")],
-    )
+df["Views"] = parse_numeric_series(df[views_col], df.index).round(0).astype("int64") if views_col else pd.Series(0, index=df.index, dtype="int64")
+df["Active Users"] = parse_numeric_series(df[users_col], df.index).round(0).astype("int64") if users_col else pd.Series(0, index=df.index, dtype="int64")
+df["Sessions"] = parse_numeric_series(df[sessions_col], df.index).round(0).astype("int64") if sessions_col else pd.Series(0, index=df.index, dtype="int64")
+df["Clicks"] = parse_numeric_series(df[clicks_col], df.index).round(0).astype("int64") if clicks_col else pd.Series(0, index=df.index, dtype="int64")
+df["Conversions"] = parse_numeric_series(df[events_col], df.index).round(0).astype("int64") if events_col else pd.Series(0, index=df.index, dtype="int64")
 
-    df["Views"] = (
-        parse_numeric_series(df[views_col], df.index).round(0).astype("int64")
-        if views_col
-        else pd.Series(0, index=df.index, dtype="int64")
-    )
-    df["Active Users"] = (
-        parse_numeric_series(df[users_col], df.index).round(0).astype("int64")
-        if users_col
-        else pd.Series(0, index=df.index, dtype="int64")
-    )
-    df["Sessions"] = (
-        parse_numeric_series(df[sessions_col], df.index).round(0).astype("int64")
-        if sessions_col
-        else pd.Series(0, index=df.index, dtype="int64")
-    )
-    df["Clicks"] = (
-        parse_numeric_series(df[clicks_col], df.index).round(0).astype("int64")
-        if clicks_col
-        else pd.Series(0, index=df.index, dtype="int64")
-    )
-    df["Conversions"] = (
-        parse_numeric_series(df[events_col], df.index).round(0).astype("int64")
-        if events_col
-        else pd.Series(0, index=df.index, dtype="int64")
-    )
+if rate_col:
+    df["CTR"] = normalize_percent_series(parse_numeric_series(df[rate_col], df.index))
+else:
+    df["CTR"] = pd.Series(0.0, index=df.index, dtype="float64")
 
-    if rate_col:
-        df["CTR"] = normalize_percent_series(
-            parse_numeric_series(df[rate_col], df.index)
-        )
-    else:
-        df["CTR"] = pd.Series(0.0, index=df.index, dtype="float64")
+# Date Parsing
+has_valid_dates = False
+if date_col and date_col in df.columns:
+    df["Date_Parsed"] = pd.to_datetime(df[date_col].astype(str), format="%Y%m%d", errors="coerce")
+    if df["Date_Parsed"].isna().all():
+        df["Date_Parsed"] = pd.to_datetime(df[date_col], errors="coerce")
+    if not df["Date_Parsed"].isna().all():
+        has_valid_dates = True
 
-    # Date Parsing logic
-    has_valid_dates = False
-    if date_col and date_col in df.columns:
-        df["Date_Parsed"] = pd.to_datetime(
-            df[date_col].astype(str), format="%Y%m%d", errors="coerce"
-        )
-        if df["Date_Parsed"].isna().all():
-            df["Date_Parsed"] = pd.to_datetime(df[date_col], errors="coerce")
-        if not df["Date_Parsed"].isna().all():
-            has_valid_dates = True
+# Prepared daily dataframe for time series & spikes (Cached in RAM)
+df_course_daily_clean = prepare_clean_daily_course_df(df_course)
 
-    # --- 1. EXECUTIVE METRICS HEADER ---
+# =============================================================================
+# TOP-LEVEL NAVIGATION TABS (UNCLUTTERED ARCHITECTURE)
+# =============================================================================
+tab_overview, tab_trends, tab_leaderboard, tab_outliers = st.tabs([
+    "📊 Core Intelligence & Hierarchy",
+    "📈 Day-Wise & Month-Wise Demand Trends",
+    "🏆 Top Performing Programs",
+    "🚨 Demand Spikes & Outlier Registry"
+])
+
+# =============================================================================
+# TAB 1: CORE INTELLIGENCE & CONVERSION HIERARCHY
+# =============================================================================
+with tab_overview:
+    # 1. EXECUTIVE METRICS HEADER
     tot_views = df["Views"].sum()
     tot_users = df["Active Users"].sum()
     tot_sessions = df["Sessions"].sum()
@@ -156,7 +173,6 @@ if not df_course.empty:
     tot_leads = df["Conversions"].sum()
     tot_programs = df["Course Title"].nunique()
 
-    # Dynamic traffic fallback logic for lead yield rate
     tot_traffic = tot_sessions if tot_sessions > 0 else (tot_clicks if tot_clicks > 0 else tot_views)
     lead_yield = (tot_leads / tot_traffic * 100) if tot_traffic > 0 else 0.0
 
@@ -170,14 +186,12 @@ if not df_course.empty:
 
     st.markdown("---")
 
-    # --- 2. STRATEGIC HIGHLIGHTS ---
+    # 2. STRATEGIC HIGHLIGHTS
     df_traffic_col = "Sessions" if tot_sessions > 0 else ("Clicks" if tot_clicks > 0 else "Views")
     if not df.empty and df[df_traffic_col].sum() > 0:
         top_traffic = df.loc[df[df_traffic_col].idxmax()]
         top_ctr_idx = df["CTR"].idxmax()
-        top_ctr_course = (
-            df.loc[top_ctr_idx] if df["CTR"].max() > 0 else top_traffic
-        )
+        top_ctr_course = df.loc[top_ctr_idx] if df["CTR"].max() > 0 else top_traffic
 
         med_sess = df[df_traffic_col].median()
         opp_candidates = df[df[df_traffic_col] >= med_sess]
@@ -191,498 +205,478 @@ if not df_course.empty:
         hc1, hc2, hc3 = st.columns(3)
         with hc1:
             st.info(
-                f"🏆 **Top Demand Driver**\n\n**{top_traffic['Course Title']}**\n\n"
+                f"🌟 **Top Demand Driver**\n\n**{top_traffic['Course Title']}**\n\n"
                 f"• {df_traffic_col}: **{int(top_traffic[df_traffic_col]):,}** | Clicks/Views: **{int(top_traffic['Views']):,}**"
             )
         with hc2:
             st.success(
-                f"🔥 **Highest Engagement / CTR**\n\n**{top_ctr_course['Course Title']}**\n\n"
+                f"🎯 **Highest Engagement / CTR**\n\n**{top_ctr_course['Course Title']}**\n\n"
                 f"• Engagement Rate: **{top_ctr_course['CTR']:.2f}%** | Leads: **{int(top_ctr_course['Conversions']):,}**"
             )
         with hc3:
             st.warning(
-                f"⚡ **CRO Priority Program**\n\n**{opp_course['Course Title']}**\n\n"
+                f"⚠️ **CRO Priority Program**\n\n**{opp_course['Course Title']}**\n\n"
                 f"High traffic (**{int(opp_course[df_traffic_col]):,}** visits) with room for UX/CTA conversion optimization."
             )
-
         st.markdown("---")
 
-    # --- CHART 1: DAILY COURSE DEMAND TREND ---
-    st.subheader("📈 Daily Course Demand Trend")
-
-    if has_valid_dates:
-        daily_course = (
-            df.groupby(["Date_Parsed", "Degree Level"])[
-                ["Views", "Sessions", "Active Users"]
-            ]
-            .sum()
-            .reset_index()
-        )
-        fig_trend = px.line(
-            daily_course,
-            x="Date_Parsed",
-            y="Views",
-            color="Degree Level",
-            labels={
-                "Views": "Daily Views",
-                "Date_Parsed": "Date",
-                "Degree Level": "Program Level",
-            },
-            color_discrete_sequence=px.colors.qualitative.Set1,
-        )
-        fig_trend.update_layout(
-            height=380,
-            margin=dict(l=20, r=20, t=20, b=20),
-            legend=dict(orientation="h", y=1.1),
-        )
-        st.plotly_chart(fig_trend, width="stretch")
-    else:
-        st.info(
-            "💡 Add a `Date` column (formatted as `YYYYMMDD` or `YYYY-MM-DD`) to `02_Course_GA4.parquet` to enable date-wise trend lines."
-        )
-
-        level_views = (
-            df.groupby("Degree Level")[["Views", "Sessions", "Active Users"]]
-            .sum()
-            .reset_index()
-        )
-        fig_bar_level = px.bar(
-            level_views,
-            x="Degree Level",
-            y=["Views", "Sessions"],
-            barmode="group",
-            labels={"value": "Volume", "variable": "Metric"},
-        )
-        fig_bar_level.update_layout(
-            height=350, margin=dict(l=20, r=20, t=20, b=20)
-        )
-        st.plotly_chart(fig_bar_level, width="stretch")
-
-    st.markdown("---")
-
-    # --- CHART 2 & CHART 3: DEGREE SHARE & TOP 10 DEMAND ---
+    # 3. DEGREE SHARE & TOP 10 DEMAND
     col1, col2 = st.columns([4, 6])
-
     with col1:
-        st.subheader("🍩 Demand Share by Degree Level")
+        st.subheader("📊 Demand Share by Degree Level")
         deg_summary = df.groupby("Degree Level")["Views"].sum().reset_index()
         fig_deg = px.pie(
-            deg_summary,
-            values="Views",
-            names="Degree Level",
-            hole=0.45,
-            color_discrete_sequence=px.colors.qualitative.Pastel,
+            deg_summary, values="Views", names="Degree Level", hole=0.45,
+            color_discrete_sequence=px.colors.qualitative.Pastel
         )
         fig_deg.update_traces(textposition="inside", textinfo="percent+label")
-        fig_deg.update_layout(
-            height=380, margin=dict(l=10, r=10, t=20, b=10), showlegend=False
-        )
-        st.plotly_chart(fig_deg, width="stretch")
+        fig_deg.update_layout(height=380, margin=dict(l=10, r=10, t=20, b=10), showlegend=False)
+        st.plotly_chart(fig_deg, use_container_width=True)
 
     with col2:
-        st.subheader("🏆 Top 10 Most Demanded Academic Programs")
+        st.subheader("🏅 Top 10 Most Demanded Academic Programs")
         course_agg = (
             df.groupby(["Course Title", "Degree Level"], dropna=False)
-            .agg(
-                {
-                    "Views": "sum",
-                    "Sessions": "sum",
-                    "Active Users": "sum",
-                    "Clicks": "sum",
-                    "Conversions": "sum",
-                    "CTR": "mean",
-                }
-            )
+            .agg({
+                "Views": "sum", "Sessions": "sum", "Active Users": "sum",
+                "Clicks": "sum", "Conversions": "sum", "CTR": "mean"
+            })
             .reset_index()
         )
-
         for metric in ["Views", "Sessions", "Active Users", "Clicks", "Conversions"]:
-            course_agg[metric] = (
-                pd.to_numeric(course_agg[metric], errors="coerce")
-                .fillna(0)
-                .round(0)
-                .astype("int64")
-            )
-        course_agg["CTR"] = (
-            pd.to_numeric(course_agg["CTR"], errors="coerce").fillna(0).round(2)
-        )
+            course_agg[metric] = pd.to_numeric(course_agg[metric], errors="coerce").fillna(0).round(0).astype("int64")
+        course_agg["CTR"] = pd.to_numeric(course_agg["CTR"], errors="coerce").fillna(0).round(2)
 
-        # Dynamic conversion rate formula with traffic fallbacks
         course_traffic = np.where(
-            course_agg["Sessions"] > 0,
-            course_agg["Sessions"],
+            course_agg["Sessions"] > 0, course_agg["Sessions"],
             np.where(course_agg["Clicks"] > 0, course_agg["Clicks"], course_agg["Views"])
         )
         course_agg["Lead Conv Rate (%)"] = np.where(
-            course_traffic > 0,
-            (course_agg["Conversions"] / course_traffic) * 100,
-            0.0
+            course_traffic > 0, (course_agg["Conversions"] / course_traffic) * 100, 0.0
         ).round(2)
 
         top10_courses = course_agg.sort_values(by="Views", ascending=True).tail(10)
         fig_top_courses = px.bar(
-            top10_courses,
-            x="Views",
-            y="Course Title",
-            orientation="h",
-            color="Degree Level",
-            text_auto=",.0f",
+            top10_courses, x="Views", y="Course Title", orientation="h",
+            color="Degree Level", text_auto=",.0f"
         )
-        fig_top_courses.update_layout(
-            height=380, yaxis_title="", margin=dict(l=150, r=20, t=20, b=10)
-        )
-        st.plotly_chart(fig_top_courses, width="stretch")
+        fig_top_courses.update_layout(height=380, yaxis_title="", margin=dict(l=150, r=20, t=20, b=10))
+        st.plotly_chart(fig_top_courses, use_container_width=True)
 
     st.markdown("---")
 
-    # --- CHART 4 & CHART 5: HIERARCHY TREEMAP & DEVICE ATTRIBUTION ---
+    # 4. HIERARCHY TREEMAP & DEVICE ATTRIBUTION
     col3, col4 = st.columns([6, 4])
-
     with col3:
         st.subheader("🗺️ Course Demand & Conversion Hierarchy")
-        st.caption(
-            "Tile size = Student Demand (Views) | Color Intensity = Lead Conversions"
-        )
-
+        st.caption("Tile size = Student Demand (Views) | Color Intensity = Lead Conversions")
         fig_tree = px.treemap(
             course_agg,
-            path=[
-                px.Constant("All Course Offerings"),
-                "Degree Level",
-                "Course Title",
-            ],
-            values="Views",
-            color="Conversions",
-            color_continuous_scale="Tealgrn",
-            hover_data=["Active Users"],
+            path=[px.Constant("All Course Offerings"), "Degree Level", "Course Title"],
+            values="Views", color="Conversions",
+            color_continuous_scale="Tealgrn", hover_data=["Active Users"]
         )
-        fig_tree.update_layout(
-            height=400, margin=dict(l=10, r=10, t=20, b=10)
-        )
-        st.plotly_chart(fig_tree, width="stretch")
+        fig_tree.update_layout(height=400, margin=dict(l=10, r=10, t=20, b=10))
+        st.plotly_chart(fig_tree, use_container_width=True)
 
     with col4:
         st.subheader("📱 Course Visitor Share by Device")
         if not df_device.empty:
-            dev_col = (
-                "Device category"
-                if "Device category" in df_device.columns
-                else df_device.columns[0]
-            )
-            val_col = (
-                "Active users"
-                if "Active users" in df_device.columns
-                else df_device.columns[1]
-            )
-
+            dev_col = "Device category" if "Device category" in df_device.columns else df_device.columns[0]
+            val_col = "Active users" if "Active users" in df_device.columns else df_device.columns[1]
             fig_dev = px.pie(
-                df_device,
-                values=val_col,
-                names=dev_col,
-                hole=0.4,
-                color_discrete_sequence=px.colors.qualitative.Set3,
+                df_device, values=val_col, names=dev_col, hole=0.4,
+                color_discrete_sequence=px.colors.qualitative.Set3
             )
-            fig_dev.update_traces(
-                textposition="inside", textinfo="percent+label"
-            )
-            fig_dev.update_layout(
-                height=400, margin=dict(l=10, r=10, t=20, b=10)
-            )
-            st.plotly_chart(fig_dev, width="stretch")
+            fig_dev.update_traces(textposition="inside", textinfo="percent+label")
+            fig_dev.update_layout(height=400, margin=dict(l=10, r=10, t=20, b=10))
+            st.plotly_chart(fig_dev, use_container_width=True)
         else:
-            st.info(
-                "💡 Upload `04_Device_GA4.parquet` to display Mobile vs. Desktop visitor splits."
-            )
+            st.info("Upload `04_Device_GA4.parquet` to display Mobile vs. Desktop visitor splits.")
 
     st.markdown("---")
 
-    # --- 🌍 GEOGRAPHIC & INDIA CITY SEARCH LOCATION INTELLIGENCE ---
-    st.subheader("📍 Geographic & India City Search Intelligence")
-    
-    geo_data_available = False
-    if not df_geo.empty:
-        country_col = next((c for c in df_geo.columns if "country" in str(c).lower()), df_geo.columns[0])
-        city_col = next((c for c in df_geo.columns if "city" in str(c).lower()), None)
-        users_geo_col = next((c for c in df_geo.columns if any(k in str(c).lower() for k in ["users", "active", "sessions", "clicks"])), df_geo.columns[-1])
+    # 5. GEOGRAPHIC LOCATION & GSC SEARCH QUERY PERFORMANCE
+    col5, col6 = st.columns(2)
+    with col5:
+        st.subheader("📍 India City Search Intelligence")
+        if not df_geo.empty:
+            country_col = next((c for c in df_geo.columns if "country" in str(c).lower()), df_geo.columns[0])
+            city_col = next((c for c in df_geo.columns if "city" in str(c).lower()), None)
+            users_geo_col = next((c for c in df_geo.columns if any(k in str(c).lower() for k in ["users", "active", "sessions", "clicks"])), df_geo.columns[-1])
+            df_india = df_geo[df_geo[country_col].astype(str).str.strip().str.lower() == "india"].copy()
+            if city_col and not df_india.empty:
+                top_cities = (
+                    df_india[~df_india[city_col].astype(str).str.lower().isin(["(not set)", "unknown", "nan"])]
+                    .groupby(city_col)[users_geo_col].sum().reset_index()
+                    .sort_values(by=users_geo_col, ascending=False).head(10)
+                )
+                fig_city = px.bar(
+                    top_cities, x=users_geo_col, y=city_col, orientation="h",
+                    title="Top 10 Indian Cities by Applicant Traffic",
+                    color=users_geo_col, color_continuous_scale="Purples"
+                )
+                fig_city.update_layout(yaxis=dict(autorange="reversed"), height=350, margin=dict(l=10, r=10, t=30, b=10))
+                st.plotly_chart(fig_city, use_container_width=True)
+            else:
+                st.info("City-level breakdown for India is not available.")
+        else:
+            st.info("Upload `06_Geo_Global_GA4.parquet` to display city search intelligence.")
 
-        df_india = df_geo[df_geo[country_col].astype(str).str.strip().str.lower() == "india"].copy()
-        
-        if city_col and not df_india.empty:
-            df_india = df_india[~df_india[city_col].astype(str).str.lower().isin(["(not set)", "nan", "unknown"])]
-            df_india[users_geo_col] = pd.to_numeric(df_india[users_geo_col], errors="coerce").fillna(0)
-            
-            city_agg = df_india.groupby(city_col)[users_geo_col].sum().reset_index().sort_values(by=users_geo_col, ascending=False)
-            
-            if not city_agg.empty:
-                geo_data_available = True
-                top_city = city_agg.iloc[0]
-                
-                g_col1, g_col2 = st.columns([4, 6])
-                with g_col1:
-                    st.metric(
-                        label="🇮🇳 Highest Searching City in India",
-                        value=str(top_city[city_col]),
-                        delta=f"{int(top_city[users_geo_col]):,} Active Users / Search Volume"
-                    )
-                    st.caption("City level traffic volume isolated for prospective applicants in India.")
-                
-                with g_col2:
-                    fig_city = px.bar(
-                        city_agg.head(10),
-                        x=users_geo_col,
-                        y=city_col,
-                        orientation="h",
-                        title="Top 10 Indian Cities by Search & Traffic Volume",
-                        color=users_geo_col,
-                        color_continuous_scale="Blues",
-                        text_auto=",.0f"
-                    )
-                    fig_city.update_layout(height=320, yaxis={"categoryorder": "total ascending"}, margin=dict(l=120, r=20, t=30, b=20))
-                    st.plotly_chart(fig_city, width="stretch")
-
-    if not geo_data_available and not df_countries.empty:
-        c_col = "Country" if "Country" in df_countries.columns else df_countries.columns[0]
-        cl_col = "Clicks" if "Clicks" in df_countries.columns else df_countries.columns[1]
-        
-        india_row = df_countries[df_countries[c_col].astype(str).str.lower() == "india"]
-        if not india_row.empty:
-            st.metric(
-                label="🇮🇳 Total Search Clicks from India",
-                value=f"{int(india_row[cl_col].values[0]):,}",
-                delta="Top Demand Country"
+    with col6:
+        st.subheader("🔍 Top Course Search Queries (Google GSC)")
+        if not df_gsc.empty:
+            q_col = "Query" if "Query" in df_gsc.columns else df_gsc.columns[0]
+            imp_col = "Impressions" if "Impressions" in df_gsc.columns else df_gsc.columns[1]
+            click_col = "Clicks" if "Clicks" in df_gsc.columns else df_gsc.columns[2]
+            top_queries = df_gsc.sort_values(by=imp_col, ascending=False).head(10)
+            fig_gsc = px.bar(
+                top_queries, x=imp_col, y=q_col, orientation="h",
+                color=click_col, color_continuous_scale="Cividis",
+                title="Top Organic Course Keywords by Search Impressions"
             )
-
-    if not geo_data_available and df_countries.empty:
-        st.info("💡 Upload `06_Geo_Global_GA4.parquet` or `Countries.parquet` to display India city-level search intelligence.")
+            fig_gsc.update_layout(yaxis=dict(autorange="reversed"), height=350, margin=dict(l=10, r=10, t=30, b=10))
+            st.plotly_chart(fig_gsc, use_container_width=True)
+        else:
+            st.info("Upload `gsc_course_queries.parquet` to view Google Search terms.")
 
     st.markdown("---")
 
-    # --- CHART 6: WHAT COURSES ARE USERS SEARCHING FOR? (GSC Data) ---
-    st.subheader(
-        "🔎 What Course Keywords Are Users Searching on Google? (GSC Data)"
-    )
-    if not df_gsc.empty:
-        q_col = "Query" if "Query" in df_gsc.columns else df_gsc.columns[0]
-        imp_col = (
-            "Impressions" if "Impressions" in df_gsc.columns else "Impressions"
-        )
-        click_col = "Clicks" if "Clicks" in df_gsc.columns else "Clicks"
-
-        course_keywords = df_gsc[
-            df_gsc[q_col]
-            .astype(str)
-            .str.contains(
-                "course|btech|msc|bsc|mba|bba|phd|diploma|admission|fees|syllabus",
-                case=False,
-                na=False,
-            )
-        ]
-
-        display_q = course_keywords if not course_keywords.empty else df_gsc
-        top_queries = display_q.sort_values(by=imp_col, ascending=True).tail(12)
-
-        fig_gsc = px.bar(
-            top_queries,
-            x=imp_col,
-            y=q_col,
-            orientation="h",
-            color=click_col,
-            labels={
-                imp_col: "Google Search Impressions",
-                q_col: "Search Query",
-                click_col: "Organic Clicks",
-            },
-            color_continuous_scale="Cividis",
-            text_auto=",.0f",
-        )
-        fig_gsc.update_layout(height=400, margin=dict(l=180, r=20, t=20, b=20))
-        st.plotly_chart(fig_gsc, width="stretch")
-    else:
-        st.info(
-            "💡 Upload `gsc_queries.parquet` into `data/input/` to view prospective student search terms."
-        )
-
-    st.markdown("---")
-
-    # --- PERFORMANCE QUADRANT & BENCHMARKS ---
-    with st.expander("🎯 Extended Analytics: Performance Quadrant & CTR Benchmarks"):
-        eq_col1, eq_col2 = st.columns(2)
-        with eq_col1:
-            fig_quad = px.scatter(
-                course_agg,
-                x="Sessions",
-                y="CTR",
-                color="Degree Level",
-                hover_name="Course Title",
-                title="Traffic Volume (Sessions) vs Engagement Rate (CTR %)",
-                labels={"Sessions": "Sessions", "CTR": "Engagement Rate (%)"},
-            )
-            fig_quad.update_layout(
-                height=380, margin=dict(l=20, r=20, t=30, b=20)
-            )
-            st.plotly_chart(fig_quad, width="stretch")
-
-        with eq_col2:
-            top5_ctr = course_agg.nlargest(5, "CTR")
-            bot5_ctr = course_agg.nsmallest(5, "CTR")
-            bench_df = pd.concat([top5_ctr, bot5_ctr]).sort_values(
-                by="CTR", ascending=True
-            )
-            fig_bench = px.bar(
-                bench_df,
-                x="CTR",
-                y="Course Title",
-                orientation="h",
-                color="CTR",
-                title="Top 5 vs Bottom 5 Programs by Engagement Rate (%)",
-                color_continuous_scale="RdYlGn",
-            )
-            fig_bench.update_layout(
-                height=380, margin=dict(l=150, r=20, t=30, b=20)
-            )
-            st.plotly_chart(fig_bench, width="stretch")
-
-    st.markdown("---")
-
-    # --- AUDIT TABLE FOR ALL COURSES ---
-    st.subheader(
-        "📊 Individual Course Directory & Performance Table (~42–100 Courses)"
-    )
-
+    # 6. COURSE DIRECTORY & LEAD CONVERSIONS
+    st.subheader("📋 Individual Course Directory & Performance Table")
     tf_col1, tf_col2 = st.columns([2, 1])
     with tf_col1:
         selected_deg = st.multiselect(
             "Filter Programs by Degree Level:",
             options=list(course_agg["Degree Level"].unique()),
             default=list(course_agg["Degree Level"].unique()),
+            key="overview_course_deg_filter"
         )
     with tf_col2:
-        search_kw = st.text_input(
-            "Search Program Title:", placeholder="e.g. Anesthesia, Radiology, BTech..."
-        )
+        search_kw = st.text_input("Search Program Title:", placeholder="e.g. Anesthesia, Radiology, BTech...", key="overview_course_search")
 
-    filtered_courses = course_agg[
-        course_agg["Degree Level"].isin(selected_deg)
-    ].copy()
-
+    filtered_courses = course_agg[course_agg["Degree Level"].isin(selected_deg)].copy()
     if search_kw.strip():
-        filtered_courses = filtered_courses[
-            filtered_courses["Course Title"]
-            .str.lower()
-            .str.contains(search_kw.lower().strip())
-        ]
+        filtered_courses = filtered_courses[filtered_courses["Course Title"].str.lower().str.contains(search_kw.lower().strip())]
 
     filtered_courses = filtered_courses.sort_values(by="Sessions", ascending=False)
-
     st.dataframe(
-        filtered_courses[[
-            "Course Title", "Degree Level", "Sessions", "Clicks", "CTR", "Conversions", "Lead Conv Rate (%)"
-        ]],
-        width="stretch",
-        height=420,
+        filtered_courses[["Course Title", "Degree Level", "Sessions", "Clicks", "CTR", "Conversions", "Lead Conv Rate (%)"]],
+        use_container_width=True, height=350,
         column_config={
-            "Course Title": st.column_config.TextColumn("Course Directory Title"),
-            "Degree Level": st.column_config.TextColumn("Degree Category"),
-            "Sessions": st.column_config.NumberColumn("Sessions", format="%d"),
-            "Clicks": st.column_config.NumberColumn("Clicks", format="%d"),
-            "CTR": st.column_config.NumberColumn("CTR / Engagement (%)", format="%.2f%%"),
-            "Conversions": st.column_config.NumberColumn("CTA Form Leads", format="%d"),
+            "Sessions": st.column_config.NumberColumn(format="%d"),
+            "Clicks": st.column_config.NumberColumn(format="%d"),
+            "CTR": st.column_config.NumberColumn("CTR (%)", format="%.2f%%"),
+            "Conversions": st.column_config.NumberColumn("Form Leads", format="%d"),
             "Lead Conv Rate (%)": st.column_config.NumberColumn("Lead Conv. Rate", format="%.2f%%"),
-        },
+        }
     )
 
-    # --- INTEGRATED CONVERSION & TRAFFIC DEEP-DIVE ---
-    st.divider()
-    st.subheader("📈 Course & Category Lead Conversion Analytics")
 
-    top_conv_course = course_agg.sort_values(by="Lead Conv Rate (%)", ascending=False).iloc[0]
+# =============================================================================
+# TAB 2: DAY-WISE & MONTH-WISE DEMAND TRENDS (INSTANT CACHED RENDERING)
+# =============================================================================
+with tab_trends:
+    st.markdown("<div class='section-header'>📈 Day-Wise & Month-Wise Course Demand Trends</div>", unsafe_allow_html=True)
+    st.caption("Granular daily applicant interest curves, date range filtering, monthly demand volume, and MoM growth acceleration.")
 
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Total Sessions", f"{course_agg['Sessions'].sum():,}")
-    c2.metric("Total Clicks", f"{course_agg['Clicks'].sum():,}")
-    c3.metric("Total CTA Form Leads", f"{course_agg['Conversions'].sum():,}")
-    c4.metric(
-        "🏆 Top Converting Course",
-        f"{top_conv_course['Course Title']}",
-        f"{top_conv_course['Lead Conv Rate (%)']:.2f}% Conv.",
-    )
+    if df_course_daily_clean.empty:
+        st.info("Daily grain course data is not available.")
+    else:
+        min_date = df_course_daily_clean["Date"].min().date()
+        max_date = df_course_daily_clean["Date"].max().date()
 
-    # --- CATEGORY-WISE CONVERSION PERFORMANCE (Degree Level) ---
-    st.markdown("#### 🏷️ Category-Wise (Degree Level) Conversion Performance")
-    
-    cat_summary = (
-        course_agg.groupby("Degree Level")
-        .agg(
-            Total_Sessions=("Sessions", "sum"),
-            Total_Clicks=("Clicks", "sum"),
-            Total_Leads=("Conversions", "sum"),
-            Avg_CTR=("CTR", "mean")
-        )
-        .reset_index()
-    )
+        sub_tab_c_daily, sub_tab_c_monthly = st.tabs([
+            "📅 Day-Wise Demand (Custom Range)",
+            "📆 Month-Wise Volume & MoM Growth"
+        ])
 
-    # Clean fallback logic for Category Conversion Rate
-    cat_traffic = np.where(
-        cat_summary["Total_Sessions"] > 0,
-        cat_summary["Total_Sessions"],
-        np.where(cat_summary["Total_Clicks"] > 0, cat_summary["Total_Clicks"], 0)
-    )
+        with sub_tab_c_daily:
+            cd_col1, cd_col2 = st.columns([1, 2])
+            with cd_col1:
+                c_date_range = st.date_input(
+                    "Date Range Filter:",
+                    value=[min_date, max_date],
+                    min_value=min_date,
+                    max_value=max_date,
+                    key="course_trends_date_range"
+                )
+            
+            start_cd = c_date_range[0] if isinstance(c_date_range, (list, tuple)) and len(c_date_range) > 0 else min_date
+            end_cd = c_date_range[1] if isinstance(c_date_range, (list, tuple)) and len(c_date_range) > 1 else max_date
 
-    cat_summary["Category Conv Rate (%)"] = np.where(
-        cat_traffic > 0,
-        (cat_summary["Total_Leads"] / cat_traffic) * 100,
-        0.0
-    ).round(2)
+            all_course_titles = sorted(df_course_daily_clean["Course Title"].unique().tolist())
+            with cd_col2:
+                chosen_courses = st.multiselect(
+                    "Compare Specific Academic Programs (leave empty for Top 5):",
+                    options=all_course_titles,
+                    default=[],
+                    key="course_trends_chosen_courses",
+                    help="Overlay specific academic programs on the daily chart"
+                )
 
-    cat_col1, cat_col2 = st.columns([6, 4])
-    with cat_col1:
-        fig_cat_conv = px.bar(
-            cat_summary.sort_values(by="Category Conv Rate (%)", ascending=False),
-            x="Degree Level",
-            y="Category Conv Rate (%)",
-            color="Degree Level",
-            text_auto=".2f%",
-            title="Conversion Rate by Course Degree Category (%)",
-            color_discrete_sequence=px.colors.qualitative.Bold
-        )
-        fig_cat_conv.update_layout(height=350, showlegend=False, margin=dict(l=20, r=20, t=35, b=20))
-        st.plotly_chart(fig_cat_conv, width="stretch")
+            total_c_daily_df, per_c_daily_df = get_day_wise_course_performance(
+                df_course_daily_clean,
+                start_date=start_cd,
+                end_date=end_cd,
+                selected_courses_tuple=tuple(chosen_courses) if chosen_courses else ()
+            )
 
-    with cat_col2:
-        st.dataframe(
-            cat_summary[["Degree Level", "Total_Sessions", "Total_Clicks", "Total_Leads", "Category Conv Rate (%)"]],
-            width="stretch",
-            height=350,
-            column_config={
-                "Degree Level": st.column_config.TextColumn("Category"),
-                "Total_Sessions": st.column_config.NumberColumn("Sessions", format="%d"),
-                "Total_Clicks": st.column_config.NumberColumn("Clicks", format="%d"),
-                "Total_Leads": st.column_config.NumberColumn("Leads", format="%d"),
-                "Category Conv Rate (%)": st.column_config.NumberColumn("Conv. Rate", format="%.2f%%"),
-            }
-        )
+            if not total_c_daily_df.empty:
+                tot_c_range_views = int(total_c_daily_df["Views"].sum())
+                avg_c_daily_v = round(total_c_daily_df["Views"].mean(), 1)
+                peak_c_row = total_c_daily_df.loc[total_c_daily_df["Views"].idxmax()]
+                peak_c_date_str = peak_c_row["Date"].strftime("%d %b %Y")
+                peak_c_views_val = int(peak_c_row["Views"])
 
-    # --- INDIVIDUAL COURSE CONVERSION CHART ---
-    if course_agg["Lead Conv Rate (%)"].max() == 0:
+                cm_1, cm_2, cm_3, cm_4 = st.columns(4)
+                cm_1.metric("Course Views in Range", f"{tot_c_range_views:,}")
+                cm_2.metric("Avg Daily Demand", f"{avg_c_daily_v:,}")
+                cm_3.metric("Peak Daily Views", f"{peak_c_views_val:,}", f"on {peak_c_date_str}")
+                cm_4.metric("Days Monitored", f"{len(total_c_daily_df):,}")
+
+                fig_tot_c_daily = px.line(
+                    total_c_daily_df,
+                    x="Date",
+                    y=["Views", "Rolling_7d_Views"],
+                    labels={"value": "Views", "Date": "Date", "variable": "Metric"},
+                    title="Platform-Wide Daily Course Demand (with 7-Day Rolling Moving Average)",
+                    color_discrete_map={"Views": "#a78bfa", "Rolling_7d_Views": "#f59e0b"},
+                    template="plotly_dark"
+                )
+                fig_tot_c_daily.update_layout(
+                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#0f172a",
+                    font_color="#f1f5f9", height=350, hovermode="x unified",
+                    legend=dict(orientation="h", y=-0.2), margin=dict(l=10, r=10, t=40, b=10)
+                )
+                st.plotly_chart(fig_tot_c_daily, use_container_width=True)
+
+                if not per_c_daily_df.empty:
+                    st.markdown("#### 🔍 Program-Level Daily Demand Trajectory Comparison")
+                    fig_per_c_daily = px.line(
+                        per_c_daily_df,
+                        x="Date", y="Views", color="Course Title",
+                        title="Daily Applicant Demand Trajectory by Program",
+                        template="plotly_dark"
+                    )
+                    fig_per_c_daily.update_layout(
+                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#0f172a",
+                        font_color="#f1f5f9", height=360, hovermode="x unified",
+                        legend=dict(orientation="h", y=-0.3), margin=dict(l=10, r=10, t=40, b=10)
+                    )
+                    st.plotly_chart(fig_per_c_daily, use_container_width=True)
+
+        with sub_tab_c_monthly:
+            monthly_c_df = get_month_wise_course_performance(df_course_daily_clean)
+            if not monthly_c_df.empty:
+                c_mo_1, c_mo_2 = st.columns([3, 2])
+                with c_mo_1:
+                    fig_c_monthly = px.bar(
+                        monthly_c_df,
+                        x="YearMonth", y="Views", text="Views",
+                        title="Month-Wise Total Academic Course Demand (Views)",
+                        color="Views", color_continuous_scale="Purples",
+                        template="plotly_dark"
+                    )
+                    fig_c_monthly.update_traces(texttemplate="%{text:,.0f}", textposition="outside")
+                    fig_c_monthly.update_layout(
+                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#0f172a",
+                        font_color="#f1f5f9", height=350, coloraxis_showscale=False,
+                        margin=dict(l=10, r=10, t=40, b=10)
+                    )
+                    st.plotly_chart(fig_c_monthly, use_container_width=True)
+
+                with c_mo_2:
+                    fig_c_mom = px.line(
+                        monthly_c_df.dropna(subset=["MoM_Growth_%"]),
+                        x="YearMonth", y="MoM_Growth_%", markers=True,
+                        title="Month-over-Month (MoM) Demand Growth (%)",
+                        color_discrete_sequence=["#a855f7"], template="plotly_dark"
+                    )
+                    fig_c_mom.add_hline(y=0, line_dash="dash", line_color="#94a3b8")
+                    fig_c_mom.update_layout(
+                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#0f172a",
+                        font_color="#f1f5f9", height=350, margin=dict(l=10, r=10, t=40, b=10)
+                    )
+                    st.plotly_chart(fig_c_mom, use_container_width=True)
+
+                st.markdown("#### 📋 Monthly Course Demand Breakdown")
+                disp_c_monthly = monthly_c_df.rename(columns={
+                    "YearMonth": "Month",
+                    "Views": "Total Demand Views",
+                    "Active_Users": "Peak Active Applicants",
+                    "Courses_Active": "Active Programs",
+                    "Avg_Daily_Views": "Daily Avg Views",
+                    "MoM_Growth_%": "MoM Growth (%)"
+                })
+                st.dataframe(
+                    disp_c_monthly.style.format({
+                        "Total Demand Views": "{:,.0f}",
+                        "Peak Active Applicants": "{:,.0f}",
+                        "Active Programs": "{:,.0f}",
+                        "Daily Avg Views": "{:,.1f}",
+                        "MoM Growth (%)": "{:+.1f}%"
+                    }),
+                    use_container_width=True, hide_index=True
+                )
+
+
+# =============================================================================
+# TAB 3: TOP PERFORMING PROGRAMS LEADERBOARD
+# =============================================================================
+with tab_leaderboard:
+    st.markdown("<div class='section-header'>🏆 Top Performing Academic Programs</div>", unsafe_allow_html=True)
+    st.caption("Identifies standout academic courses across all-time demand volume, degree level champions, and single-day surge impact.")
+
+    top_c_perf = get_top_performing_courses(df_course_daily_clean, top_n=10)
+    c_vol_leaders = top_c_perf.get("volume_leaders", pd.DataFrame())
+    c_deg_leaders = top_c_perf.get("degree_leaders", pd.DataFrame())
+    c_surge_leaders = top_c_perf.get("surge_leaders", pd.DataFrame())
+
+    if not c_vol_leaders.empty:
+        champ_c = c_vol_leaders.iloc[0]
         st.info(
-            "ℹ️ No lead conversion data recorded for these courses (all conversion rates are 0.00%). "
-            "Upload a GA4 dataset with conversion events enabled to display this chart."
+            f"👑 **Most Demanded Academic Program:** **{champ_c['Course Title']}** with "
+            f"**{int(champ_c['Views']):,}** total views (avg **{champ_c['Avg_Daily_Views']}** views/day) "
+            f"in degree tier *{champ_c['Degree Level']}*!"
+        )
+
+        c_lead_tab1, c_lead_tab2, c_lead_tab3 = st.tabs([
+            "📊 All-Time Volume Leaders",
+            "🥇 Best by Degree Level",
+            "⚡ Peak Single-Day Surge Leaders"
+        ])
+
+        with c_lead_tab1:
+            fig_c_top_bar = px.bar(
+                c_vol_leaders, x="Views", y="Course Title", orientation="h",
+                color="Degree Level", title=f"Top {len(c_vol_leaders)} Programs by Demand Volume",
+                template="plotly_dark", color_discrete_sequence=px.colors.qualitative.Pastel
+            )
+            fig_c_top_bar.update_layout(
+                yaxis=dict(autorange="reversed"), paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="#0f172a", font_color="#f1f5f9", height=360,
+                legend=dict(orientation="h", y=-0.2), margin=dict(l=10, r=10, t=40, b=10)
+            )
+            st.plotly_chart(fig_c_top_bar, use_container_width=True)
+
+            st.dataframe(
+                c_vol_leaders[["Course Title", "Degree Level", "Views", "Est_Sessions", "Avg_Daily_Views", "Peak_Single_Day_Views"]].rename(columns={
+                    "Views": "Total Demand Views",
+                    "Est_Sessions": "Est. Sessions",
+                    "Avg_Daily_Views": "Daily Avg",
+                    "Peak_Single_Day_Views": "Peak Day"
+                }),
+                use_container_width=True, hide_index=True
+            )
+
+        with c_lead_tab2:
+            st.markdown("#### 🏅 Standout Program for Each Degree Level")
+            st.dataframe(
+                c_deg_leaders[["Degree Level", "Course Title", "Views", "Est_Sessions", "Avg_Daily_Views"]].rename(columns={
+                    "Views": "Top Level Views",
+                    "Est_Sessions": "Est. Sessions",
+                    "Avg_Daily_Views": "Daily Avg"
+                }),
+                use_container_width=True, hide_index=True
+            )
+
+        with c_lead_tab3:
+            st.markdown("#### ⚡ Academic Programs with Highest Single-Day Applicant Surges")
+            st.dataframe(
+                c_surge_leaders[["Course Title", "Degree Level", "Peak_Single_Day_Views", "Views", "Avg_Daily_Views"]].rename(columns={
+                    "Peak_Single_Day_Views": "Peak Single-Day Views",
+                    "Views": "Total Demand Views",
+                    "Avg_Daily_Views": "Normal Daily Avg"
+                }),
+                use_container_width=True, hide_index=True
+            )
+
+
+# =============================================================================
+# TAB 4: DEMAND SPIKES & OUTLIER REGISTRY
+# =============================================================================
+with tab_outliers:
+    st.markdown("<div class='section-header'>🚨 Academic Demand Spikes & Outlier Registry</div>", unsafe_allow_html=True)
+    st.caption(
+        "Automated statistical anomaly detection (Z-score ≥ 2.5 or Surge Ratio ≥ 2.2x normal baseline). "
+        "Records admissions announcement spikes, exam result interest surges, and breaking program demand."
+    )
+
+    c_outliers_df = detect_course_outliers(df_course_daily_clean, min_views=15, z_threshold=2.5, ratio_threshold=2.2)
+
+    if not c_outliers_df.empty:
+        c_tot_outliers = len(c_outliers_df)
+        c_max_surge = c_outliers_df.sort_values("Spike_Views", ascending=False).iloc[0]
+        c_max_mult = c_outliers_df.sort_values("Surge_Multiplier", ascending=False).iloc[0]
+
+        cok1, cok2, cok3, cok4 = st.columns(4)
+        cok1.metric("Demand Spikes Detected", f"{c_tot_outliers}")
+        cok2.metric("Highest Single-Day Demand", f"{int(c_max_surge['Spike_Views'])} Views", f"on {c_max_surge['Date'].strftime('%d %b %Y')}")
+        cok3.metric("Largest Surge Factor", f"{c_max_mult['Surge_Multiplier']}", f"{c_max_mult['Course Title'][:18]}...")
+        cok4.metric("Algorithm", "Z-Score ≥ 2.5", "Rolling Baseline")
+
+        # Scatter Timeline
+        fig_c_outlier_time = px.scatter(
+            c_outliers_df,
+            x="Date", y="Spike_Views", size="Spike_Views", color="Degree Level",
+            hover_name="Course Title",
+            hover_data={"Date": "|%d %b %Y", "Surge_Multiplier": True, "Baseline_Avg": True, "Spike_Tag": True},
+            title="Timeline of Recorded Program Demand Spike Events",
+            template="plotly_dark", color_discrete_sequence=px.colors.qualitative.Safe
+        )
+        fig_c_outlier_time.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#0f172a",
+            font_color="#f1f5f9", height=360, margin=dict(l=10, r=10, t=40, b=10)
+        )
+        st.plotly_chart(fig_c_outlier_time, use_container_width=True)
+
+        # Micro-Inspector
+        st.markdown("#### 🔬 Inspect Individual Program Demand Trajectory vs Baseline")
+        c_spike_titles = sorted(c_outliers_df["Course Title"].unique().tolist())
+        c_inspected_title = st.selectbox("Select Academic Program to View Trajectory:", options=c_spike_titles, key="tab_c_outliers_select")
+
+        c_article_daily_df = df_course_daily_clean[df_course_daily_clean["Course Title"] == c_inspected_title].sort_values("Date")
+        if not c_article_daily_df.empty:
+            fig_c_inspect = px.line(
+                c_article_daily_df,
+                x="Date", y="Views", markers=True,
+                title=f"Daily Demand Trajectory for: {c_inspected_title}",
+                template="plotly_dark", color_discrete_sequence=["#a855f7"]
+            )
+            c_avg_val = c_article_daily_df["Views"].mean()
+            fig_c_inspect.add_hline(
+                y=c_avg_val, line_dash="dot", line_color="#f59e0b",
+                annotation_text=f"Baseline Avg: {c_avg_val:.1f} views/day",
+                annotation_position="bottom right"
+            )
+            fig_c_inspect.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#0f172a",
+                font_color="#f1f5f9", height=320, margin=dict(l=10, r=10, t=40, b=10)
+            )
+            st.plotly_chart(fig_c_inspect, use_container_width=True)
+
+        # Incident Registry Table & CSV Export
+        st.markdown("#### 📋 Recorded Course Demand Spikes Incident Registry")
+        disp_c_outliers = c_outliers_df.rename(columns={
+            "Course Title": "Academic Program",
+            "Spike_Views": "Spike Demand Views",
+            "Baseline_Avg": "Baseline Avg",
+            "Surge_Multiplier": "Surge Factor",
+            "Z_Score": "Z-Score",
+            "Spike_Tag": "Surge Tag"
+        })
+        st.dataframe(
+            disp_c_outliers[["Date", "Academic Program", "Degree Level", "Spike Demand Views", "Baseline Avg", "Surge Factor", "Surge Tag"]],
+            use_container_width=True, hide_index=True
+        )
+
+        st.download_button(
+            label="📥 Export Course Demand Spikes Log (CSV)",
+            data=c_outliers_df.to_csv(index=False).encode("utf-8"),
+            file_name="course_demand_spikes_log.csv",
+            mime="text/csv",
+            key="tab_c_outliers_download_csv"
         )
     else:
-        fig_course_conv = px.bar(
-            course_agg.sort_values(by="Lead Conv Rate (%)", ascending=False).head(15),
-            x="Lead Conv Rate (%)",
-            y="Course Title",
-            orientation="h",
-            title="Top 15 Courses by CTA Form Lead Conversion Rate (%)",
-            color="Lead Conv Rate (%)",
-            color_continuous_scale="Viridis",
-            text_auto=".2f%",
-        )
-        fig_course_conv.update_layout(height=450, margin=dict(l=180, r=20, t=30, b=20))
-        st.plotly_chart(fig_course_conv, width="stretch")
-
-else:
-    st.info(
-        "💡 Add `02_Course_GA4.parquet` to `data/input/` to populate course intelligence."
-    )
+        st.success("No statistical demand outliers detected under current thresholds.")
