@@ -116,7 +116,7 @@ def main():
 
     # 4. Extract GSC Data (Lifetime/Cumulative Snapshot for Pages and Queries)
     print("\n[+] Extracting Google Search Console (GSC) Data (Lifetime Snapshot)...")
-    gsc_start_d = "2025-01-01"  # Retain full cumulative tracking history up to today
+    gsc_start_d = "2025-09-24"  # Exactly aligned to GA4 baseline start date (2025-09-24)  # Retain full cumulative tracking history up to today
     df_gsc_blog = gsc.fetch_pages_snapshot(gsc_start_d, end_d, path_filter_string="/blog/")
     df_gsc_course = gsc.fetch_pages_snapshot(gsc_start_d, end_d, path_filter_string="/course/")
     df_gsc_blog_queries = gsc.fetch_queries_snapshot(gsc_start_d, end_d, path_filter_string="/blog/", row_limit=25000)
