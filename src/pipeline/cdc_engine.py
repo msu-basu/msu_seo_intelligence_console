@@ -203,7 +203,8 @@ class CDCEngine:
                 clicks = EXCLUDED.clicks,
                 impressions = EXCLUDED.impressions,
                 ctr = EXCLUDED.ctr,
-                position = EXCLUDED.position;
+                position = EXCLUDED.position,
+                loaded_at = NOW();
         """
         records = [
             (
@@ -239,7 +240,8 @@ class CDCEngine:
                 clicks = EXCLUDED.clicks,
                 impressions = EXCLUDED.impressions,
                 ctr = EXCLUDED.ctr,
-                position = EXCLUDED.position;
+                position = EXCLUDED.position,
+                loaded_at = NOW();
         """
         records = [
             (

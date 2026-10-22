@@ -193,3 +193,162 @@ class GSCExtractor:
             })
 
         return pd.DataFrame(rows)
+
+    def fetch_pages_snapshot(
+        self,
+        start_date: str,
+        end_date: str,
+        path_filter_string: Optional[str] = None,
+        row_limit: int = 25000
+    ) -> pd.DataFrame:
+        """
+        Pulls search performance aggregated strictly by page across the full date window (no date dimension).
+        Dimensions: page
+        """
+        request_body = {
+            "startDate": start_date,
+            "endDate": end_date,
+            "dimensions": ["page"],
+            "rowLimit": row_limit,
+            "dataState": "all"
+        }
+
+        if path_filter_string:
+            request_body["dimensionFilterGroups"] = [{
+                "filters": [{
+                    "dimension": "page",
+                    "operator": "contains",
+                    "expression": path_filter_string
+                }]
+            }]
+
+        t0 = time.perf_counter()
+        try:
+            response = self.service.searchanalytics().query(
+                siteUrl=self.site_url,
+                body=request_body
+            ).execute()
+            duration_ms = int((time.perf_counter() - t0) * 1000)
+            rows_count = len(response.get("rows", []))
+            self.call_logs.append({
+                "api_service": "Google Search Console API",
+                "endpoint_method": "searchanalytics.query (pages snapshot)",
+                "target_metric": f"pages snapshot ({path_filter_string or 'all'})",
+                "duration_ms": duration_ms,
+                "rows_returned": rows_count,
+                "http_status": 200,
+                "details": f"window: {start_date} to {end_date}"
+            })
+        except Exception as e:
+            duration_ms = int((time.perf_counter() - t0) * 1000)
+            self.call_logs.append({
+                "api_service": "Google Search Console API",
+                "endpoint_method": "searchanalytics.query (pages snapshot)",
+                "target_metric": f"pages snapshot ({path_filter_string or 'all'})",
+                "duration_ms": duration_ms,
+                "rows_returned": 0,
+                "http_status": 500,
+                "details": str(e)
+            })
+            print(f"[GSC ERROR] Failed to fetch page snapshot data: {e}")
+            return pd.DataFrame()
+
+        rows = []
+        for r in response.get("rows", []):
+            keys = r.get("keys", [])
+            full_url = keys[0] if len(keys) > 0 else ""
+
+            parsed = urlparse(full_url)
+            page_path = parsed.path or full_url
+            if parsed.query:
+                page_path = f"{page_path}?{parsed.query}"
+
+            clicks = int(r.get("clicks", 0))
+            impressions = int(r.get("impressions", 0))
+            ctr = round(float(r.get("ctr", 0.0)), 4)
+            pos = round(float(r.get("position", 0.0)), 2)
+
+            rows.append({
+                "page_url": full_url,
+                "page_path": page_path,
+                "clicks": clicks,
+                "impressions": impressions,
+                "ctr": ctr,
+                "position": pos,
+            })
+
+        return pd.DataFrame(rows)
+
+    def fetch_queries_snapshot(
+        self,
+        start_date: str,
+        end_date: str,
+        path_filter_string: Optional[str] = None,
+        row_limit: int = 25000
+    ) -> pd.DataFrame:
+        """
+        Pulls search query performance aggregated strictly by query across the full date window (no date or page dimension).
+        Dimensions: query
+        """
+        request_body = {
+            "startDate": start_date,
+            "endDate": end_date,
+            "dimensions": ["query"],
+            "rowLimit": row_limit,
+            "dataState": "all"
+        }
+
+        if path_filter_string:
+            request_body["dimensionFilterGroups"] = [{
+                "filters": [{
+                    "dimension": "page",
+                    "operator": "contains",
+                    "expression": path_filter_string
+                }]
+            }]
+
+        t0 = time.perf_counter()
+        try:
+            response = self.service.searchanalytics().query(
+                siteUrl=self.site_url,
+                body=request_body
+            ).execute()
+            duration_ms = int((time.perf_counter() - t0) * 1000)
+            rows_count = len(response.get("rows", []))
+            self.call_logs.append({
+                "api_service": "Google Search Console API",
+                "endpoint_method": "searchanalytics.query (queries snapshot)",
+                "target_metric": f"queries snapshot ({path_filter_string or 'all'})",
+                "duration_ms": duration_ms,
+                "rows_returned": rows_count,
+                "http_status": 200,
+                "details": f"window: {start_date} to {end_date}"
+            })
+        except Exception as e:
+            duration_ms = int((time.perf_counter() - t0) * 1000)
+            self.call_logs.append({
+                "api_service": "Google Search Console API",
+                "endpoint_method": "searchanalytics.query (queries snapshot)",
+                "target_metric": f"queries snapshot ({path_filter_string or 'all'})",
+                "duration_ms": duration_ms,
+                "rows_returned": 0,
+                "http_status": 500,
+                "details": str(e)
+            })
+            print(f"[GSC ERROR] Failed to fetch queries snapshot: {e}")
+            return pd.DataFrame()
+
+        rows = []
+        for r in response.get("rows", []):
+            keys = r.get("keys", [])
+            query = keys[0] if len(keys) > 0 else ""
+
+            rows.append({
+                "query": query,
+                "clicks": int(r.get("clicks", 0)),
+                "impressions": int(r.get("impressions", 0)),
+                "ctr": round(float(r.get("ctr", 0.0)), 4),
+                "position": round(float(r.get("position", 0.0)), 2),
+            })
+
+        return pd.DataFrame(rows)

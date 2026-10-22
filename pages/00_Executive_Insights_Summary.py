@@ -59,16 +59,19 @@ def load_agg_course():
 
 @st.cache_data
 def load_gsc_queries():
-    for fname in ["gsc_blog_queries.parquet","gsc_course_queries.parquet"]:
+    frames = []
+    for fname in ["gsc_blog_queries.parquet", "gsc_course_queries.parquet"]:
         df = load_file_or_db(fname)
         if not df.empty:
             df.columns = [c.strip() for c in df.columns]
-            for col in ["Clicks","Impressions","Position"]:
+            for col in ["Clicks", "Impressions", "Position"]:
                 if col in df.columns:
-                    df[col] = pd.to_numeric(df[col].astype(str).str.replace(",","",regex=False), errors="coerce").fillna(0)
+                    df[col] = pd.to_numeric(df[col].astype(str).str.replace(",", "", regex=False), errors="coerce").fillna(0)
             if "CTR" in df.columns:
-                df["CTR"] = pd.to_numeric(df["CTR"].astype(str).str.replace("%","",regex=False), errors="coerce").fillna(0)
-            return df
+                df["CTR"] = pd.to_numeric(df["CTR"].astype(str).str.replace("%", "", regex=False), errors="coerce").fillna(0)
+            frames.append(df)
+    if frames:
+        return pd.concat(frames, ignore_index=True)
     return pd.DataFrame()
 
 blog_agg   = load_agg_blog()

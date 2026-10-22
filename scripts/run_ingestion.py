@@ -114,19 +114,22 @@ def main():
     print(f"    - Blog Pages Extracted   : {len(df_ga4_blog):,} records (Total Views: {total_ga4_blog_views:,})")
     print(f"    - Course Pages Extracted : {len(df_ga4_course):,} records (Total Views: {total_ga4_course_views:,})")
 
-    # 4. Extract GSC Data
-    print("\n[+] Extracting Google Search Console (GSC) Data...")
-    df_gsc_blog = gsc.fetch_pages_daily(start_d, end_d, path_filter_string="/blog/")
-    df_gsc_course = gsc.fetch_pages_daily(start_d, end_d, path_filter_string="/course/")
-    df_gsc_queries = gsc.fetch_queries_daily(start_d, end_d, path_filter_string="/blog/", row_limit=5000)
+    # 4. Extract GSC Data (Lifetime/Cumulative Snapshot for Pages and Queries)
+    print("\n[+] Extracting Google Search Console (GSC) Data (Lifetime Snapshot)...")
+    gsc_start_d = "2025-01-01"  # Retain full cumulative tracking history up to today
+    df_gsc_blog = gsc.fetch_pages_snapshot(gsc_start_d, end_d, path_filter_string="/blog/")
+    df_gsc_course = gsc.fetch_pages_snapshot(gsc_start_d, end_d, path_filter_string="/course/")
+    df_gsc_blog_queries = gsc.fetch_queries_snapshot(gsc_start_d, end_d, path_filter_string="/blog/", row_limit=25000)
+    df_gsc_course_queries = gsc.fetch_queries_snapshot(gsc_start_d, end_d, path_filter_string="/course/", row_limit=25000)
 
     total_gsc_clicks = (df_gsc_blog["clicks"].sum() if not df_gsc_blog.empty else 0) + \
                        (df_gsc_course["clicks"].sum() if not df_gsc_course.empty else 0)
     total_gsc_impressions = (df_gsc_blog["impressions"].sum() if not df_gsc_blog.empty else 0) + \
                             (df_gsc_course["impressions"].sum() if not df_gsc_course.empty else 0)
-    print(f"    - Blog Search Pages      : {len(df_gsc_blog):,} records")
-    print(f"    - Course Search Pages    : {len(df_gsc_course):,} records")
-    print(f"    - Search Queries Logged  : {len(df_gsc_queries):,} records")
+    print(f"    - Blog Search Pages      : {len(df_gsc_blog):,} records (Clicks: {df_gsc_blog['clicks'].sum() if not df_gsc_blog.empty else 0:,})")
+    print(f"    - Course Search Pages    : {len(df_gsc_course):,} records (Clicks: {df_gsc_course['clicks'].sum() if not df_gsc_course.empty else 0:,})")
+    print(f"    - Blog Search Queries    : {len(df_gsc_blog_queries):,} records (Clicks: {df_gsc_blog_queries['clicks'].sum() if not df_gsc_blog_queries.empty else 0:,})")
+    print(f"    - Course Search Queries  : {len(df_gsc_course_queries):,} records (Clicks: {df_gsc_course_queries['clicks'].sum() if not df_gsc_course_queries.empty else 0:,})")
     print(f"    - Total Search Visibility: {total_gsc_clicks:,} clicks | {total_gsc_impressions:,} impressions")
 
     # 5. Staging & CDC Execution
@@ -144,7 +147,8 @@ def main():
             cdc.stage_to_files(df_ga4_course, "staging_ga4_course_daily")
             cdc.stage_to_files(df_gsc_blog, "staging_gsc_blog_pages")
             cdc.stage_to_files(df_gsc_course, "staging_gsc_course_pages")
-            cdc.stage_to_files(df_gsc_queries, "staging_gsc_queries")
+            cdc.stage_to_files(df_gsc_blog_queries, "staging_gsc_blog_queries")
+            cdc.stage_to_files(df_gsc_course_queries, "staging_gsc_course_queries")
 
             # Synchronize Streamlit processed baseline Parquet files
             cdc.sync_to_processed_parquet(df_ga4_blog, df_ga4_course)
@@ -154,13 +158,14 @@ def main():
             print("\n[2] Executing CDC Upsert into PostgreSQL:")
             run_id = cdc.log_pipeline_start("daily_ingestion", "GA4+GSC", start_d, end_d)
             try:
-                total_extracted = len(df_ga4_blog) + len(df_ga4_course) + len(df_gsc_blog) + len(df_gsc_course) + len(df_gsc_queries)
+                total_extracted = len(df_ga4_blog) + len(df_ga4_course) + len(df_gsc_blog) + len(df_gsc_course) + len(df_gsc_blog_queries) + len(df_gsc_course_queries)
                 upserted = 0
                 upserted += cdc.upsert_ga4_daily(df_ga4_blog, "raw.ga4_blog_daily")
                 upserted += cdc.upsert_ga4_daily(df_ga4_course, "raw.ga4_course_daily")
                 upserted += cdc.upsert_gsc_pages(df_gsc_blog, "raw.gsc_blog_pages")
                 upserted += cdc.upsert_gsc_pages(df_gsc_course, "raw.gsc_course_pages")
-                upserted += cdc.upsert_gsc_queries(df_gsc_queries, "raw.gsc_blog_queries")
+                upserted += cdc.upsert_gsc_queries(df_gsc_blog_queries, "raw.gsc_blog_queries")
+                upserted += cdc.upsert_gsc_queries(df_gsc_course_queries, "raw.gsc_course_queries")
 
                 # Log individual API call durations into control.api_usage_log
                 all_call_logs = ga4.call_logs + gsc.call_logs
@@ -189,9 +194,9 @@ def main():
         for path, v in top_blog.items():
             print(f"    - {v:>5,} views : {path}")
 
-    if not df_gsc_queries.empty:
+    if not df_gsc_blog_queries.empty:
         print("\n>>> Top 3 Search Queries (GSC):")
-        top_q = df_gsc_queries.groupby("query")["clicks"].sum().sort_values(ascending=False).head(3)
+        top_q = df_gsc_blog_queries.groupby("query")["clicks"].sum().sort_values(ascending=False).head(3)
         for q, c in top_q.items():
             print(f"    - {c:>4,} clicks : {q}")
 
@@ -206,6 +211,17 @@ def main():
         print(f"    - {c['api_service']:<28} | {c['endpoint_method']:<32} : {c['duration_ms']:>4} ms ({c['rows_returned']:,} rows)")
     print(f"  * Total Cumulative API Time  : {total_duration_ms / 1000:.2f} seconds ({total_duration_ms:,} ms)")
     print(f"  * Estimated Cloud API Cost   : $0.00000 (Covered by Google Cloud Free Tier Quota)")
+
+    # Automatic Parquet Full Synchronization for Streamlit Cloud Parity
+    if not args.no_db and not args.dry_run:
+        print("\n" + "=" * 70)
+        print("         STREAMLIT CLOUD PARQUET SYNCHRONIZATION")
+        print("=" * 70)
+        try:
+            from scripts.sync_db_to_parquet import sync_all_tables_to_parquet
+            sync_all_tables_to_parquet()
+        except Exception as e:
+            print(f"[WARN] Parquet synchronization failed: {e}")
 
     print("\n" + "=" * 70)
     print(" Pipeline Execution Complete. Data is verified and ready for review.")
