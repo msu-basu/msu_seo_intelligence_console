@@ -7,17 +7,6 @@ from pathlib import Path
 st.title("📋 Executive Analytics & SEO Insights Summary")
 st.caption("Single-page command centre aggregating Blog, Course, Search Console and Device data.")
 
-st.markdown("""
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-html, body, [class*="css"] { font-family: "Inter", sans-serif; }
-div[data-testid="metric-container"] {
-    background: linear-gradient(135deg,#1e293b,#0f172a);
-    border:1px solid #334155; border-radius:12px; padding:16px 20px;
-}
-div[data-testid="metric-container"] label { color:#94a3b8!important; font-size:11px!important; text-transform:uppercase; }
-div[data-testid="metric-container"] [data-testid="stMetricValue"] { color:#f1f5f9!important; font-size:24px!important; font-weight:700!important; }
-</style>""", unsafe_allow_html=True)
 
 from src.data.db_loader import load_file_or_db, load_page_summary_from_db
 

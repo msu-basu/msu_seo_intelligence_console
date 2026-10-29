@@ -11,30 +11,6 @@ import streamlit as st
 from pathlib import Path
 
 # — styles —
-st.markdown("""
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-html, body, [class*="css"] { font-family:"Inter",sans-serif; }
-
-div[data-testid="metric-container"] {
-    background:linear-gradient(135deg,#1e293b,#0f172a);
-    border:1px solid #334155; border-radius:12px; padding:16px 20px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.4);
-}
-div[data-testid="metric-container"] label {
-    color:#94a3b8!important; font-size:11px!important;
-    text-transform:uppercase; letter-spacing:.07em;
-}
-div[data-testid="metric-container"] [data-testid="stMetricValue"] {
-    color:#f1f5f9!important; font-size:24px!important; font-weight:700!important;
-}
-.section-hdr {
-    font-size:17px; font-weight:700; color:#38bdf8;
-    border-left:4px solid #38bdf8; padding-left:10px;
-    margin:28px 0 12px 0;
-}
-</style>
-""", unsafe_allow_html=True)
 
 st.title("🌍 Regional & CTR Intelligence")
 st.caption("Traffic origin, engagement, and conversion performance across Indian cities (GA4) combined with organic CTR per page and region (GSC).")

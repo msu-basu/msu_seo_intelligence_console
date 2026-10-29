@@ -30,37 +30,6 @@ from src.analytics.blog_spikes import (
 # =============================================================================
 # PAGE CONFIG & STYLES
 # =============================================================================
-st.markdown("""
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
-
-div[data-testid="metric-container"] {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-div[data-testid="metric-container"] label {
-    color: #94a3b8 !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-div[data-testid="metric-container"] [data-testid="stMetricValue"] {
-    color: #f1f5f9 !important;
-    font-size: 26px !important;
-    font-weight: 700 !important;
-}
-.section-header {
-    font-size: 18px; font-weight: 600; color: #38bdf8;
-    border-left: 4px solid #38bdf8; padding-left: 10px;
-    margin: 20px 0 12px 0;
-}
-</style>
-""", unsafe_allow_html=True)
 
 # =============================================================================
 # CONSTANTS & RATIOS
@@ -159,7 +128,11 @@ def build_page_df(df_raw: pd.DataFrame, df_gsc: pd.DataFrame) -> pd.DataFrame:
 
     for col in [vc, ac, ec, kc]:
         if col and col in df_raw.columns:
-            df_raw[col] = df_raw[col].apply(_pn)
+            if not pd.api.types.is_numeric_dtype(df_raw[col]):
+                df_raw[col] = pd.to_numeric(
+                    df_raw[col].astype(str).str.replace(",", "", regex=False).str.replace("%", "", regex=False).str.strip(),
+                    errors="coerce"
+                ).fillna(0.0)
 
     agg = {}
     if vc: agg["Views"]        = (vc, "sum")

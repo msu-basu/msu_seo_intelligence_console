@@ -451,9 +451,10 @@ def detect_and_load_all(
     Checks PostgreSQL database first (Pure Database Mode),
     and gracefully falls back to local files if database is unavailable.
     """
+    data_dir = Path(data_dir)
     import os
-    use_db = os.getenv("USE_DATABASE", "true").lower() in ("true", "1", "yes")
-    if use_db:
+    use_db = os.getenv("USE_DATABASE", "false").lower() in ("force", "true_db_only")
+    if use_db and data_dir == Path("data/processed"):
         try:
             from src.data.db_loader import load_all_from_db, test_db_connection
             if test_db_connection():
@@ -463,8 +464,6 @@ def detect_and_load_all(
                     return db_datasets
         except Exception as e:
             logger.warning("Database direct load failed, falling back to files: %s", e)
-
-    data_dir = Path(data_dir)
     datasets: Dict[str, pd.DataFrame] = {}
 
     if not data_dir.exists():

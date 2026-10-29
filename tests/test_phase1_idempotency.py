@@ -1,7 +1,22 @@
+import os
+from pathlib import Path
 import pytest
 import psycopg
+from dotenv import load_dotenv
 
-DB_URL = "postgresql://postgres:123@localhost:5432/web_analytics"
+env_file = Path(__file__).resolve().parent.parent / ".env"
+if env_file.exists():
+    load_dotenv(dotenv_path=env_file)
+else:
+    load_dotenv()
+
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "5432")
+DB_NAME = os.getenv("DB_NAME", "web_analytics")
+DB_USER = os.getenv("DB_USER", "postgres")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "123")
+
+DB_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 def test_control_schema_and_tables_exist():
     """Verify that control.pipeline_runs and control.data_quality_log exist."""

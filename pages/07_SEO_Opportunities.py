@@ -7,11 +7,6 @@ from pathlib import Path
 st.title("🔎 High-Impact SEO & Content Opportunities")
 st.caption("Actionable bottlenecks derived from aggregated GA4 and GSC data.")
 
-st.markdown("""
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-html, body, [class*="css"] { font-family:"Inter",sans-serif; }
-</style>""", unsafe_allow_html=True)
 
 from src.data.db_loader import load_file_or_db
 
